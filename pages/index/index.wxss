@@ -1,0 +1,166 @@
+.container {
+  margin: 140rpx 60rpx 0 60rpx;
+  padding: 100rpx 0 20rpx 0;
+  position: relative;
+  box-shadow:  0px 3px 10rpx #bbb;
+  border-radius: 66rpx;
+
+  background: #fff;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 168rpx;
+  height: 168rpx;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,-50%);
+  /* box-shadow: 0px 4px 5px #666, 0px 4px 8px #666; */
+  box-shadow:  0px 4px 10px #666;
+
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+/* 登陆表单 */
+
+.form {
+  margin-top: 100rpx;
+  padding: 40rpx 0rpx;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-item {
+  margin: 30rpx 50rpx;
+}
+
+.form-item.s-text {
+  margin: 0 50rpx;
+  padding-left: 0;
+}
+.small {
+  font-size: 24rpx;
+  color: #999;
+}
+
+input.form-item {
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+/* 登陆按钮 */
+
+.btn-wrapper {
+  padding: 20rpx;
+}
+
+.login.btn {
+  border: none;
+  box-shadow: 0px 4px 10px #aaa;
+  margin: auto;
+  width: 70%;
+  border-radius: 80rpx;
+  background: linear-gradient(to right, rgba(51, 173, 255, 0.575), rgb(107, 58, 240));
+  color: #fff;
+  font-weight: 900;
+}
+
+
+/* 登陆表单 */
+
+/* 登陆按钮五角星 */
+
+.star {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-right: 10rpx solid transparent;
+  border-bottom: 7rpx solid #fff;
+  border-left: 10rpx solid transparent;
+  transform: rotate(35deg);
+  color: #fff;
+}
+
+.star::before {
+  width: 0;
+  height: 0;
+  position: absolute;
+  display: block;
+  top: -5.0rpx;
+  left: -5.0rpx;
+  border-bottom: 8rpx solid #fff;
+  border-left: 3rpx solid transparent;
+  border-right: 3rpx solid transparent;
+  content: '';
+  transform: rotate(-35deg);
+}
+
+.star::after {
+  width: 0;
+  height: 0;
+  position: absolute;
+  display: block;
+  top: 0.3rpx;
+  left: -10rpx;
+  color: #fff;
+  border-right: 10rpx solid transparent;
+  border-bottom: 7rpx solid #fff;
+  border-left: 10rpx solid transparent;
+  content: '';
+  transform: rotate(-70deg);
+}
+
+.one {
+  top: 33%;
+  left: 29%;
+  transform: scale(0.9, 0.9);
+}
+
+.two {
+  top: 51%;
+  left: 32%;
+  transform: scale(0.7, 0.7);
+}
+
+.three {
+  top: 63%;
+  left: 39%;
+  transform: scale(0.4, 0.4);
+}
+
+.four {
+  top: 40%;
+  left: 67%;
+  transform: scale(0.5, 0.5);
+}
+
+.five {
+  top: 60%;
+  left: 60%;
+  transform: scale(0.7, 0.7);
+}
+
+.six {
+  top: 40%;
+  left: 63%;
+  transform: scale(0.5, 0.5);
+}
+
+.seven {
+  top: 60%;
+  left: 68%;
+  transform: scale(0.5, 0.5);
+}

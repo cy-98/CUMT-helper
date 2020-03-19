@@ -1,0 +1,36 @@
+<navbar mode="menu"></navbar>
+<view class="container">
+  <view class="backgroundColor"></view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="form">
+    <view class="form-item s-text">输入学号</view>
+    <input class="form-item" type="text" bindinput="getAccount" ></input>
+    <view class="form-item s-text">统一认证密码</view>
+    <input class="form-item" type="password" bindinput="getPassword"></input>
+  </view>
+</view>
+<view class="btn-wrapper" style="transform:translateY(120rpx);">
+  <button class="form-item login btn" bindtap="login">登陆</button>
+  <view class="star one"></view>
+  <view class="star two"></view>
+  <view class="star three"></view>
+  <view class="star four"></view>
+  <view class="star five"></view>
+  <view class="star six"></view>
+  <view class="star seven"></view>
+
+
+</view>
+<view class="s-text txt-center small"style="transform:translateY(120rpx);">
+账号为学号，密码为统一认证密码，即挂VPN的密码。
+</view>
+<view class="s-text txt-center small"style="transform:translateY(120rpx);">
+初始密码为身份证后六位
+</view>
