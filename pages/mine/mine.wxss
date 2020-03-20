@@ -1,3 +1,117 @@
 .page-wrapper {
+}
 
+.userinfo {
+  margin-top: 80rpx;
+  display: flex;
+  padding: 0 80rpx;
+}
+
+.userinfo-avatar {
+  margin: auto 0;
+  width: 128rpx;
+  height: 128rpx;
+
+  border-radius: 50%;
+}
+
+.bubbels-wrapper {
+  margin-left: auto;
+  flex: 1;
+  position: relative;
+}
+
+.bubbel {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatUp 5s infinite;
+  opacity: 0;
+}
+
+.one {
+  width: 500rpx;
+  height: 500rpx;
+  left: 70%;
+  top: 50%;
+  background: linear-gradient(75deg, transparent, rgba(255, 255, 255, 0.192));
+  animation-delay: 1s;
+}
+
+.two {
+  width: 200rpx;
+  height: 200rpx;
+  left: 20%;
+  top: 30%;
+  background: linear-gradient(80deg, transparent, rgba(255, 255, 255, 0.132));
+  animation-delay: 2s;
+}
+
+.three {
+  width: 300rpx;
+  height: 300rpx;
+  left: 20%;
+  top: 60%;
+  background: linear-gradient(25deg, transparent, rgba(255, 255, 255, 0.152));
+  animation-delay: 3s;
+}
+
+.four {
+  width: 100rpx;
+  height: 100rpx;
+  left: 70%;
+  top: 30%;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
+}
+.five {
+  width: 100rpx;
+  height: 100rpx;
+  left: 30%;
+  top: 55%;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
+  animation-delay: 1s;
+}
+
+.info-wrapper {
+  padding: 20rpx 40rpx;
+  margin: 80rpx 30rpx 0 40rpx;
+  display: flex;
+  background: #fff;
+  box-shadow: 0px 4px 4px #bbb;
+  border-radius: 8rpx;
+}
+
+.info-list {
+  flex: 1;
+}
+
+.flex-list {
+  margin: 0 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  margin: 20rpx 0;
+  flex: 1;
+  text-align: right;
+}
+
+.studio {
+  margin: 40rpx 0;
+}
+
+/* keyframes */
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-500rpx);
+  }
 }

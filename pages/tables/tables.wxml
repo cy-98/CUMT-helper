@@ -1,0 +1,4 @@
+<view class="page-wrapper">
+  <navbar page-name="{{nickName}}" mode="index"></navbar>
+  <view class="backgroundColor"></view>
+</view>

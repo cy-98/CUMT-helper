@@ -2,9 +2,8 @@
   margin: 140rpx 60rpx 0 60rpx;
   padding: 100rpx 0 20rpx 0;
   position: relative;
-  box-shadow:  0px 3px 10rpx #bbb;
+  box-shadow:  0px 3px 8px #bbb;
   border-radius: 66rpx;
-
   background: #fff;
 }
 
@@ -34,7 +33,7 @@
 /* 登陆表单 */
 
 .form {
-  margin-top: 100rpx;
+  margin-top: 70rpx;
   padding: 40rpx 0rpx;
   width: 100%;
   flex: 1;
@@ -73,7 +72,7 @@ input.form-item {
   margin: auto;
   width: 70%;
   border-radius: 80rpx;
-  background: linear-gradient(to right, rgba(51, 173, 255, 0.575), rgb(107, 58, 240));
+  background: linear-gradient(to right, rgba(51, 173, 255, 0.575), rgb(13, 148, 182));
   color: #fff;
   font-weight: 900;
 }
@@ -81,47 +80,6 @@ input.form-item {
 
 /* 登陆表单 */
 
-/* 登陆按钮五角星 */
-
-.star {
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-right: 10rpx solid transparent;
-  border-bottom: 7rpx solid #fff;
-  border-left: 10rpx solid transparent;
-  transform: rotate(35deg);
-  color: #fff;
-}
-
-.star::before {
-  width: 0;
-  height: 0;
-  position: absolute;
-  display: block;
-  top: -5.0rpx;
-  left: -5.0rpx;
-  border-bottom: 8rpx solid #fff;
-  border-left: 3rpx solid transparent;
-  border-right: 3rpx solid transparent;
-  content: '';
-  transform: rotate(-35deg);
-}
-
-.star::after {
-  width: 0;
-  height: 0;
-  position: absolute;
-  display: block;
-  top: 0.3rpx;
-  left: -10rpx;
-  color: #fff;
-  border-right: 10rpx solid transparent;
-  border-bottom: 7rpx solid #fff;
-  border-left: 10rpx solid transparent;
-  content: '';
-  transform: rotate(-70deg);
-}
 
 .one {
   top: 33%;

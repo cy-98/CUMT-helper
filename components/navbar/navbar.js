@@ -8,7 +8,10 @@ Component({
     addGlobalClass: true,
   },
   properties: {
-    mode: String, // index || menu
+    mode: {
+      type: String,
+      value: 'index'
+    }, // index || menu
     pageName: String,
     showBack: {
       type: Boolean,

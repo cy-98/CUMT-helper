@@ -28,6 +28,11 @@
   overflow: hidden;
   white-space: nowrap;
 }
+.page-name {
+  color: #fff;
+  margin-left: 10%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
 .title {
   position: absolute;
   left: 50%;
@@ -39,7 +44,7 @@
   height: 46rpx;
   margin: 10rpx 60rpx;
   border-radius: 50%;
-  box-shadow: 0px 0px 4px #888;
+  box-shadow: 0px 0px 6px 1px rgb(41, 94, 143);
   position: relative;
   background: #fff;
 }

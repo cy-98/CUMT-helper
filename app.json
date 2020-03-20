@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/tables/tables",
     "pages/mine/mine",
     "pages/index/index"
   ],

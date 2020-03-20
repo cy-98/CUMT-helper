@@ -4,6 +4,9 @@ import {
 import {
   loginCUMT
 } from '../../utils/api'
+import {
+  toMine
+} from '../../utils/navigate.js'
 
 var app = getApp();
 Page({
@@ -15,6 +18,10 @@ Page({
     password: ''
   },
   login: function() {
+    
+    wx.showLoading({
+      title: '登陆中',
+    })
     let token
     const userData = JSON.stringify({
       username: this.data.username,
@@ -24,12 +31,23 @@ Page({
     const text = encrypt(userData)
     loginCUMT(text)
       .then((res) => {
-        token = res.data.data // 保存token
-
-        wx.setStorage({  
+        wx.hideLoading()
+        if (res.data.code !== 200) {
+          wx.showModal({
+            title: '登陆失败'
+          })
+          return
+        }
+        token = res.data.data 
+        wx.setStorage({       // 本地存储token app.token = token
           key: 'token',
           data: token,
         })
+        app.globalData.token = token
+        toMine()
+      }).catch(err=>{
+        wx.hideLoading()
+        console.log(err)
       })
   },
   getAccount: function(e) {

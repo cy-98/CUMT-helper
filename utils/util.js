@@ -1,31 +1,35 @@
-
 const CryptoJS = require('./des.js')
+import { toLogin } from './navigate.js'
 
 const key = 'flyingstudioisgood' // 密码
 // 用户信息加密
-const encypt = (text)=>{
+const encypt = (text) => {
   const keyHex = CryptoJS.enc.Utf8.parse(key);
 
   const encrypted = CryptoJS.DES.encrypt(text, keyHex, {
     mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.Pkcs7
   });
+
   return encrypted.toString()
 }
 // 用户信息解密
 const decrypt = (text) => {
   const keyHex = CryptoJS.enc.Utf8.parse(key);
-  console.log(CryptoJS.enc.Base64.parse(text))
   const decrypted = CryptoJS.DES.decrypt({
-    text: CryptoJS.enc.Base64.parse(text)
+    ciphertext: CryptoJS.enc.Base64.parse(text)
   }, keyHex, {
-      mode: CryptoJS.mode.ECB,
-      padding: CryptoJS.pad.Pkcs7
-    });
-  console.log(CryptoJS.enc.Base64.stringify(CryptoJS.enc.Base64.parse(text).words))
+    mode: CryptoJS.mode.ECB,
+    padding: CryptoJS.pad.Pkcs7
+  });
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
-
+const hasToLogin = () => {
+  wx.showToast({
+    title: '请先登录教务系统',
+  })
+  toLogin()
+}
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -48,5 +52,6 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime,
   encrypt: encypt,
-  decrypt: decrypt
+  decrypt: decrypt,
+  hasToLogin: hasToLogin
 }
