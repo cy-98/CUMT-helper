@@ -1,5 +1,7 @@
 const CryptoJS = require('./des.js')
-import { toLogin } from './navigate.js'
+import {
+  toLogin
+} from './navigate.js'
 
 const key = 'flyingstudioisgood' // 密码
 // 用户信息加密
@@ -30,6 +32,37 @@ const hasToLogin = () => {
   })
   toLogin()
 }
+const parseParams = (params) => {
+  let querys = [],
+    value
+  for (const key in params) {
+    value = params[key]
+    if (Array.isArray(value)) {
+      parseArr(key)
+    } else {
+      typeof value === 'object' ?
+        parseObj(value) : querys.push(`${key}=${value}`)
+    }
+  }
+  return '?' + querys.join('&')
+
+  function parseArr(key) { // value: Array<string>
+    // 拼接数组形式的query
+    const value = params[key]
+    let i, l = value.length;
+    for (i = 0; i < l; i++) {
+      querys.push(`${key}[]=${value[i]}`)
+    }
+  }
+
+  function parseObj(obj) {
+    // 拼接对象形式的query
+    for (const key in obj) {
+      const value = obj[key]
+      querys.push(`${key}=${value}`)
+    }
+  }
+}
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -53,5 +86,6 @@ module.exports = {
   formatTime: formatTime,
   encrypt: encypt,
   decrypt: decrypt,
-  hasToLogin: hasToLogin
+  hasToLogin: hasToLogin,
+  parseParams: parseParams
 }

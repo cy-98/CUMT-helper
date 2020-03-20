@@ -1,3 +1,5 @@
+import { parseParams }  from './util.js'
+
 const rootUrl = 'https://met.chpz527.cn/uni/'
 
 const commit = (payload, method) => {
@@ -12,7 +14,6 @@ const commit = (payload, method) => {
       url: rootUrl + path,
       data: data ? data : '',
       header: header,
-      responseType: 'text',
       method: method,
       success: (res) => {
         resolve(res)
@@ -26,6 +27,9 @@ const commit = (payload, method) => {
 
 
 const http_get = (payload) => {
+  const { params } = payload
+  params 
+    && (payload.path += parseParams(params))
   return commit(payload, 'GET')
 }
 const http_post = (payload) => {

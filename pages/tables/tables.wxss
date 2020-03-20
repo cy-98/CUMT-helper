@@ -1,0 +1,8 @@
+.container {
+  padding: 50rpx 30rpx;
+  border: 1px solid #bbb;
+  height: 100vh;
+}
+.row-week {
+  display: flex;
+}

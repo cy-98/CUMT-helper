@@ -31,17 +31,22 @@ const getUser = () => {
     header: {},
     path: path
   }
-
   processPayload(payload)
-  console.log(payload)
   return http_get(payload)
 }
 // (header[token], params[years, term]):Promise=>{} path: all
-const getTimeTables = () => {
-
+const getTimeTables = (params) => {
+  const path = 'all'
+  const payload = {
+    header: {},
+    path: path,
+    params: params
+  }
+  processPayload(payload)
+  return http_get(payload)
 }
-
 module.exports = {
   loginCUMT: loginCUMT,
-  getUser: getUser
+  getUser: getUser,
+  getTimeTables: getTimeTables
 }
