@@ -1,10 +1,10 @@
-.backgroundAni {
+/* .backgroundAni {
   width: 100vw;
   height: 100vh;
   position: absolute;
   z-index: -1;
   background: linear-gradient(rgba(12, 209, 134, 0.637),rgba(55, 248, 174, 0.144))
-}
+} */
 .nav {
   background: rgba(255, 255, 255, 0.5);
   position: relative;
@@ -19,9 +19,9 @@
 
 
 .context { 
-  /* 显示周数 */
+  /* 显示当期周数 */
   line-height: 64rpx;
-  color: #fff;
+  color: #000;
   font-weight: 900;
 }
 .container {

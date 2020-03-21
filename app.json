@@ -4,6 +4,25 @@
     "pages/mine/mine",
     "pages/index/index"
   ],
+
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icon/首页.png",
+      "selectedIconPath": "icon/首页.png"
+    },{
+      "pagePath": "pages/tables/tables",
+      "text": "课表",
+      "iconPath": "icon/课程.png",
+      "selectedIconPath": "icon/课程.png"
+    },{
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "icon/我的.png",
+      "selectedIconPath": "icon/我的.png"
+    }]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

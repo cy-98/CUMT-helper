@@ -40,12 +40,14 @@ Page({
     month: new Date().getMonth() + 1,
     weeks: weeks,
     scheduls:scheduls,
-    // --- 请求数九 ---
+    // --- 请求数据 ---
     year: '',
     term: '',
     exam: [],
     grade: [],
     timetable: [],
+    // --- 用户数据 ---
+
   },
 
   // onload lifetimes
@@ -53,12 +55,15 @@ Page({
     
     const getExam = getStore('exam').then(res => res.data)
     const getGrade = getStore('grade').then(res => res.data)
-    const getTimeTable = getStore('timetable').then(res => res.data)
+    const getTimeTable = getStore('timetable').then(res => {
+      // 拿到指定周的数据 (分周存储在本地)
+      return res.data
+    })
     Promise.all([getExam, getGrade, getTimeTable])
       .then(res => {
         console.log('成功获取考试课表以及分数') // all success
       })
-      .catch((err) => {                     // storage wrong
+      .catch((err) => {                     // storage wrong 存储情况出现错误, 重新请求
         console.log(err)
         getTimeTables({
           year: 2019,
@@ -68,7 +73,9 @@ Page({
           const datas = JSON.parse(decrypt(text))
           const { exam, timetable } = datas
 
-          setStore({ exam, grade, timetable })
+          setStore({ exam, grade }) // 考试和分数存储本地
+          // setStore({ /* ... */})                    // 分周存储课表
+
         }).catch(err => {
           console.log(err)
         })

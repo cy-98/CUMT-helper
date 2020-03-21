@@ -1,12 +1,12 @@
 <view class="page-wrapper">
-  <view class="backgroundAni"></view>
+  <!-- <view class="backgroundAni"></view> -->
   <view class="nav" style="height:{{navHeight}}px;">
-    <view class="title" style="top:{{navTop}}px">
+    <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
+      <view class="context">
+        第<text>几</text>周
+      </view>
       <view class="context">
         统计
-      </view>
-      <view class="context" style="margin-left:10%">
-        第<text>几</text> 周
       </view>
       <view class="context">
         导入
@@ -18,18 +18,19 @@
     <!-- 周 -->
     <view class="week-wrap">
       <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="{{item.id}}">{{item.zh}}</view>
+        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.zh}}</view>
       </view>
       <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="{{item.id}}">{{item.en}}</view>
+        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.en}}</view>
       </view>
     </view>
     <view class="lessons-wrap">
-      <view wx:for="{{10}}" style="border-top:1px solid #fff;" class="lesson-row"></view>
+      <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #bbb;" class="lesson-row"></view>
+      <view class="lesson" wx:for="lessons"  wx:key="id"></view>
     </view>
     <!-- 节次 -->
     <view class="schedule">
-      <view wx:for="{{scheduls}}" wx:key="{{item.id}}" class="s-text schedule-item">
+      <view wx:for="{{scheduls}}" wx:key="id" class="s-text schedule-item">
         <view class="item id">{{item.id}}</view>
         <view>{{item.begin}}</view>
         <view>{{item.end}}</view>
