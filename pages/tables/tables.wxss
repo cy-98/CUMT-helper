@@ -14,6 +14,7 @@
   height: 64rpx;
   position: relative;
   box-sizing: border-box;
+  display: flex;
 }
 
 

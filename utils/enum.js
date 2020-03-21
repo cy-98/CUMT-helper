@@ -3,6 +3,7 @@ const id = () => {
   return i++
 }
 
+//  课表时间节次
 const scheduls = [{
   id: id(),
   begin: '8:00',
@@ -49,6 +50,8 @@ const scheduls = [{
   end: '21:40'
 }]
 i = 0
+
+// 课表星期节次
 const weeks = [
   {
     zh: '周一',
@@ -80,6 +83,8 @@ const weeks = [
     id: id()
   }
 ]
+
+
 module.exports = {
   scheduls: scheduls,
   weeks: weeks

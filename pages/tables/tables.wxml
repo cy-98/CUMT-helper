@@ -2,9 +2,14 @@
   <view class="backgroundAni"></view>
   <view class="nav" style="height:{{navHeight}}px;">
     <view class="title" style="top:{{navTop}}px">
+      <view class="context">
+        统计
+      </view>
       <view class="context" style="margin-left:10%">
-        第
-        <text>几</text> 周
+        第<text>几</text> 周
+      </view>
+      <view class="context">
+        导入
       </view>
     </view>
   </view> 
