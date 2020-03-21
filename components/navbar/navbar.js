@@ -16,7 +16,7 @@ Component({
     showBack: {
       type: Boolean,
       value: true
-    },
+    }
   },
 
   /**

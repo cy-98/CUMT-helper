@@ -1,4 +1,4 @@
-<navbar mode="menu"></navbar>
+<navbar></navbar>
 <view class="container">
   <view class="backgroundColor"></view>
   <view class="userinfo">

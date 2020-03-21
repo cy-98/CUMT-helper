@@ -1,12 +1,9 @@
 <view class="page-wrapper">
-  <navbar page-name="今日课程表" mode="index"></navbar>
+  <navbar page-name="第几周" mode="index" ></navbar>
   <view class="backgroundColor"></view>
 
   <!-- 边界 -->
   <view class="container">
-    <view class="row-week">
-    
-    </view>
-  </view>
 
+  </view>
 </view>

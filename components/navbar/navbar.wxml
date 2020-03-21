@@ -1,18 +1,18 @@
-<view class="navbar custom-class" style='height:{{navHeight}}px;background-color:{{bgColor}}'>
-  <!-- ------一级nav----标题-------------- -->
-  <view wx:if="{{mode==='index'}}" class="navbar-title" style="top:{{navTop}}px">
-    <view class="nav-item page-name">{{pageName}}</view>
-  </view>
-
-  <!-- ------一级----标题-------------- -->
-
-  <!-- ---二级nav---back按钮--page标题----- -->
-  <view wx:if="{{mode==='menu'}}" class="navbar-title" style="top:{{navTop}}px">
-    <view class="nav-item back" bindtap="navBack"></view>
-    <view class="nav-item title">{{pageName}}</view>
-    <!-- ------back按钮--page标题----- -->
-  </view>
-</view>
-
-<!-- showBack : 显示回退
+<view class="navbar custom-class" style='height:{{navHeight}}px;background-color:{{bgColor}}'> 
+  <!-- ------一级nav----标题-------------- --> 
+  <view wx:if="{{mode==='index'}}" class="navbar-title" style="top:{{navTop}}px"> 
+    <view class="nav-item page-name">{{pageName}}</view> 
+  </view> 
+ 
+  <!-- ------一级----标题-------------- --> 
+ 
+  <!-- ---二级nav---back按钮--page标题----- --> 
+  <view wx:if="{{mode==='menu'}}" class="navbar-title" style="top:{{navTop}}px"> 
+    <view class="nav-item back" bindtap="navBack"></view> 
+    <view class="nav-item title">{{pageName}}</view> 
+    <!-- ------back按钮--page标题----- --> 
+  </view> 
+</view> 
+ 
+<!-- showBack : 显示回退 
 showPage : 显示页面 -->

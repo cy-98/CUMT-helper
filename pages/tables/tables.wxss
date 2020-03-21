@@ -1,8 +1,26 @@
+
 .container {
-  padding: 50rpx 30rpx;
+  padding: 0;
   border: 1px solid #bbb;
   height: 100vh;
+  flex: 1;
+  flex-direction: row;
 }
-.row-week {
-  display: flex;
+.backgroundColor {
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(17, 218, 174, 0.295),rgba(17, 218, 174, 0.5));
+}
+
+.navbar {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  flex-shrink: 0;
 }

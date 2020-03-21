@@ -27,11 +27,16 @@ Page({
 
   // init data
   data: {
-    year: number,
-    term: number,
+    // --- 页面数据 ---
+    month: new Date().getMonth() + 1,
+    weeks: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    weeksEn: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    // --- 请求数九 ---
+    year: '',
+    term: '',
     exam: [],
     grade: [],
-    timetable: []
+    timetable: [],
   },
 
   // onload lifetimes
@@ -75,21 +80,9 @@ Page({
   onShow: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  tap:()=>{
+    console.log('tap')
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
