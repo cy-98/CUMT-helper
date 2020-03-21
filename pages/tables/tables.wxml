@@ -7,25 +7,28 @@
         <text>几</text> 周
       </view>
     </view>
-  </view>
-
-
+  </view> 
   <!-- 边界 -->
   <view class="container">
     <!-- 周 -->
     <view class="week-wrap">
       <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}">{{item}}</view>
+        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="{{item.id}}">{{item.zh}}</view>
       </view>
       <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}">{{item}}</view>
+        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="{{item.id}}">{{item.en}}</view>
       </view>
     </view>
-
+    <view class="lessons-wrap">
+      <view wx:for="{{10}}" style="border-top:1px solid #fff;" class="lesson-row"></view>
+    </view>
     <!-- 节次 -->
-    <view class="scedule">
-    
-    
+    <view class="schedule">
+      <view wx:for="{{scheduls}}" wx:key="{{item.id}}" class="s-text schedule-item">
+        <view class="item id">{{item.id}}</view>
+        <view>{{item.begin}}</view>
+        <view>{{item.end}}</view>
+      </view>
     </view>
   </view>
 </view>

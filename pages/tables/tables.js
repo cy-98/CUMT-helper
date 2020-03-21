@@ -4,6 +4,11 @@ import {
 import {
   getTimeTables
 } from '../../utils/api.js'
+import {
+  weeks,
+  scheduls
+} from '../../utils/enum.js'
+
 const setStore = (datas) => {
   for (const key in datas) {
     const data = datas[key]
@@ -22,6 +27,7 @@ const getStore = (key) => {
     })
   })
 }
+
 const App =getApp()
 Page({
 
@@ -32,8 +38,8 @@ Page({
     navTop:App.globalData.navTop,
     // --- 页面数据 ---
     month: new Date().getMonth() + 1,
-    weeks: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-    weeksEn: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    weeks: weeks,
+    scheduls:scheduls,
     // --- 请求数九 ---
     year: '',
     term: '',

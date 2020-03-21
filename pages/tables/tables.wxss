@@ -3,10 +3,10 @@
   height: 100vh;
   position: absolute;
   z-index: -1;
-
   background: linear-gradient(rgba(12, 209, 134, 0.637),rgba(55, 248, 174, 0.144))
 }
 .nav {
+  background: rgba(255, 255, 255, 0.5);
   position: relative;
   box-sizing: border-box;
 }
@@ -16,10 +16,6 @@
   box-sizing: border-box;
 }
 
- /*
-  行： 周   左侧margin-left：70rpx  高度： 70rpx
-
- */
 
 .context { 
   /* 显示周数 */
@@ -28,20 +24,23 @@
   font-weight: 900;
 }
 .container {
+  background: rgba(255, 255, 255, 0.5);
   padding: 0;
-  border: 1px solid #bbb;
   height: 100vh;
   flex: 1;
   display: flex;
   position: relative;
+  flex-direction: column;
 }
+ /*
+  行： 周    左侧margin-left：70rpx  高度： 70rpx
+  背景虚化:  background: rgba(255, 255, 255, 0.5);
+ */
 .week-wrap {
-  width: 100%;
   margin-left: 70rpx;
   height: 70rpx;
 }
 .row-weeks {
-  width: 100%;
   height: 35rpx;
   display: flex;
 }
@@ -50,17 +49,40 @@
   flex: 1;
 }
 /* 
+  课程: margin-left: 70rpx;
+*/
+.lessons-wrap{
+  margin-left: 70rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.lessons-wrap .lesson-row {
+  flex: 1;
+}
+/* 
   左侧节次: flex:colum 
 */
-.scedule {
+.schedule {
   padding-top:70rpx;
   height: 100%;
   width: 70rpx;
   position: absolute;
-  border: 1px solid #bbb;
   display: flex;
   flex: colum;
+  flex-direction: column;
   box-sizing: border-box;
+}
+.schedule-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.id {
+  font-weight: 900;
+  color: #38f;
+  font-size: 26rpx;
 }
 /* 
   课程
@@ -86,4 +108,7 @@
   left: 0;
   z-index: 10;
   flex-shrink: 0;
+}
+.s-text {
+  font-size: 20rpx;
 }
