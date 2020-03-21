@@ -22,11 +22,14 @@ const getStore = (key) => {
     })
   })
 }
-
+const App =getApp()
 Page({
 
   // init data
   data: {
+    // --- 导航高度 ---
+    navHeight: App.globalData.navHeight,
+    navTop:App.globalData.navTop,
     // --- 页面数据 ---
     month: new Date().getMonth() + 1,
     weeks: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],

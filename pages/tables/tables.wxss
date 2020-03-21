@@ -1,11 +1,74 @@
+.backgroundAni {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
 
+  background: linear-gradient(rgba(12, 209, 134, 0.637),rgba(55, 248, 174, 0.144))
+}
+.nav {
+  position: relative;
+  box-sizing: border-box;
+}
+.nav .title {
+  height: 64rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+ /*
+  行： 周   左侧margin-left：70rpx  高度： 70rpx
+
+ */
+
+.context { 
+  /* 显示周数 */
+  line-height: 64rpx;
+  color: #fff;
+  font-weight: 900;
+}
 .container {
   padding: 0;
   border: 1px solid #bbb;
   height: 100vh;
   flex: 1;
-  flex-direction: row;
+  display: flex;
+  position: relative;
 }
+.week-wrap {
+  width: 100%;
+  margin-left: 70rpx;
+  height: 70rpx;
+}
+.row-weeks {
+  width: 100%;
+  height: 35rpx;
+  display: flex;
+}
+.week {
+  height: 35rpx;
+  flex: 1;
+}
+/* 
+  左侧节次: flex:colum 
+*/
+.scedule {
+  padding-top:70rpx;
+  height: 100%;
+  width: 70rpx;
+  position: absolute;
+  border: 1px solid #bbb;
+  display: flex;
+  flex: colum;
+  box-sizing: border-box;
+}
+/* 
+  课程
+*/
+
+/* 
+  背景动画
+ */
 .backgroundColor {
   left: 0;
   top: 0;
