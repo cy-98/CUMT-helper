@@ -1,21 +1,23 @@
 import { weeks, scheduls } from '../../utils/enum.js'
 import { decrypt, getStore, setStore } from '../../utils/util.js'
 import { getTimeTables } from '../../utils/api.js'
-import { sliceTimeTables, getTerm } from './helper.js'
+import { sliceTimeTables, getTerm, getCurrentWeek } from './helper.js'
 
 const App = getApp()
 Page({
   data: {
+    // --- 静态数据 ---
+    weeks: weeks,
+    scheduls: scheduls,
     // --- 导航高度 ---
     navHeight: App.globalData.navHeight,
     navTop: App.globalData.navTop,
     // --- 页面数据 ---
     currentYear: new Date().getFullYear() - 1,
     currentMonth: new Date().getMonth() + 1,
-    currentWeek: 1,  // 当前周
+    currentWeek: getCurrentWeek()[0],
+    currentDay: getCurrentWeek()[1],
     currentTerm: getTerm(),
-    weeks: weeks,
-    scheduls: scheduls,
     // --- 请求数据 ---
     exam: [],
     grade: [],
@@ -23,7 +25,11 @@ Page({
   },
   // lifetimes: onload
   onLoad: function(options) {
-    const getTimeTable = getStore('timetable').then(res => res.data)
+    const getTimeTable = getStore('timetable').then(res => {
+      this.setData({
+        timetable: res.data
+      })
+    })
     Promise.all([getTimeTable])
       .then(res => {
         console.log('get exam, grad and timeTable success') // all success
