@@ -52,38 +52,36 @@ const scheduls = [{
 i = 0
 
 // 课表星期节次
-const weeks = [
-  {
-    zh: '周一',
-    en: 'Mon',
-    id: id()
-  },{
-    zh: '周二',
-    en: 'Tue',
-    id: id()
-  }, {
-    zh: '周三',
-    en: 'Web',
-    id: id()
-  }, {
-    zh: '周四',
-    en: 'Thu',
-    id: id()
-  }, {
-    zh: '周五',
-    en: 'Fri',
-    id: id()
-  }, {
-    zh: '周六',
-    en: 'Sat',
-    id: id()
-  }, {
-    zh: '周日',
-    en: 'Sun',
-    id: id()
-  }
-]
-
+const weeks = [{
+  zh: '周一',
+  en: 'Mon',
+  id: id()
+}, {
+  zh: '周二',
+  en: 'Tue',
+  id: id()
+}, {
+  zh: '周三',
+  en: 'Web',
+  id: id()
+}, {
+  zh: '周四',
+  en: 'Thu',
+  id: id()
+}, {
+  zh: '周五',
+  en: 'Fri',
+  id: id()
+}, {
+  zh: '周六',
+  en: 'Sat',
+  id: id()
+}, {
+  zh: '周日',
+  en: 'Sun',
+  id: id()
+}]
+i=0
 
 module.exports = {
   scheduls: scheduls,

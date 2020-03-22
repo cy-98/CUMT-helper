@@ -18,51 +18,33 @@ Page({
     password: ''
   },
   login: function() {
-    
-    wx.showLoading({
-      title: '登陆中',
-    })
-    let token
-    const userData = JSON.stringify({
+    wx.showLoading({ title: '登陆中' })
+    let token, userData
+
+    userData = JSON.stringify({
       username: this.data.username,
       password: this.data.password
     });
 
-    const text = encrypt(userData)
-    loginCUMT(text)
+    loginCUMT(encrypt(userData))   // 登陆密文
       .then((res) => {
         wx.hideLoading()
         if (res.data.code !== 200) {
-          wx.showModal({
-            title: '登陆失败'
-          })
+          wx.showModal({ title: '登陆失败' })
           return
         }
+
         token = res.data.data 
-        wx.setStorage({       // 本地存储token app.token = token
-          key: 'token',
-          data: token,
-        })
-        app.globalData.token = token
+        wx.setStorage({ key: 'token', data: token })  // 本地存储token app.token = token
+
+        wx.hideLoading()
         toMine()
       }).catch(err=>{
         wx.hideLoading()
         console.log(err)
       })
   },
-  getAccount: function(e) {
-    var username = e.detail.value;
-    this.setData({
-      username: username
-    });
-  },
-  getPassword: function(e) {
-    var password = e.detail.value;
-    this.setData({
-      password: password
-    });
-  },
-  onLoad: function() {
+  onLoad: function() { // 获取微信头像和昵称
     var _this = this;
     if (app.globalData.userInfo) {
       this.setData({
@@ -87,6 +69,18 @@ Page({
         },
       });
     }
+  },
+  getAccount: function (e) {
+    var username = e.detail.value;
+    this.setData({
+      username: username
+    });
+  },
+  getPassword: function (e) {
+    var password = e.detail.value;
+    this.setData({
+      password: password
+    });
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo;

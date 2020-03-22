@@ -1,15 +1,13 @@
-import {
-  decrypt
-} from '../../utils/util.js'
-import {
-  getTimeTables
-} from '../../utils/api.js'
-import {
-  weeks,
-  scheduls
-} from '../../utils/enum.js'
+import { weeks, scheduls } from '../../utils/enum.js'
+import { decrypt } from '../../utils/util.js'
+import { getTimeTables } from '../../utils/api.js'
 
-const setStore = (datas) => {
+let setStore,
+  getStore,
+  sliceTimeTables,
+  getTerm
+
+setStore = (datas) => {
   for (const key in datas) {
     const data = datas[key]
     wx.setStorage({
@@ -18,7 +16,7 @@ const setStore = (datas) => {
     })
   }
 }
-const getStore = (key) => {
+getStore = (key) => {
   return new Promise((resolve, reject) => {
     wx.getStorage({
       key: key,
@@ -27,7 +25,7 @@ const getStore = (key) => {
     })
   })
 }
-const sliceTimeTables = (timeTable) => {
+sliceTimeTables = (timeTable) => {
   const weeks = Array(20).fill([])
 
   timeTable.forEach(lesson => {
@@ -37,7 +35,7 @@ const sliceTimeTables = (timeTable) => {
   })
   return weeks
 }
-const getTerm = () => {
+getTerm = () => {
   const laterTerm = [3, 4, 5, 6, 7] // 下学期
   const currentTime = new Date()
   const month = currentTime.getMonth() + 1 // 月份
@@ -51,8 +49,6 @@ const getTerm = () => {
 
 const App = getApp()
 Page({
-
-  // init data
   data: {
     // --- 导航高度 ---
     navHeight: App.globalData.navHeight,
@@ -67,89 +63,72 @@ Page({
     exam: [],
     grade: [],
     timetable: [],
-    // --- 用户数据 ---
-
   },
-
-  // onload lifetimes
+  // lifetimes: onload
   onLoad: function(options) {
     const getExam = getStore('exam').then(res => res.data)
     const getGrade = getStore('grade').then(res => res.data)
     const getTimeTable = getStore('timetable').then(res => res.data)
     Promise.all([getExam, getGrade, getTimeTable])
       .then(res => {
-        console.log('成功获取考试课表以及分数') // all success
+        console.log('get exam, grad and timeTable success') // all success
       })
       .catch((err) => { // storage wrong 存储情况出现错误, 重新请求
-        wx.showLoading({ title: '加载课表中' })
+        wx.showLoading({
+          title: '加载课表中'
+        })
 
-        const { year, term } = this.data
-
+        const {
+          year,
+          term
+        } = this.data
+      console.log(year,term)
         getTimeTables({
-          year: year,
-          term: term
-        }).then(res => {
-          const text = res.data.data
-          console.log(text)
-          const datas = JSON.parse(decrypt(text))
-          console.log(datas)
-          const { grade, exam, timetable } = datas
-          console.log(timetable)
-          let weeks, weekCounter = 0
+            year: year,
+            term: term
+          }).then(res => {
+            const text = res.data.data
+            const datas = JSON.parse(decrypt(text))
+            const {
+              grade,
+              exam,
+              timetable
+            } = datas
+            let weeks, weekCounter = 0
 
-          weeks = sliceTimeTables(timetable)
-          weeks.forEach(i => {
-            setStore({
-              [`week_${++weekCounter}`]: i
+            weeks = sliceTimeTables(timetable)
+            weeks.forEach(i => {
+              setStore({
+                [`week_${++weekCounter}`]: i
+              })
             })
+
+            wx.hideLoading()
+            setStore({
+              exam,
+              grade
+            }) // 考试和分数存储本地
           })
-          
-          wx.hideLoading()
-          setStore({ exam, grade }) // 考试和分数存储本地
-        })
-        .catch(err => {
-          wx.hideLoading()
-          wx.showToast({ title: '获取失败' })
-          console.log(err)
-        })
+          .catch(err => {
+            wx.hideLoading()
+            wx.showToast({
+              title: '获取失败'
+            })
+            console.log(err)
+          })
       })
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-  tap: () => {
-    console.log('tap')
-  },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
-
+    // 页面下拉事件的处理函数
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function() {
-
+    //页面上拉触底事件的处理函数
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function() {
-
+    // 用户点击右上角分享
   }
 })

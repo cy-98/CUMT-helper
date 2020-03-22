@@ -5,6 +5,7 @@ import {
   decrypt,
   hasToLogin,
 } from '../../utils/util.js'
+
 const App = getApp()
 Page({
   // init datas
@@ -25,7 +26,6 @@ Page({
         })
       },
     })
-
     let userInfo
     wx.getStorage({
       key: 'userInfo',
@@ -34,7 +34,7 @@ Page({
           userInfo: res.data
         })
       },
-      fail: () => {
+      fail: () => { // getUserInfo from net
         console.log('userinfo in storage failed')
         getUser()
           .then((res) => {
@@ -49,7 +49,6 @@ Page({
               key: 'userInfo',
               data: userInfo,
             })
-
             this.setData({
               userInfo: userInfo
             })
@@ -62,33 +61,18 @@ Page({
 
   },
 
-
-  //生命周期函数--监听页面显示
-
   onShow: function() {
-
+    //生命周期函数--监听页面显示
   },
 
-
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
-
+    // 页面相关事件处理函数--监听用户下拉动作
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function() {
-
+    // 页面上拉触底事件的处理函数
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function() {
-
+    // 用户分享
   }
 })
