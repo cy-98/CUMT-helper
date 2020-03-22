@@ -55,11 +55,7 @@ Page({
             })
           }).catch((err) => { // 本地没有token 无法发送getUser请求
             console.log(err)
-            wx.showToast({
-              title: '请先登陆',
-            }).then(()=>{
-              hasToLogin()
-            })
+            hasToLogin()
           })
       }
     })

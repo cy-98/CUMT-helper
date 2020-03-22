@@ -7,11 +7,6 @@
 
   "tabBar": {
     "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "icon/首页.png",
-      "selectedIconPath": "icon/首页.png"
-    },{
       "pagePath": "pages/tables/tables",
       "text": "课表",
       "iconPath": "icon/课程.png",
