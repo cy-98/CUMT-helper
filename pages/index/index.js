@@ -1,11 +1,13 @@
 import {
-  encrypt
+  encrypt,
+  setStore,
+  getStore
 } from '../../utils/util'
 import {
   loginCUMT
 } from '../../utils/api'
 import {
-  toMine
+  toBack
 } from '../../utils/navigate.js'
 
 var app = getApp();
@@ -32,14 +34,15 @@ Page({
         if (res.data.code !== 200) {
           wx.showModal({ title: '登陆失败' })
           return
+        }else {
+          token = res.data.data
+          setStore({ 'token': token })
+
+          wx.hideLoading()
+          toBack()
         }
-
-        token = res.data.data 
-        wx.setStorage({ key: 'token', data: token })  // 本地存储token app.token = token
-
-        wx.hideLoading()
-        toMine()
-      }).catch(err=>{
+      })
+      .catch(err => {
         wx.hideLoading()
         console.log(err)
       })

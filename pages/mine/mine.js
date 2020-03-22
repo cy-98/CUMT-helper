@@ -4,6 +4,8 @@ import {
 import {
   decrypt,
   hasToLogin,
+  getStore,
+  setStore
 } from '../../utils/util.js'
 
 const App = getApp()
@@ -12,14 +14,17 @@ Page({
   data: {
     userInfo: '',
     avatarUrl: '',
-    nickName:''
+    nickName: ''
   },
   // lifetimes 
   onLoad: function(options) {
     wx.getUserInfo({
       withCredentials: true,
       success: (res) => {
-        const { avatarUrl,nickName } = res.userInfo
+        const {
+          avatarUrl,
+          nickName
+        } = res.userInfo
         this.setData({
           avatarUrl: avatarUrl,
           nickName: nickName
@@ -27,27 +32,25 @@ Page({
       },
     })
     let userInfo
-    wx.getStorage({
-      key: 'userInfo',
-      success: (res) => {
+    getStore('userInfo')
+      .then(res => {
         this.setData({
           userInfo: res.data
         })
-      },
-      fail: () => { // getUserInfo from net
+      })
+      .catch(err => {
         console.log('userinfo in storage failed')
         getUser()
           .then((res) => {
-            if(res.data.code === 400) {
+            if (res.data.code === 400) {
               hasToLogin()
-              return 
+              return
             }
             const text = res.data.data
             userInfo = JSON.parse(decrypt(text))
 
-            wx.setStorage({
-              key: 'userInfo',
-              data: userInfo,
+            setStore({
+              'userInfo': userInfo
             })
             this.setData({
               userInfo: userInfo
@@ -56,9 +59,7 @@ Page({
             console.log(err)
             hasToLogin()
           })
-      }
-    })
-
+      })
   },
 
   onShow: function() {

@@ -4,6 +4,7 @@ import {
 } from './navigate.js'
 
 const key = 'flyingstudioisgood' // 密码
+
 // 用户信息加密
 const encypt = (text) => {
   const keyHex = CryptoJS.enc.Utf8.parse(key);
@@ -26,12 +27,15 @@ const decrypt = (text) => {
   });
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
+// 路由: 请先登录
 const hasToLogin = () => {
   wx.showToast({
     title: '请先登录教务系统',
   })
   toLogin()
 }
+
+// get请求 解析参数
 const parseParams = (params) => {
   let querys = [],
     value
@@ -64,6 +68,25 @@ const parseParams = (params) => {
   }
 }
 
+// 本地存储
+const setStore = (datas) => {
+  for (const key in datas) {
+    const data = datas[key]
+    wx.setStorage({
+      key: key,
+      data: data,
+    })
+  }
+}
+const getStore = (key) => {
+  return new Promise((resolve, reject) => {
+    wx.getStorage({
+      key: key,
+      success: resolve,
+      fail: reject
+    })
+  })
+}
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -87,5 +110,7 @@ module.exports = {
   encrypt: encypt,
   decrypt: decrypt,
   hasToLogin: hasToLogin,
-  parseParams: parseParams
+  parseParams: parseParams,
+  getStore: getStore,
+  setStore: setStore
 }

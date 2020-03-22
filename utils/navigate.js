@@ -8,5 +8,11 @@ module.exports = {
     wx.redirectTo({
       url: '/pages/mine/mine',
     })
+  },
+  toBack: ()=>{
+    wx.navigateBack({
+      delta: 1,
+    })
   }
+
 }
