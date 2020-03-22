@@ -9,6 +9,8 @@ Page({
     // --- 静态数据 ---
     weeks: weeks,
     scheduls: scheduls,
+    lessonBlockWidth: '(100%)/7',
+    lessonBlockHeight: '100%/5',
     // --- 导航高度 ---
     navHeight: App.globalData.navHeight,
     navTop: App.globalData.navTop,

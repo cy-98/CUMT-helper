@@ -1,4 +1,4 @@
-let i = 0
+let i = 1
 const id = () => {
   return i++
 }
@@ -44,10 +44,6 @@ const scheduls = [{
   id: id(),
   begin: '19:55',
   end: '20:45'
-}, {
-  id: id(),
-  begin: '20:50',
-  end: '21:40'
 }]
 i = 0
 
