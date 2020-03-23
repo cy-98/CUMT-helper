@@ -1,6 +1,6 @@
 <view class="page-wrapper">
   <!-- 导航 -->
-  <view class="nav" style="height:{{navHeight}}px;;">
+  <view class="nav" style="height:{{navHeight}}px;">
     <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
       <view class="context">
         第<text>{{currentWeek}}</text>周
@@ -40,7 +40,7 @@
     </view>
     <!-- 左侧:节次 -->
     <view class="schedule">
-      <view wx:for="{{scheduls}}" wx:key="id" class="s-text schedule-item">
+      <view wx:for="{{schedules}}" wx:key="id" class="s-text schedule-item">
         <view class="item id">{{item.id}}</view>
         <view>{{item.begin}}</view>
         <view>{{item.end}}</view>

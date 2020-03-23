@@ -5,6 +5,7 @@
 .nav {
   background: #f3f3f3;
   position: relative;
+  box-sizing: border-box;
 }
 
 .title {
@@ -58,7 +59,6 @@
 .container {
   padding: 0;
   flex-direction: column;
-  border: 1px solid #bbb;
 }
 
 /*
@@ -69,7 +69,9 @@
   padding: 0;
 }
 .weather-wrap .inner-wrap {
+  margin: 30rpx;
   padding: 30rpx;
+  box-shadow: 0 4rpx 10rpx #bbb;
 }
 .date {
   text-align: right;
