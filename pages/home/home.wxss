@@ -6,31 +6,33 @@
   background: #f3f3f3;
   position: relative;
 }
+
 .title {
   position: relative;
   display: block;
 }
+
 .btn {
   width: 50rpx;
   position: relative;
   height: 0;
   border-top: 8rpx solid #000;
 }
+
 .btn::before {
   content: "";
   width: 40rpx;
   height: 0;
-
   display: block;
   position: absolute;
   border-top: 8rpx solid #000;
   top: 10rpx;
 }
+
 .btn::after {
   content: "";
   width: 40rpx;
   height: 0;
-
   display: block;
   position: absolute;
   border-top: 8rpx solid #000;
@@ -38,12 +40,14 @@
 }
 
 /* 轮廓 */
+
 .wrap {
   display: flex;
   flex-direction: column;
   padding: 30rpx;
 }
-.context { 
+
+.context {
   border-bottom: 1px solid #000;
 }
 
@@ -60,18 +64,32 @@
 /*
 天气
 */
-.weather-wrap {
 
+.weather-wrap {
+  padding: 0;
+}
+.weather-wrap .inner-wrap {
+  padding: 30rpx;
 }
 .date {
   text-align: right;
 }
+
 /* 
   今日课程
 */
 
 .recentLesson-wrap {
-
+  padding: 0;
+}
+.recentLesson-wrap .inner-wrap {
+  padding: 30rpx;
+}
+.lesson {
+  margin: 20rpx 0;
+  padding: 40rpx 20rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 4rpx 10rpx #bbb;
 }
 
 /* 
@@ -94,9 +112,10 @@
 
 /* 常用工具 */
 
-.util-wrap {
-
+.utils-wrap {
+  padding:0;
 }
-.inner-wrap {
-  padding: 10rpx 0;
+.utils-wrap .inner-wrap {
+  padding: 20rpx 30rpx;
+  
 }

@@ -5,7 +5,7 @@
   <view class="nav" style="height:{{navHeight}}px;;">
     <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
       <!-- 设置选钮 -->
-      <view class="btn"></view> 
+      <view class="btn"></view>
 
       <!-- 导航标题 -->
     </view>
@@ -14,26 +14,32 @@
   <view class="container">
     <!-- 徐州今日天气 -->
     <view class="weather-wrap wrap">
-      <view class="n-text temp">Temperature: 20°</view>
-      <view class="s-text humidity">Humidity: 14°</view>
-      <view class="s-text city">City: 徐州</view>
-      <view class="s-text date">{{month}}月{{date}}日</view>
+      <view class="inner-wrap">
+        <view class="n-text temp">Temperature: 20°</view>
+        <view class="s-text humidity">Humidity: 14°</view>
+        <view class="s-text city">City: 徐州</view>
+        <view class="s-text date">{{month}}月{{date}}日</view>
+      </view>
+
     </view>
     <!-- 今日课程 -->
     <view class="recentLesson-wrap wrap">
-      <view class="l-text context">今日课程</view>
-      <view class="lesson" wx:for="{{todaysLessons}}" wx:key="id">
-        <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
-        <view class="s-text lesson-info">{{item.time}}</view>
-        <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
+      <view class="inner-wrap">
+        <view class="l-text context">今日课程</view>
+        <view class="lesson" wx:for="{{todaysLessons}}" wx:key="id">
+          <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
+          <view class="s-text lesson-info">{{item.time}}</view>
+          <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
+        </view>
       </view>
     </view>
     <!-- 常用工具 -->
     <view class="utils-wrap wrap">
-      <view class="l-text context">常用工具</view>
+      <!-- 工具icons -->
       <view class="inner-wrap">
-        <view class="n-text">淘矿</view>
-        <view class="n-text">淘矿</view>
+        <view class="l-text context">常用工具</view>
+        
+
       </view>
     </view>
   </view>
