@@ -32,7 +32,7 @@
 /* 课程表容器 */
 .container {
   background: #fafafa;
-  padding: 0;
+  padding:0 0 20rpx 0;
   height: 100vh;
   flex: 1;
   display: flex;

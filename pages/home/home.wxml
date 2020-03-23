@@ -20,16 +20,28 @@
         <view class="s-text city">City: 徐州</view>
         <view class="s-text date">{{month}}月{{date}}日</view>
       </view>
-
     </view>
     <!-- 今日课程 -->
     <view class="recentLesson-wrap wrap">
       <view class="inner-wrap">
         <view class="l-text context">今日课程</view>
-        <view class="lesson" wx:for="{{todaysLessons}}" wx:key="id">
+        <!-- 今日课程 -->
+        <view class="lesson" wx:if="{{todaysLessons.length}}" wx:for="{{todaysLessons}}" wx:key="id">
           <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
           <view class="s-text lesson-info">{{item.time}}</view>
           <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
+        </view>
+        <!-- 今日无课 -->
+        <view  wx:if="{{!todaysLessons.length && store }}" class="lesson">
+          <view class="txt-center l-text lesson-info">今日无事 ~</view>
+        </view>
+        <!-- 假期中 -->
+        <view wx:if="{{store && !currentWeekLessons.length}}" class="lesson">
+         <view class="txt-center l-text lesson-info">假期中 ~</view>
+        </view>
+        <!-- 未登录 -->
+        <view wx:if="{{!store}}" class="lesson">
+          <view class="txt-center l-text lesson-info">您好,请登录 ~</view>
         </view>
       </view>
     </view>
@@ -38,7 +50,6 @@
       <!-- 工具icons -->
       <view class="inner-wrap">
         <view class="l-text context">常用工具</view>
-
 
       </view>
     </view>

@@ -21,7 +21,9 @@ Page({
     date: date.getDate(),
     month: date.getMonth() + 1,
     // --- 请求数据 ---
-    todaysLessons: []
+    todaysLessons: [],
+    currentWeekLessons: [],
+    store: false
   },
   onLoad: function(options) {
     // 今日课程
@@ -32,18 +34,22 @@ Page({
         const { currentWeek, currentDay } = this.data
         const timetable = res.data
 
-        const recentLessons = timetable[currentWeek]
-        todaysLessons = getLessonsOfDay(currentDay, recentLessons)
+        const currentWeekLessons = timetable[currentWeek]
+        todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
 
         this.setData({
-          todaysLessons: todaysLessons
+          todaysLessons: todaysLessons,
+          currentWeekLessons: currentWeekLessons,
+          store: true
         })
       })
 
       .catch(err => {
         console.log(err)
-        wx.showToast({
-          title: '请先导入课表'
+        this.setData({
+          todaysLessons: [],
+          currentWeekLessons:[],
+          store: false
         })
       })
   },
