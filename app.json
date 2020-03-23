@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/tables/tables",
     "pages/mine/mine",
     "pages/index/index"
@@ -7,6 +8,11 @@
 
   "tabBar": {
     "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "icon/首页.png",
+      "selectedIconPath": "icon/首页.png"
+    },{
       "pagePath": "pages/tables/tables",
       "text": "课表",
       "iconPath": "icon/课程.png",

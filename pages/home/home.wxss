@@ -1,0 +1,102 @@
+/* .backgroundColor {
+
+} */
+
+.nav {
+  background: #f3f3f3;
+  position: relative;
+}
+.title {
+  position: relative;
+  display: block;
+}
+.btn {
+  width: 50rpx;
+  position: relative;
+  height: 0;
+  border-top: 8rpx solid #000;
+}
+.btn::before {
+  content: "";
+  width: 40rpx;
+  height: 0;
+
+  display: block;
+  position: absolute;
+  border-top: 8rpx solid #000;
+  top: 10rpx;
+}
+.btn::after {
+  content: "";
+  width: 40rpx;
+  height: 0;
+
+  display: block;
+  position: absolute;
+  border-top: 8rpx solid #000;
+  top: 28rpx;
+}
+
+/* 轮廓 */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+}
+.context { 
+  border-bottom: 1px solid #000;
+}
+
+/* 
+  容器： flex:colum
+ */
+
+.container {
+  padding: 0;
+  flex-direction: column;
+  border: 1px solid #bbb;
+}
+
+/*
+天气
+*/
+.weather-wrap {
+
+}
+.date {
+  text-align: right;
+}
+/* 
+  今日课程
+*/
+
+.recentLesson-wrap {
+
+}
+
+/* 
+  单个课程的样式
+ */
+
+.lesson {
+  background: #fff;
+  height: 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 课程时间地点 */
+
+.lesson-info {
+  flex: 1;
+  text-align: center;
+}
+
+/* 常用工具 */
+
+.util-wrap {
+
+}
+.inner-wrap {
+  padding: 10rpx 0;
+}

@@ -15,12 +15,8 @@ const commit = (payload, method) => {
       data: data ? data : '',
       header: header,
       method: method,
-      success: (res) => {
-        resolve(res)
-      },
-      fail: function(err) {
-        reject(err)
-      },
+      success: resolve,
+      fail: reject
     })
   })
 }

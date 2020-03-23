@@ -67,6 +67,14 @@
   transform: rotate(-70deg);
 }
 
+.l-text {
+  font-size: 34rpx;
+  color: #111
+}
+.n-text {
+  font-size: 32rpx;
+  color: #333;
+}
 .s-text {
   font-size: 24rpx;
   color: #666;

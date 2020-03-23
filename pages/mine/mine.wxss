@@ -63,13 +63,14 @@
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
 }
 .five {
-  width: 100rpx;
-  height: 100rpx;
+  width: 170rpx;
+  height: 170rpx;
   left: 30%;
   top: 55%;
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
   animation-delay: 1s;
 }
+
 
 .info-wrapper {
   padding: 20rpx 40rpx;

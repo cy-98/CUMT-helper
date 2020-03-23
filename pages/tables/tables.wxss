@@ -1,14 +1,19 @@
-/* .backgroundAni {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: -1;
-  background: linear-gradient(rgba(12, 209, 134, 0.637),rgba(55, 248, 174, 0.144))
-} */
+.navbar {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+.s-text {
+  font-size: 20rpx;
+}
 .nav {
-  background: rgba(255, 255, 255, 0.5);
   position: relative;
   box-sizing: border-box;
+  background: #95A5A6;
 }
 .nav .title {
   height: 64rpx;
@@ -21,12 +26,12 @@
 .context { 
   /* 显示当期周数 */
   line-height: 64rpx;
-  color: #000;
+  color: #fff;
   font-weight: 900;
 }
 /* 课程表容器 */
 .container {
-  background: rgba(255, 255, 255, 0.5);
+  background: #fafafa;
   padding: 0;
   height: 100vh;
   flex: 1;
@@ -41,6 +46,8 @@
 .week-wrap {
   margin-left: 70rpx;
   height: 70rpx;
+  background: #f3f3f3;
+  box-shadow: 0px 4rpx 4rpx #f3f3f3;
 }
 .row-weeks {
   height: 35rpx;
@@ -49,6 +56,9 @@
 .week {
   height: 35rpx;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* 
   课程: margin-left: 70rpx;
@@ -64,17 +74,24 @@
   flex: 1;
 }
 /* 
-课程块
+  课程块
 */
 .lesson {
-  border-radius: 8rpx;
-  border: 1px solid #bbb;
-  box-sizing: border-box;
   width: calc((100%) / 7);
   height: calc(100%/5);
+
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  box-shadow: 4rpx 4rpx 12rpx #ddd; 
+  
   position: absolute;
-  /* top: calc(100%/5); */
-  /* left: calc((100%) / 7); */
+
+  text-align: center;
+  color: #eee;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 /* 
   左侧节次: flex:colum 
@@ -88,6 +105,7 @@
   flex: colum;
   flex-direction: column;
   box-sizing: border-box;
+  background: #f6f6f6;
 }
 .schedule-item {
   flex: 1;
@@ -107,24 +125,5 @@
 /* 
   背景动画
  */
-.backgroundColor {
-  left: 0;
-  top: 0;
-  border-radius: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(17, 218, 174, 0.295),rgba(17, 218, 174, 0.5));
-}
+ 
 
-.navbar {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  flex-shrink: 0;
-}
-.s-text {
-  font-size: 20rpx;
-}

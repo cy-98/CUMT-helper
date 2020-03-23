@@ -1,9 +1,9 @@
 <view class="page-wrapper">
-  <!-- <view class="backgroundAni"></view> -->
-  <view class="nav" style="height:{{navHeight}}px;">
+  <!-- 导航 -->
+  <view class="nav" style="height:{{navHeight}}px;;">
     <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
       <view class="context">
-        第<text>几</text>周
+        第<text>{{currentWeek}}</text>周
       </view>
       <view class="context">
         统计
@@ -26,14 +26,17 @@
     </view>
     <!-- 课程表格 -->
     <view class="lessons-wrap">
-      <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #bbb;" class="lesson-row"></view>
+      <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #eee;" class="lesson-row"></view>
       <!-- 块:课程 -->
       <view
-        class="lesson"
+        class="s-text lesson"
         wx:for="{{timetable[currentWeek]}}"
         wx:key="id"
-        style="top:calc({{lessonBlockHeight + '* 1'}});left:calc({{lessonBlockWidth + '* 2'}});"
-      >1</view>
+        style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};"
+      >
+        <view>{{item.name}}</view>
+        <view>{{item.room}}</view>
+      </view>
     </view>
     <!-- 左侧:节次 -->
     <view class="schedule">

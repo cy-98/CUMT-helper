@@ -4,7 +4,7 @@ const id = () => {
 }
 
 //  课表时间节次
-const scheduls = [{
+const schedules = [{
   id: id(),
   begin: '8:00',
   end: '8:50'
@@ -79,7 +79,12 @@ const weeks = [{
 }]
 i=0
 
+// 课表颜色
+const lessonColors = [
+  '#34495E', '#7F8C8D', '#E74C3C', '#9B59B6', '#34495E', '#cad3c3', '#57c3c2', '#1491a8', '#815c94', '#74759b','#1772b4'
+]
 module.exports = {
-  scheduls: scheduls,
-  weeks: weeks
+  schedules: schedules,
+  weeks: weeks,
+  lessonColors: lessonColors
 }

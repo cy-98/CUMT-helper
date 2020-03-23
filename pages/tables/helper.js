@@ -1,5 +1,5 @@
 // 按周分组
-const sliceTimeTables = (timeTable) => {
+const processFormatForLesson = (timeTable) => {
   const weeks = {}
   let i = 0
   for (i; i < 20; i++) {
@@ -46,8 +46,36 @@ const getCurrentWeek = () => {
   }
 }
 
+// 十六进制转rgb   复制粘贴
+const hex2rgb =(arr)=> {
+  arr = arr.substr(1);
+  var str;
+  var result;
+  var a = [];
+  for (var i = 0; i < 3; i++) {
+    str = arr.substr(i * 2, 2);
+    a[i] = parseInt(str, 16);
+  }
+  result = "rgba(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
+  return result;
+}
+
+// 为每个课程添加颜色
+const processColorForLessons = (colors, timetable)=>{
+  let i = 0
+  const map = {}
+
+  timetable.forEach(lesson => {    // lesson: { id, name, room, teacher }
+    !map[lesson.id] && (map[lesson.id] = colors[i++])
+    lesson.color = hex2rgb( map[lesson.id] )
+  })
+
+  return
+}
+
 module.exports= {
-  sliceTimeTables: sliceTimeTables,
   getTerm: getTerm,
-  getCurrentWeek: getCurrentWeek
+  getCurrentWeek: getCurrentWeek,
+  processFormatForLesson: processFormatForLesson,
+  processColorForLessons: processColorForLessons
 }

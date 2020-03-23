@@ -1,20 +1,21 @@
-import { weeks, scheduls } from '../../utils/enum.js'
+import { weeks, schedules, lessonColors } from '../../utils/enum.js'
 import { decrypt, getStore, setStore } from '../../utils/util.js'
 import { getTimeTables } from '../../utils/api.js'
-import { sliceTimeTables, getTerm, getCurrentWeek } from './helper.js'
+import { processFormatForLesson, getTerm, getCurrentWeek, processColorForLessons } from './helper.js'
 
 const App = getApp()
 Page({
   data: {
     // --- 静态数据 ---
     weeks: weeks,
-    scheduls: scheduls,
-    lessonBlockWidth: '(100%)/7',
-    lessonBlockHeight: '100%/5',
+    schedules: schedules,
+    lessonBlockMarginLeft: '(100%)/7',
+    lessonBlockMarginTop: '100%/10',
+    lessonsColors: lessonColors,
     // --- 导航高度 ---
     navHeight: App.globalData.navHeight,
     navTop: App.globalData.navTop,
-    // --- 页面数据 ---
+    // --- 计算数据 ---
     currentYear: new Date().getFullYear() - 1,
     currentMonth: new Date().getMonth() + 1,
     currentWeek: getCurrentWeek()[0],
@@ -27,11 +28,12 @@ Page({
   },
   // lifetimes: onload
   onLoad: function(options) {
-    const getTimeTable = getStore('timetable').then(res => {
-      this.setData({
-        timetable: res.data
+    const getTimeTable = getStore('timetable')
+      .then(res => {
+        this.setData({
+          timetable: res.data
+        })
       })
-    })
     Promise.all([getTimeTable])
       .then(res => {
         console.log('get exam, grad and timeTable success') // all success
@@ -51,12 +53,14 @@ Page({
             const datas = JSON.parse(decrypt(text))
             let { timetable } = datas
 
-            timetable = sliceTimeTables(timetable)
+            processColorForLessons(lessonColors, timetable)
+            timetable = processFormatForLesson(timetable)
+
             setStore({
               'timetable': timetable
             })
             this.setData({
-              timeTable: timetable
+              timetable: timetable
             })
             wx.hideLoading()
           })
