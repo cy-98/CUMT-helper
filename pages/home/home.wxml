@@ -51,9 +51,8 @@
       <view class="inner-wrap">
         <view class="l-text context">常用工具</view>
         <view class="utils">
-          <view class="util util-sort" wx:for="{{utils}}">
-            <view class="title n-text">{{item.name}}</view>
-            <view class="s-text sub-util" wx:for="{{item.children}}">{{item}}</view>
+          <view class="util util-sort" wx:for="{{utils}}" wx:key="id">
+            <view class="s-text sub-util" wx:for="{{item.children}}" wx:key="id">{{item}}</view>
           </view>
         </view>
       </view>

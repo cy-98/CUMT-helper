@@ -7,14 +7,6 @@ import {
 import {
   parseParams
 } from "../../utils/util.js"
-import {
-  getTimeTables
-} from "../../utils/api.js"
-
-// 获取近日考试
-const getExam = () => {
-  return getTimeTables().then(res => res.data.exam)
-}
 
 // 获取今日课程
 const getLessonsOfDay = (day, currentLessons) => {
@@ -46,7 +38,6 @@ const getWeather = () => {
   }).then(res => res.data.lives[0])
 }
 module.exports = {
-  getExam: getExam,
   getWeather: getWeather,
   getLessonsOfDay: getLessonsOfDay
 }

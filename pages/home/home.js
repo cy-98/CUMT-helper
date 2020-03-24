@@ -11,7 +11,6 @@ import {
 } from "../../utils/util.js"
 
 import {
-  getExam,
   getWeather,
   getLessonsOfDay,
 } from "./helper.js"
@@ -86,9 +85,6 @@ Page({
         })
       })
     // 近日考试
-    getExam().then(res => {
-      console.log(res)
-    })
   },
 
 

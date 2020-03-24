@@ -1,6 +1,3 @@
-/* .backgroundColor {
-
-} */
 
 .nav {
   background: #1da1f2;
@@ -145,10 +142,12 @@
   box-shadow: 0 4rpx 10rpx #bbb;
   border-radius: 8rpx;
   display: flex;
+  justify-content: space-evenly;
+  padding: 30rpx;
 }
 .util-sort .title {
   width: 100%;
 }
 .sub-util {
-
+  text-align: center;
 }
