@@ -3,7 +3,7 @@
 } */
 
 .nav {
-  background: #f3f3f3;
+  background: #1da1f2;
   position: relative;
   box-sizing: border-box;
 }
@@ -70,12 +70,18 @@
 .weather-wrap {
   padding: 0;
 }
+
 .weather-wrap .inner-wrap {
   margin: 30rpx;
   padding: 30rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
 }
+
 .date {
+  text-align: right;
+}
+
+.weather {
   text-align: right;
 }
 
@@ -86,9 +92,11 @@
 .recentLesson-wrap {
   padding: 0;
 }
+
 .recentLesson-wrap .inner-wrap {
   padding: 30rpx;
 }
+
 .lesson {
   margin: 20rpx 0;
   padding: 40rpx 20rpx;
@@ -117,9 +125,30 @@
 /* 常用工具 */
 
 .utils-wrap {
-  padding:0;
+  padding: 0;
 }
+
 .utils-wrap .inner-wrap {
   padding: 20rpx 30rpx;
-  
+}
+
+.utils {
+  display: flex;
+  flex-direction: column;
+  vertical-align: top;
+}
+
+.util {
+
+}
+.util-sort {
+  box-shadow: 0 4rpx 10rpx #bbb;
+  border-radius: 8rpx;
+  display: flex;
+}
+.util-sort .title {
+  width: 100%;
+}
+.sub-util {
+
 }

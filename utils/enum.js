@@ -77,14 +77,40 @@ const weeks = [{
   en: 'Sun',
   id: id()
 }]
-i=0
+i = 0
 
 // 课表颜色
 const lessonColors = [
-  '#34495E', '#7F8C8D', '#E74C3C', '#9B59B6', '#34495E', '#cad3c3', '#57c3c2', '#1491a8', '#815c94', '#74759b','#1772b4'
+  '#EF5350', '#26C6DA', '#66BB6A', '#ff4a00', '#13d0ab', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e', '#13d0ab', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e'
 ]
+
+// 首页工具
+const utils = [{
+  name: '校园卡',
+  children: [
+    '校园卡充值',
+    '查询余额',
+    '查询流水'
+  ]
+}, {
+  name: '图书馆',
+  children: [
+    '搜索图书',
+    '查询借阅历史',
+    '查询图书管用户信息',
+    '图书续借'
+  ]
+}, {
+  name: '教务',
+  children: [
+    '成绩查询',
+    '考试查询'
+  ]
+}]
+
 module.exports = {
-  schedules: schedules,
+  utils: utils,
   weeks: weeks,
+  schedules: schedules,
   lessonColors: lessonColors
 }

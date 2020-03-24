@@ -49,6 +49,7 @@ Page({
             year: currentYear,
             term: currentTerm
           }).then(res => {
+            console.log(res)
             const text = res.data.data
             const datas = JSON.parse(decrypt(text))
             let { timetable } = datas

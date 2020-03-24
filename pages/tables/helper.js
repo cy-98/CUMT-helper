@@ -1,3 +1,15 @@
+
+// util
+const mod = (a, b) => {
+  let i = 0, rest = b
+  while (a > 0) {
+    a = a - b
+    a > 0 ? i++ : rest = Math.ceil(a + b)  // 余数
+  }
+  return [i + 1, rest]
+}
+
+
 // 按周分组
 const processFormatForLesson = (timeTable) => {
   const weeks = {}
@@ -34,16 +46,6 @@ const getCurrentWeek = () => {
   const duringDays = (nowDate - openDate) / 1000 / 60 / 60 / 24
 
   return mod(duringDays, 7)
-
-  function mod(a, b) {
-    let i = 0, rest = b
-    while (a > 0) {
-      a = a - b
-      a > 0 ? i++ : rest = Math.ceil(a + b)  // 余数
-    }
-    console.log(`第${i + 1}周的第${rest}天`)
-    return [i+1,rest]
-  }
 }
 
 // 十六进制转rgb   复制粘贴
@@ -64,9 +66,10 @@ const hex2rgb =(arr)=> {
 const processColorForLessons = (colors, timetable)=>{
   let i = 0
   const map = {}
-
+  console.log(colors, timeTable.length)
   timetable.forEach(lesson => {    // lesson: { id, name, room, teacher }
     !map[lesson.id] && (map[lesson.id] = colors[i++])
+    console.log(map[lesson.id])
     lesson.color = hex2rgb( map[lesson.id] )
   })
 

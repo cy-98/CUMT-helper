@@ -13,7 +13,7 @@
 .nav {
   position: relative;
   box-sizing: border-box;
-  background: #f3f3f3;
+  background: #1da1f2;
 }
 .nav .title {
   height: 64rpx;
@@ -46,7 +46,7 @@
 .week-wrap {
   margin-left: 70rpx;
   height: 70rpx;
-  background: #f3f3f3;
+  background: #fafafa;
   box-shadow: 0px 0rpx 4rpx #f3f3f3;
 }
 .row-weeks {
@@ -82,7 +82,7 @@
 
   border-radius: 10rpx;
   box-sizing: border-box;
-  box-shadow: 4rpx 4rpx 12rpx #999; 
+  box-shadow: 0 0 1rpx 1rpx #999;
   
   position: absolute;
 
@@ -105,7 +105,7 @@
   flex: colum;
   flex-direction: column;
   box-sizing: border-box;
-  background: #f6f6f6;
+  background: #fafafa;
 }
 .schedule-item {
   flex: 1;

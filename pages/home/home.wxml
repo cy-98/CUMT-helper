@@ -15,10 +15,10 @@
     <!-- 徐州今日天气 -->
     <view class="weather-wrap wrap">
       <view class="inner-wrap">
-        <view class="n-text temp">Temperature: 20°</view>
-        <view class="s-text humidity">Humidity: 14°</view>
-        <view class="s-text city">City: 徐州</view>
-        <view class="s-text date">{{month}}月{{date}}日</view>
+        <view class="n-text temp">Temperature: {{temperature}}°</view>
+        <view class="s-text humidity">Humidity: {{humidity}}°</view>
+        <view class="s-text city">徐州</view>
+        <view class="s-text date">{{month}}月{{date}}日 {{weather}}</view>
       </view>
     </view>
     <!-- 今日课程 -->
@@ -32,12 +32,12 @@
           <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
         </view>
         <!-- 今日无课 -->
-        <view  wx:if="{{!todaysLessons.length && store }}" class="lesson">
+        <view wx:if="{{!todaysLessons.length && store }}" class="lesson">
           <view class="txt-center l-text lesson-info">今日无事 ~</view>
         </view>
         <!-- 假期中 -->
         <view wx:if="{{store && !currentWeekLessons.length}}" class="lesson">
-         <view class="txt-center l-text lesson-info">假期中 ~</view>
+          <view class="txt-center l-text lesson-info">假期中 ~</view>
         </view>
         <!-- 未登录 -->
         <view wx:if="{{!store}}" class="lesson">
@@ -50,7 +50,12 @@
       <!-- 工具icons -->
       <view class="inner-wrap">
         <view class="l-text context">常用工具</view>
-
+        <view class="utils">
+          <view class="util util-sort" wx:for="{{utils}}">
+            <view class="title n-text">{{item.name}}</view>
+            <view class="s-text sub-util" wx:for="{{item.children}}">{{item}}</view>
+          </view>
+        </view>
       </view>
     </view>
   </view>

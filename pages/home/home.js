@@ -1,11 +1,20 @@
 import {
+  utils
+} from "../../utils/enum.js"
+import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
+
 import {
   getStore
 } from "../../utils/util.js"
-import { getLessonsOfDay } from "./helper.js"
+
+import {
+  getExam,
+  getWeather,
+  getLessonsOfDay,
+} from "./helper.js"
 
 const date = new Date()
 const App = getApp()
@@ -21,22 +30,47 @@ Page({
     date: date.getDate(),
     month: date.getMonth() + 1,
     // --- 请求数据 ---
+    weather: '',
+    temperature: 0,
+    humidity: 0,
+    winddirection: '',
     todaysLessons: [],
     currentWeekLessons: [],
-    store: false
+    store: false,
+    // --- 静态数据 ---
+    utils: utils
   },
   onLoad: function(options) {
+    // 今日徐州天气
+    getWeather().then(info => {
+      const {
+        city,
+        weather,
+        temperature,
+        humidity,
+        winddirection
+      } = info
+
+      this.setData({
+        weather: weather,
+        temperature: temperature,
+        humidity: humidity,
+        winddirection: winddirection
+      })
+    })
     // 今日课程
     getStore('timetable')
       .then(res => {
         let todaysLessons
 
-        const { currentWeek, currentDay } = this.data
+        const {
+          currentWeek,
+          currentDay
+        } = this.data
         const timetable = res.data
 
         const currentWeekLessons = timetable[currentWeek]
         todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
-
         this.setData({
           todaysLessons: todaysLessons,
           currentWeekLessons: currentWeekLessons,
@@ -45,13 +79,16 @@ Page({
       })
 
       .catch(err => {
-        console.log(err)
         this.setData({
           todaysLessons: [],
-          currentWeekLessons:[],
+          currentWeekLessons: [],
           store: false
         })
       })
+    // 近日考试
+    getExam().then(res => {
+      console.log(res)
+    })
   },
 
 
