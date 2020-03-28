@@ -7,6 +7,7 @@ const App = getApp()
 Page({
   data: {
     // --- 静态数据 ---
+    is_hidden: true,
     is_pre:false,
     weeks: weeks,
     schedules: schedules,
@@ -81,6 +82,15 @@ Page({
 
     this.setData({
       is_pre: !is_pre
+    })
+  },
+  
+  // 隐藏课表
+  hideTb:function(){
+    const { is_hidden } = this.data
+
+    this.setData({
+      is_hidden: !is_hidden
     })
   },
 

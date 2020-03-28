@@ -1,3 +1,25 @@
+.single-page {
+  background: #d2e4f0;
+  position: relative;
+}
+
+#setting {
+  display: flex;
+}
+
+#setting .menu {
+  flex: 1;
+}
+
+#setting .modal {
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(82, 118, 126, 0.363));
+}
+
+.page-wrapper {
+  transition: 1s;
+}
+
 .navbar {
   width: 100%;
   overflow: hidden;
@@ -11,6 +33,7 @@
 .s-text {
   font-size: 20rpx;
 }
+
 .btn {
   width: 50rpx;
   position: relative;
@@ -18,6 +41,7 @@
   border-top: 8rpx solid #fff;
   transform: translateY(10rpx);
 }
+
 .btn::before {
   content: "";
   width: 40rpx;
@@ -85,11 +109,13 @@
   border-radius: 8rpx;
   position: relative;
 }
+
 .week-text {
   transform: translateX(-50%);
   position: absolute;
   left: 50%;
 }
+
 .les-wrap {
   position: absolute;
   top: 20rpx;
@@ -97,15 +123,18 @@
   right: 0;
   bottom: 0;
 }
+
 .pre-lesson-item {
   position: absolute;
   width: 8rpx;
   height: 8rpx;
   border-radius: 50%;
 }
-.ss-text{
-  font-size:16rpx;
+
+.ss-text {
+  font-size: 16rpx;
 }
+
 /* 课程表容器 */
 
 .container {
