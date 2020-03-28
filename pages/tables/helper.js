@@ -15,13 +15,14 @@ const processFormatForLesson = (timeTable) => {
   const weeks = {}
   let i = 0
   for (i; i < 20; i++) {
-    weeks[i + 1] = []
+    weeks[i + 1] = {id:i+1,lessons:[]}
   }
   timeTable.forEach(lesson => {
     lesson.week_list.forEach(w => {
-      weeks[w].push(lesson)
+      weeks[w].lessons.push(lesson)
     })
   })
+
   return weeks
 }
 
@@ -66,10 +67,8 @@ const hex2rgb =(arr)=> {
 const processColorForLessons = (colors, timetable)=>{
   let i = 0
   const map = {}
-  console.log(colors, timeTable.length)
   timetable.forEach(lesson => {    // lesson: { id, name, room, teacher }
     !map[lesson.id] && (map[lesson.id] = colors[i++])
-    console.log(map[lesson.id])
     lesson.color = hex2rgb( map[lesson.id] )
   })
 

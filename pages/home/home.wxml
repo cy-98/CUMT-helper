@@ -52,7 +52,7 @@
         <view class="l-text context">常用工具</view>
         <view class="utils">
           <view class="util util-sort" wx:for="{{utils}}" wx:key="id">
-            <view class="s-text sub-util" wx:for="{{item.children}}" wx:key="id">{{item}}</view>
+            <view class="s-text sub-util">{{item.name}}</view>
           </view>
         </view>
       </view>

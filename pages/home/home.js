@@ -5,11 +5,9 @@ import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
-
 import {
   getStore
 } from "../../utils/util.js"
-
 import {
   getWeather,
   getLessonsOfDay,

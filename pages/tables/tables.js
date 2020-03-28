@@ -7,6 +7,7 @@ const App = getApp()
 Page({
   data: {
     // --- 静态数据 ---
+    is_pre:false,
     weeks: weeks,
     schedules: schedules,
     lessonBlockMarginLeft: '(100%)/7',
@@ -49,9 +50,9 @@ Page({
             year: currentYear,
             term: currentTerm
           }).then(res => {
-            console.log(res)
             const text = res.data.data
             const datas = JSON.parse(decrypt(text))
+
             let { timetable } = datas
 
             processColorForLessons(lessonColors, timetable)
@@ -74,6 +75,13 @@ Page({
           })
       })
 
+  },
+  togglePre:function(){
+    const { is_pre } = this.data
+
+    this.setData({
+      is_pre: !is_pre
+    })
   },
 
   onPullDownRefresh: function() {

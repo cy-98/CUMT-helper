@@ -7,14 +7,43 @@
   z-index: 10;
   flex-shrink: 0;
 }
+
 .s-text {
   font-size: 20rpx;
 }
+.btn {
+  width: 50rpx;
+  position: relative;
+  height: 0;
+  border-top: 8rpx solid #fff;
+  transform: translateY(10rpx);
+}
+.btn::before {
+  content: "";
+  width: 40rpx;
+  height: 0;
+  display: block;
+  position: absolute;
+  border-top: 8rpx solid #fff;
+  top: 10rpx;
+}
+
+.btn::after {
+  content: "";
+  width: 40rpx;
+  height: 0;
+  display: block;
+  position: absolute;
+  border-top: 8rpx solid #fff;
+  top: 28rpx;
+}
+
 .nav {
   position: relative;
   box-sizing: border-box;
   background: #1da1f2;
 }
+
 .nav .title {
   height: 64rpx;
   position: relative;
@@ -22,37 +51,90 @@
   display: flex;
 }
 
-
-.context { 
+.context {
   /* 显示当期周数 */
   line-height: 64rpx;
+  font-size: 28rpx;
   color: #fff;
   font-weight: 900;
+  margin: 0 10rpx;
+}
+
+/* 预览所有周课程 */
+
+.lesson-pre-view {
+  width: 100%;
+  z-index: 99;
+  padding: 5rpx;
+}
+
+.inner-wrap {
+  height: 80rpx;
+  white-space: nowrap;
+}
+
+/* 周预览 */
+
+.pre-week {
+  margin: 0 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #f3f3f3;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  position: relative;
+}
+.week-text {
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+}
+.les-wrap {
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.pre-lesson-item {
+  position: absolute;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+}
+.ss-text{
+  font-size:16rpx;
 }
 /* 课程表容器 */
+
 .container {
   background: #fafafa;
-  padding:0 0 20rpx 0;
+  padding: 0 0 20rpx 0;
   height: 100vh;
   flex: 1;
   display: flex;
   position: relative;
   flex-direction: column;
 }
- /*
+
+/*
   行： 周    左侧margin-left：70rpx  高度： 70rpx
   背景虚化:  background: rgba(255, 255, 255, 0.5);
  */
+
 .week-wrap {
   margin-left: 70rpx;
   height: 70rpx;
   background: #fafafa;
   box-shadow: 0px 0rpx 4rpx #f3f3f3;
 }
+
 .row-weeks {
   height: 35rpx;
   display: flex;
 }
+
 .week {
   height: 35rpx;
   flex: 1;
@@ -60,44 +142,47 @@
   align-items: center;
   justify-content: center;
 }
+
 /* 
   课程: margin-left: 70rpx;
 */
-.lessons-wrap{
+
+.lessons-wrap {
   margin-left: 70rpx;
   flex: 1;
   display: flex;
   flex-direction: column;
   position: relative;
 }
+
 .lessons-wrap .lesson-row {
   flex: 1;
 }
+
 /* 
   课程块
 */
+
 .lesson {
   width: calc((100%) / 7);
   height: calc(100%/5);
-
   border-radius: 10rpx;
   box-sizing: border-box;
   box-shadow: 0 0 1rpx 1rpx #999;
-  
   position: absolute;
-
   text-align: center;
   color: #eee;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+
 /* 
   左侧节次: flex:colum 
 */
+
 .schedule {
-  padding-top:70rpx;
+  padding-top: 70rpx;
   height: 100%;
   width: 70rpx;
   position: absolute;
@@ -107,17 +192,20 @@
   box-sizing: border-box;
   background: #fafafa;
 }
+
 .schedule-item {
   flex: 1;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
+
 .id {
   font-weight: 900;
   color: #38f;
   font-size: 26rpx;
 }
+
 /* 
   课程
 */
@@ -125,5 +213,3 @@
 /* 
   背景动画
  */
- 
-

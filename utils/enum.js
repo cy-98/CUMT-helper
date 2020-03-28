@@ -86,14 +86,14 @@ const lessonColors = [
 
 // 首页工具
 const utils = [{
-  name: '校园卡',
+  name: '我的校园卡',
   children: [
     '校园卡充值',
     '查询余额',
     '查询流水'
   ]
 }, {
-  name: '图书馆',
+  name: '我的图书馆',
   children: [
     '搜索图书',
     '查询借阅历史',
@@ -101,7 +101,7 @@ const utils = [{
     '图书续借'
   ]
 }, {
-  name: '教务',
+  name: '教务查询',
   children: [
     '成绩查询',
     '考试查询'

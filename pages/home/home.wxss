@@ -14,7 +14,7 @@
   width: 50rpx;
   position: relative;
   height: 0;
-  border-top: 8rpx solid #000;
+  border-top: 8rpx solid #fff;
 }
 
 .btn::before {
@@ -23,7 +23,7 @@
   height: 0;
   display: block;
   position: absolute;
-  border-top: 8rpx solid #000;
+  border-top: 8rpx solid #fff;
   top: 10rpx;
 }
 
@@ -33,7 +33,7 @@
   height: 0;
   display: block;
   position: absolute;
-  border-top: 8rpx solid #000;
+  border-top: 8rpx solid #fff;
   top: 28rpx;
 }
 
@@ -139,15 +139,17 @@
 
 }
 .util-sort {
+  margin: 20rpx 0;
+  padding: 30rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
   border-radius: 8rpx;
   display: flex;
   justify-content: space-evenly;
-  padding: 30rpx;
 }
 .util-sort .title {
   width: 100%;
 }
+
 .sub-util {
   text-align: center;
 }

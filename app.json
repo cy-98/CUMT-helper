@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/grade/grade",    
+    "pages/exam/exam",
     "pages/home/home",
     "pages/tables/tables",
     "pages/mine/mine",
