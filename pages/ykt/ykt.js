@@ -19,7 +19,10 @@ Page({
     avatarUrl: '',
     // 一卡通账户
     account: {},
-    balance:0
+    balance:{
+      int:0,
+      float:'00'
+    }
   },
 
   onLoad: function(options) {
@@ -49,7 +52,10 @@ Page({
 
             this.setData({
               account: account,
-              balance: balance
+              balance: {
+                int: balance.split('.')[0],
+                float: balance.split('.')[1]
+              }
             })
 
           })

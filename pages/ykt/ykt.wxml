@@ -1,6 +1,7 @@
 <navbar mode="menu"></navbar>
 <view class="container">
   <view class="userInfo">
+
     <!-- 头像 -->
     <view class="userInfo-avatar">
       <button wx:if="{{noWxUser}}" open-type="getUserInfo">授权微信登陆</button>
@@ -9,9 +10,12 @@
         {{nickName}}
       </view>
     </view>
+
     <!-- 余额 -->
     <view class="account">
-      <view class="acnt-data">余额: {{balance}}</view>
+      <view class="acnt-data s-text">余额:
+        <text class="l-text">{{balance.int}}</text><text class="s-text">.{{balance.float}}</text>
+      </view>
     </view>
   </view>
 </view>

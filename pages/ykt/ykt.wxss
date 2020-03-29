@@ -27,7 +27,9 @@
 
 .account {
   margin-top: 40rpx;
+  padding: 40rpx;
   height: 200rpx;
+  box-sizing: border-box;
   border: 1px solid #38f;
   border-radius: 8rpx;
 }
