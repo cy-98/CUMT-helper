@@ -4,41 +4,62 @@ import {
 import {
   toLogin
 } from "../../utils/navigate.js"
+import {
+  getBalance
+} from "../../utils/api.js"
+import {
+  parseAccount
+} from "./helper.js"
 
 Page({
   data: {
     noWxUser: true,
-
+    account:{}
   },
 
   onLoad: function(options) {
-    
+    // check wx login
+    const {
+      noWxUser
+    } = this.data
+    if (!noWxUser) return
+    getWxUser().then(res => {
+        const {
+          avatarUrl,
+          nickName
+        } = res.userInfo
+        this.setData({
+          avatarUrl: avatarUrl,
+          nickName: nickName,
+          noWxUser: false
+        })
+
+        // 确认登陆后， 获取余额
+        getBalance()
+          .then(res => {
+            const text = res.data.data
+            const account = parseAccount(text)
+            this.setData({ account: account })
+          })
+          .catch(err => {
+            console.log(err) // 超时
+          })
+      })
+      .catch(err => {
+        this.setData({
+          noWxUser: true
+        })
+        wx.showModal({
+          title: '请先授权登录微信',
+          success: function(res) {
+            toLogin()
+          }
+        })
+      })
   },
 
   onShow: function() {
-    // check wx login
-    if(!noWxUser) return
-    getWxUser().then(res => {
-      const {
-        avatarUrl,
-        nickName
-      } = res.userInfo
-      this.setData({
-        avatarUrl: avatarUrl,
-        nickName: nickName,
-        noWxUser: false
-      })
-    }).catch(err => {
-      this.setData({
-        noWxUser: true
-      })
-      wx.showModal({
-        title: '请先授权登录微信',
-        success: function (res) {
-          toLogin()
-        }
-      })
-    })
+
   },
 
   onUnload: function() {

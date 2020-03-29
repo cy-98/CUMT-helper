@@ -3,8 +3,8 @@
   <view class="userInfo">
     <!-- 头像 -->
     <view class="avatar">
-        <button wx:if="{{noWxUser}}" open-type="getUserInfo">授权微信登陆</button>
-        <image class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <button wx:if="{{noWxUser}}" open-type="getUserInfo">授权微信登陆</button>
+      <image wx:if="{{!noWxUser}}" class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
     </view>
     <!-- 余额 -->
     <view class="account"></view>
