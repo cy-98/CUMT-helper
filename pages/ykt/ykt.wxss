@@ -1,14 +1,33 @@
-
-.userinfo {
-  margin-top: 80rpx;
+.container {
+  padding: 0;
+  height: 100vh;
   display: flex;
-  padding: 0 80rpx;
+  flex-direction: column;
 }
 
-.userinfo-avatar {
-  margin: auto 0;
-  width: 128rpx;
-  height: 128rpx;
+.userInfo {
+  padding: 30rpx 40rpx;
+}
 
+.userInfo-avatar {
+  display: flex;
+}
+
+.avatar {
+  height: 88rpx;
+  width: 88rpx;
   border-radius: 50%;
+}
+
+.nickName {
+  flex: 1;
+  padding-left: 40rpx;
+  line-height: 88rpx;
+}
+
+.account {
+  margin-top: 40rpx;
+  height: 200rpx;
+  border: 1px solid #38f;
+  border-radius: 8rpx;
 }

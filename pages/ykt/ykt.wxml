@@ -2,11 +2,16 @@
 <view class="container">
   <view class="userInfo">
     <!-- 头像 -->
-    <view class="avatar">
+    <view class="userInfo-avatar">
       <button wx:if="{{noWxUser}}" open-type="getUserInfo">授权微信登陆</button>
-      <image wx:if="{{!noWxUser}}" class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <image wx:if="{{!noWxUser}}" class="avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <view class="s-text nickName">
+        {{nickName}}
+      </view>
     </view>
     <!-- 余额 -->
-    <view class="account"></view>
+    <view class="account">
+      <view class="acnt-data">余额: {{balance}}</view>
+    </view>
   </view>
 </view>

@@ -8,6 +8,14 @@ const parseAccount = (text)=>{
   return account
 }
 
+const parseBalance = (account,key)=>{
+  const balance = account[key]
+  const int = balance.split('')
+  const float = int.splice(-2)
+  return int.join('') + '.' +float.join('')
+}
+
 module.exports= {
+  parseBalance: parseBalance,
   parseAccount: parseAccount
 }
