@@ -87,6 +87,16 @@ const getStore = (key) => {
     })
   })
 }
+
+const getWxUser = ()=>{
+  return new Promise((resolve, reject)=>{
+    wx.getUserInfo({
+      withCredentials: true,
+      success: resolve,
+      fail: reject
+    })
+  })
+}
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -106,11 +116,12 @@ const formatNumber = n => {
 
 
 module.exports = {
-  formatTime: formatTime,
   encrypt: encypt,
   decrypt: decrypt,
+  getStore: getStore,
+  setStore: setStore,
+  getWxUser: getWxUser,
+  formatTime: formatTime,
   hasToLogin: hasToLogin,
   parseParams: parseParams,
-  getStore: getStore,
-  setStore: setStore
 }

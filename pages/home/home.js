@@ -2,6 +2,9 @@ import {
   utils
 } from "../../utils/enum.js"
 import {
+  navTo
+} from "../../utils/navigate.js"
+import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
@@ -12,6 +15,7 @@ import {
   getWeather,
   getLessonsOfDay,
 } from "./helper.js"
+
 
 const date = new Date()
 const App = getApp()
@@ -85,6 +89,11 @@ Page({
     // 近日考试
   },
 
+  // 工具详情
+  tapUtil: function(e) {
+    const { path } = e.currentTarget.dataset
+    navTo(path)
+  },
 
   onPullDownRefresh: function() {
     // 页面相关事件处理函数--监听用户下拉动作

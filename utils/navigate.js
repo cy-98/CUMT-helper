@@ -13,6 +13,11 @@ module.exports = {
     wx.navigateBack({
       delta: 1,
     })
+  },
+  navTo:(path)=>{
+    wx.navigateTo({
+      url: `/pages/${path}/${path}`,
+    })
   }
 
 }

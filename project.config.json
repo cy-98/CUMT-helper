@@ -92,6 +92,13 @@
 					"id": -1,
 					"name": "pages/home/home",
 					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一卡通",
+					"pathName": "pages/ykt/ykt",
 					"scene": null
 				}
 			]

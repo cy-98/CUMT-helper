@@ -1,4 +1,4 @@
-// pages/grade/grade.js
+// pages/jwxt/jwxt.js
 Page({
 
   /**

@@ -1,0 +1,14 @@
+
+.userinfo {
+  margin-top: 80rpx;
+  display: flex;
+  padding: 0 80rpx;
+}
+
+.userinfo-avatar {
+  margin: auto 0;
+  width: 128rpx;
+  height: 128rpx;
+
+  border-radius: 50%;
+}

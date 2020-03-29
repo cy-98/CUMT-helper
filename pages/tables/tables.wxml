@@ -1,8 +1,10 @@
 <view class="single-page" >
   <view id="setting" style="position:absolute; width:100%;height:100%;">
     <view class="set-menu">
-      <view>
-        吃
+      <view class="ul">
+        <view class="li n-text">课程统计</view>
+        <view class="li n-text">添加课程</view>
+        <view class="li n-text">选择学期</view>
       </view>
     </view>
     <view bindtap="hideTb" class="modal" style="{{!is_hidden && 'z-index:99;'}}"></view>

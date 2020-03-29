@@ -20,6 +20,13 @@ Page({
     password: ''
   },
   login: function() {
+    // 登录微信
+    const {hasUserInfo} = this.data
+    if(!hasUserInfo) {
+      wx.showModal({ title: '请先授权登陆微信', content: '点击按钮获取头像昵称' })
+      return
+    }
+
     wx.showLoading({ title: '登陆中' })
     let token, userData
 

@@ -87,6 +87,7 @@ const lessonColors = [
 // 首页工具
 const utils = [{
   name: '我的校园卡',
+  path: 'ykt',
   children: [
     '校园卡充值',
     '查询余额',
@@ -94,6 +95,7 @@ const utils = [{
   ]
 }, {
   name: '我的图书馆',
+  path: 'lib',
   children: [
     '搜索图书',
     '查询借阅历史',
@@ -102,6 +104,7 @@ const utils = [{
   ]
 }, {
   name: '教务查询',
+  path: 'jwxt',
   children: [
     '成绩查询',
     '考试查询'

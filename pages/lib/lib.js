@@ -1,11 +1,12 @@
-// pages/exam/exam.js
+// pages/lib/lib.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    avatarUrl: '',
+    nickName: 'nickName'
   },
 
   /**
@@ -19,7 +20,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.getUserInfo({
+      withCredentials: true,
+      success: (res) => {
+        const {
+          avatarUrl,
+          nickName
+        } = res.userInfo
+        this.setData({
+          avatarUrl: avatarUrl,
+          nickName: nickName
+        })
+      },
+      fail: (res)=>{
+        console.log(res)
+      }
+    })
   },
 
   /**

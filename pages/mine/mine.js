@@ -5,7 +5,8 @@ import {
   decrypt,
   hasToLogin,
   getStore,
-  setStore
+  setStore,
+  getWxUser
 } from '../../utils/util.js'
 
 const App = getApp()
@@ -18,18 +19,17 @@ Page({
   },
   // lifetimes 
   onLoad: function(options) {
-    wx.getUserInfo({
-      withCredentials: true,
-      success: (res) => {
-        const {
-          avatarUrl,
-          nickName
-        } = res.userInfo
-        this.setData({
-          avatarUrl: avatarUrl,
-          nickName: nickName
-        })
-      },
+    getWxUser().then(res => {
+      const {
+        avatarUrl,
+        nickName
+      } = res.userInfo
+      this.setData({
+        avatarUrl: avatarUrl,
+        nickName: nickName
+      })
+    }).catch(err => {
+      console.log(err)
     })
     let userInfo
     getStore('userInfo')

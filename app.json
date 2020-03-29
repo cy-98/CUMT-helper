@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/grade/grade",    
-    "pages/exam/exam",
+    "pages/lib/lib",    
+    "pages/ykt/ykt",    
+    "pages/jwxt/jwxt",
     "pages/home/home",
     "pages/tables/tables",
     "pages/mine/mine",
