@@ -1,0 +1,12 @@
+<navbar mode="menu"></navbar>
+<!-- 导入echarts统计 -->
+<view class="container">
+  <!-- 选择时间 -->
+  <view class="time-select">
+    <input class="start" placeholder="选择开始时间"></input>
+    <input class="end" placeholder="选择结束时间"></input>
+  </view>
+  <view class="order-list">
+
+  </view>
+</view>

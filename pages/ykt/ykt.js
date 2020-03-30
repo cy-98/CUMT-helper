@@ -8,6 +8,7 @@ import {
   getBalance
 } from "../../utils/api.js"
 import {
+  toOrder,
   parseBalance,
   parseAccount,
 } from "./helper.js"
@@ -29,7 +30,9 @@ Page({
     // check wx login
     const { noWxUser } = this.data
     if (!noWxUser) return
-
+    wx.showLoading({
+      title: '认证信息中',
+    })
     getWxUser()
       .then(res => {
         const {
@@ -57,7 +60,7 @@ Page({
                 float: balance.split('.')[1]
               }
             })
-
+            wx.hideLoading()
           })
           .catch(err => {
             console.log(err) // 超时
@@ -75,33 +78,14 @@ Page({
         })
       })
   },
-
+  toOrderList:function(){
+    const { account } = this.data
+    toOrder(account)
+  },
   onShow: function() {
 
   },
-
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

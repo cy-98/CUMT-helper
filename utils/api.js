@@ -57,10 +57,20 @@ const getBalance = () => {
   processPayload(payload)
   return http_get(payload)
 }
+// 流水
+const getOrder = ()=>{
+  const path = 'ykt/orderList'
+  const payload = {
+    path: path
+  }
+  processPayload(payload)
+  return http_get(payload)
+}
 
 module.exports = {
   getUser: getUser,                   // 教务
   loginCUMT: loginCUMT,
   getTimeTables: getTimeTables,
-  getBalance: getBalance              // 一卡通
+  getOrder: getOrder,                 // 一卡通
+  getBalance: getBalance              
 }

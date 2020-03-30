@@ -17,5 +17,9 @@
         <text class="l-text">{{balance.int}}</text><text class="s-text">.{{balance.float}}</text>
       </view>
     </view>
+    <!-- 流水 -->
+    <view class="ykt-history">
+      <view class="a history n-text" bindtap="toOrderList">历史账单</view>
+    </view>
   </view>
 </view>

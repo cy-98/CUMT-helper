@@ -33,3 +33,9 @@
   border: 1px solid #38f;
   border-radius: 8rpx;
 }
+
+.history {
+  margin-top: 30rpx;
+  text-align: right;
+  color: #666;
+}

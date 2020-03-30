@@ -90,15 +90,16 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/home/home",
-					"pathName": "pages/home/home",
+					"name": "一卡通",
+					"pathName": "pages/ykt/ykt",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "一卡通",
-					"pathName": "pages/ykt/ykt",
+					"name": "流水查询",
+					"pathName": "pages/ykt/order/order",
+					"query": "",
 					"scene": null
 				}
 			]

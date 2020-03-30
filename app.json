@@ -1,7 +1,8 @@
 {
   "pages": [
+    "pages/ykt/ykt",
+    "pages/ykt/order/order",
     "pages/lib/lib",    
-    "pages/ykt/ykt",    
     "pages/jwxt/jwxt",
     "pages/home/home",
     "pages/tables/tables",
