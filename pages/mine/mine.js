@@ -19,21 +19,22 @@ Page({
   },
   // lifetimes 
   onLoad: function(options) {
-
-    getWxUser().then(res => {
-      const {
-        avatarUrl,
-        nickName
-      } = res.userInfo
-      this.setData({
-        avatarUrl: avatarUrl,
-        nickName: nickName
+    hasToLogin()
+    getWxUser()
+      .then(res => {
+        const {
+          avatarUrl,
+          nickName
+        } = res.userInfo
+        this.setData({
+          avatarUrl: avatarUrl,
+          nickName: nickName
+        })
+        App.globalData.userInfo = res.userInfo
       })
-      App.globalData.userInfo = res.userInfo
-      hasToLogin()
-    }).catch(err => {
-      console.log(err)
-    })
+      .catch(err => {
+        console.log(err)
+      })
     let userInfo
     getStore('userInfo')
       .then(res => {

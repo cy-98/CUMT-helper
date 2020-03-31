@@ -1,16 +1,39 @@
+import {
+  getTerm,
+} from "../../pages/tables/helper.js"
+import {
+  decrypt,
+  hasToLogin
+} from "../../utils/util.js"
+import {
+  getTimeTables
+} from '../../utils/api.js'
 
 Page({
 
   data: {
     exam:[],
     grade:[],
+    currentTerm: getTerm(),
+    currentYear: new Date().getFullYear() -1,
     selectorIsLeft: true
   },
 
   onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-
-
+    hasToLogin()
+    const { currentTerm, currentYear } = this.data
+    getTimeTables({
+      currentTerm: currentTerm,
+      currentYear: currentYear
+    })
+      .then(res => {
+        
+        const data = JSON.parse(decrypt(res))
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
   toggleSelector: function(){
     const { selectorIsLeft } = this.data

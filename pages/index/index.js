@@ -28,9 +28,7 @@ Page({
     }
 
     wx.showLoading({ title: '登陆中' })
-    let token, userData
-
-    userData = JSON.stringify({
+    let userData = JSON.stringify({
       username: this.data.username,
       password: this.data.password
     });
@@ -42,7 +40,7 @@ Page({
           wx.showModal({ title: '登陆失败' })
           return
         }else {
-          token = res.data.data
+          let token = res.data.data
           setStore({ 'token': token })
 
           wx.hideLoading()

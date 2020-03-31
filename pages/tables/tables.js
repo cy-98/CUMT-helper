@@ -1,32 +1,49 @@
-import { weeks, schedules, lessonColors } from '../../utils/enum.js'
-import { decrypt, getStore, setStore, hasToLogin } from '../../utils/util.js'
-import { getTimeTables } from '../../utils/api.js'
-import { processFormatForLesson, getTerm, getCurrentWeek, processColorForLessons } from './helper.js'
+import {
+  weeks,
+  schedules,
+  lessonColors
+} from '../../utils/enum.js'
+import {
+  decrypt,
+  getStore,
+  setStore,
+  hasToLogin
+} from '../../utils/util.js'
+import {
+  getTimeTables
+} from '../../utils/api.js'
+import {
+  processFormatForLesson,
+  getTerm,
+  getCurrentWeek,
+  processColorForLessons
+} from './helper.js'
 
 const App = getApp()
+const date = new Date()
 Page({
   data: {
     // --- 静态数据 ---
+    is_pre: false,
     is_hidden: true,
-    is_pre:false,
     weeks: weeks,
     schedules: schedules,
-    lessonBlockMarginLeft: '(100%)/7',
-    lessonBlockMarginTop: '100%/10',
     lessonsColors: lessonColors,
+    lessonBlockMarginTop: '100%/10',
+    lessonBlockMarginLeft: '(100%)/7',
     // --- 导航高度 ---
-    navHeight: App.globalData.navHeight,
     navTop: App.globalData.navTop,
+    navHeight: App.globalData.navHeight,
     // --- 计算数据 ---
-    currentYear: new Date().getFullYear() - 1,
-    currentMonth: new Date().getMonth() + 1,
+    currentYear: date.getFullYear() - 1,
+    currentMonth: date.getMonth() + 1,
     currentWeek: getCurrentWeek()[0],
     currentDay: getCurrentWeek()[1],
     currentTerm: getTerm(),
     // --- 请求数据 ---
-    exam: [],
-    grade: [],
     timetable: [],
+    grade: [],
+    exam: [],
   },
   // lifetimes: onload
   onLoad: function(options) {
@@ -42,7 +59,9 @@ Page({
         console.log('get exam, grad and timeTable success') // all success
       })
       .catch((err) => { // storage wrong 存储情况出现错误, 重新请求
-        wx.showLoading({ title: '加载课表中' })
+        wx.showLoading({
+          title: '加载课表中'
+        })
 
         const {
           currentYear,
@@ -51,21 +70,23 @@ Page({
         getTimeTables({
             year: currentYear,
             term: currentTerm
-          }).then(res => {
+          })
+          .then(res => {
+            let state
             const text = res.data.data
             const datas = JSON.parse(decrypt(text))
-
-            let { timetable } = datas
+            let {
+              timetable
+            } = datas
 
             processColorForLessons(lessonColors, timetable)
             timetable = processFormatForLesson(timetable)
 
-            setStore({
+            state = {
               'timetable': timetable
-            })
-            this.setData({
-              timetable: timetable
-            })
+            }
+            setStore(state)
+            this.setData(state)
             wx.hideLoading()
           })
           .catch(err => {
@@ -78,14 +99,16 @@ Page({
       })
 
   },
-  togglePre:function(){
-    const { is_pre } = this.data
+  togglePre: function() {
+    const {
+      is_pre
+    } = this.data
 
     this.setData({
       is_pre: !is_pre
     })
   },
-  
+
   // show modal
   showModal(e) {
     this.setData({
