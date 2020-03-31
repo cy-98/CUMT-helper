@@ -1,8 +1,8 @@
-Page({
+import {
+  hasToLogin
+} from "../../utils/util.js"
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     avatarUrl: '',
     nickName: 'nickName'
@@ -12,6 +12,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // check token
+    hasToLogin()
     // 用户信息
     wx.getUserInfo({
       withCredentials: true,
@@ -31,7 +33,7 @@ Page({
     })
 
     // 图书馆信息
-    
+
 
   },
 

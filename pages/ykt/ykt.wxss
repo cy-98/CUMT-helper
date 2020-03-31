@@ -68,12 +68,12 @@
 
 }
 .list-item {
+  margin-top: 30rpx;
   padding: 20rpx;
   display: flex;
   justify-content: space-between;
   border-radius: 8rpx;
   box-shadow: 8rpx 10rpx 10rpx #f5f3f3;
-
 }
 .list-item .bill {
   font-size: 24rpx;

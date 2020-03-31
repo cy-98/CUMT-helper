@@ -1,68 +1,73 @@
-<view class="single-page" >
-  <view id="setting" style="position:absolute; width:100%;height:100%;">
-    <view class="set-menu">
-      <view class="ul">
-        <view class="li n-text">课程统计</view>
-        <view class="li n-text">添加课程</view>
-        <view class="li n-text">选择学期</view>
+<view class="single-page">
+
+  <!-- modal - start-->
+  <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog basis-lg" catchtap style="top:{{navHeight}}px;height:calc(100vh - {{navHeight}}px)">
+      <view class="cu-list menu text-left">
+        <view class="list-item n-text text-center arrow">统计课程</view>
+        <view class="list-item n-text text-center arrow">选择学期</view>
+        <view class="list-item n-text text-center arrow">添加课程</view>
       </view>
     </view>
-    <view bindtap="hideTb" class="modal" style="{{!is_hidden && 'z-index:99;'}}"></view>
   </view>
+  <!-- modal - end -->
   <view class="page-wrapper" style="{{!is_hidden && 'transform:translate(60%,0)'}}">
-  <!-- 导航 -->
-  <view class="nav" style="height:{{navHeight}}px;">
-    <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
-      <view class="btn context" bindtap="hideTb"></view>
-      <view class="context">
-        第
-        <text>{{currentWeek}}</text>
-        周
+    <!-- 导航 -->
+    <view class="nav" style="height:{{navHeight}}px;">
+      <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
+        <view class="btn context" bindtap="showModal" data-target="DrawerModalL">
+          <view class="btn-before"></view>
+          <view class="btn-after"></view>
+        </view>
+        <view class="context" bindtap="togglePre">
+          第
+          <text>{{currentWeek}}</text> 周
+        </view>
+        <view class="context" style="font-size:30rpx;" bindtap="togglePre">⤵</view>
       </view>
-      <view class="context" style="font-size:30rpx;" bindtap="togglePre">⤵</view>
     </view>
-  </view>
-  <!-- 边界 -->
-  <view class="lesson-pre-view" style="display:{{is_pre?'block;':'none;'}}">
-    <!-- 展开 -->
-    <scroll-view class="inner-wrap" scroll-x="true">
-      <view class="pre-week " wx:for="{{timetable}}">
+
+    <!-- 边界 -->
+    <view class="lesson-pre-view" style="display:{{is_pre?'block;':'none;'}}">
+      <!-- 展开 -->
+      <scroll-view class="inner-wrap" scroll-x="true">
+        <view class="pre-week " wx:for="{{timetable}}">
           <view class="ss-text week-text">第{{item.id}}周</view>
           <!-- 按五天显示 -->
           <view class="les-wrap">
-              <view wx:for="{{item.lessons}}" class="pre-lesson-item" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*'+'7/5'+ '*' +(item.day -1)}});background:{{item.color}};" ></view>
+            <view wx:for="{{item.lessons}}" class="pre-lesson-item" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*'+'7/5'+ '*' +(item.day -1)}});background:{{item.color}};"></view>
           </view>
-      </view>
-    </scroll-view>
-  </view>
-  <view class="container">
+        </view>
+      </scroll-view>
+    </view>
+    <view class="container">
 
-    <!-- 横列:周 -->
-    <view class="week-wrap">
-      <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.zh}}</view>
+      <!-- 横列:周 -->
+      <view class="week-wrap">
+        <view class="row-weeks">
+          <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.zh}}</view>
+        </view>
+        <view class="row-weeks">
+          <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.en}}</view>
+        </view>
       </view>
-      <view class="row-weeks">
-        <view class="week s-text txt-center" wx:for="{{weeks}}" wx:key="id">{{item.en}}</view>
+      <!-- 课程表格 -->
+      <view class="lessons-wrap">
+        <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #eee;" class="lesson-row"></view>
+        <!-- 块:课程 -->
+        <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};">
+          <view>{{item.name}}</view>
+          <view>{{item.room}}</view>
+        </view>
       </view>
-    </view>
-    <!-- 课程表格 -->
-    <view class="lessons-wrap">
-      <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #eee;" class="lesson-row"></view>
-      <!-- 块:课程 -->
-      <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};">
-        <view>{{item.name}}</view>
-        <view>{{item.room}}</view>
-      </view>
-    </view>
-    <!-- 左侧:节次 -->
-    <view class="schedule">
-      <view wx:for="{{schedules}}" wx:key="id" class="s-text schedule-item">
-        <view class="item id">{{item.id}}</view>
-        <view>{{item.begin}}</view>
-        <view>{{item.end}}</view>
+      <!-- 左侧:节次 -->
+      <view class="schedule">
+        <view wx:for="{{schedules}}" wx:key="id" class="s-text schedule-item">
+          <view class="item id">{{item.id}}</view>
+          <view>{{item.begin}}</view>
+          <view>{{item.end}}</view>
+        </view>
       </view>
     </view>
   </view>
-</view>
 </view>

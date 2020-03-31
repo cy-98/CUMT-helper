@@ -1,5 +1,5 @@
 import { weeks, schedules, lessonColors } from '../../utils/enum.js'
-import { decrypt, getStore, setStore } from '../../utils/util.js'
+import { decrypt, getStore, setStore, hasToLogin } from '../../utils/util.js'
 import { getTimeTables } from '../../utils/api.js'
 import { processFormatForLesson, getTerm, getCurrentWeek, processColorForLessons } from './helper.js'
 
@@ -30,6 +30,7 @@ Page({
   },
   // lifetimes: onload
   onLoad: function(options) {
+    hasToLogin()
     const getTimeTable = getStore('timetable')
       .then(res => {
         this.setData({
@@ -85,12 +86,15 @@ Page({
     })
   },
   
-  // 隐藏课表
-  hideTb:function(){
-    const { is_hidden } = this.data
-
+  // show modal
+  showModal(e) {
     this.setData({
-      is_hidden: !is_hidden
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
     })
   },
 

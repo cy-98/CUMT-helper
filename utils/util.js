@@ -29,10 +29,13 @@ const decrypt = (text) => {
 }
 // 路由: 请先登录
 const hasToLogin = () => {
-  wx.showToast({
+  const token = getStore('token')
+
+  !token 
+    && wx.showToast({
     title: '请先登录教务系统',
   })
-  toLogin()
+    && toLogin()
 }
 
 // get请求 解析参数

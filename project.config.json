@@ -101,6 +101,12 @@
 					"pathName": "pages/ykt/order/order",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jwxt/jwxt",
+					"pathName": "pages/jwxt/jwxt",
+					"scene": null
 				}
 			]
 		}

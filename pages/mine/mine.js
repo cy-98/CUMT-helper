@@ -19,6 +19,7 @@ Page({
   },
   // lifetimes 
   onLoad: function(options) {
+
     getWxUser().then(res => {
       const {
         avatarUrl,
@@ -29,6 +30,7 @@ Page({
         nickName: nickName
       })
       App.globalData.userInfo = res.userInfo
+      hasToLogin()
     }).catch(err => {
       console.log(err)
     })
@@ -44,7 +46,9 @@ Page({
         getUser()
           .then((res) => {
             if (res.data.code === 400) {
-              hasToLogin()
+              wx.showToast({
+                title: '服务器错误',
+              })
               return
             }
             const text = res.data.data

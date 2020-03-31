@@ -3,7 +3,7 @@ import {
 } from "../../utils/enum.js"
 
 import {
-  getWxUser
+  hasToLogin
 } from "../../utils/util.js"
 import {
   toLogin
@@ -34,6 +34,7 @@ Page({
     wx.showLoading({
       title: '认证信息中',
     })
+    hasToLogin()
 
     getBalance()
       .then(res => {

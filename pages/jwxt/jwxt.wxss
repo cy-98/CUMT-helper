@@ -1,1 +1,26 @@
-/* pages/jwxt/jwxt.wxss */
+.border {
+  border: 1px solid #000;
+}
+
+.container {
+  padding: 40rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.exam {
+  padding: 20rpx;
+  height: 500rpx;
+  border-radius: 8rpx;
+  box-shadow: 8rpx 14rpx 18rpx #ccc;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.exam-item {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx;
+}

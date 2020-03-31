@@ -1,0 +1,21 @@
+<view class="page-wrapper">
+  <navbar mode="menu"></navbar>
+  <view class="container">
+    <!-- 考试 -->
+    <scroll-view class="exam" scroll-y="true">
+      <!-- wx:for -->
+      <view class="exam-item margin-top" wx:for="{{5}}">
+        <view class="exam-time">72天</view>
+        <view>
+          <view class="exam-name n-text">热工</view>
+          <view class="exam-location n-text">教5</view>
+        </view>
+      </view>
+      <view class=" exam-item margin-top none l-text">
+        暂无考试 ~
+      </view>
+    </scroll-view>
+    <!-- 成绩 -->
+    <view class="grade border margin-top"></view>
+  </view>
+</view>
