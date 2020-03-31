@@ -5,46 +5,38 @@
   flex-direction: column;
 }
 
-.userInfo {
-  padding: 30rpx 40rpx;
+.bl-shadow {
+  text-shadow: 10rpx 10rpx 10rpx rgba(51, 136, 255, 0.438);
+  font-weight: 900;
 }
 
-.userInfo-avatar {
-  display: flex;
+.gr-shadow {
+  text-shadow: 6rpx 6rpx 5rpx rgba(133, 138, 146, 0.582);
 }
 
-.avatar {
-  height: 88rpx;
-  width: 88rpx;
-  border-radius: 50%;
+.account-avatar {
 }
 
-.nickName {
-  flex: 1;
-  padding-left: 40rpx;
-  line-height: 88rpx;
+/* 余额数字 */
+
+.account-number {
+  width: 100%;
 }
 
-.account {
-  margin-top: 40rpx;
-  padding: 40rpx;
-  height: 200rpx;
-  box-sizing: border-box;
-  border: 1px solid #38f;
+.inner-wrap {
   border-radius: 8rpx;
+  text-align: center;
 }
 
-.history {
-  margin-top: 30rpx;
-  text-align: right;
-  color: #666;
+.number {
+  font-size: 4rem;
+  color: transparent;
+  background: linear-gradient(to bottom, rgba(51, 136, 255, 0.356), #38f);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
-.charge{
-  margin-top: 40rpx;
+
+.menu {
   display: flex;
-}
-.charge-btn {
-  width:100%;
-  margin:40rpx 0;
-  color: #fff;
+  justify-content: space-between;
 }

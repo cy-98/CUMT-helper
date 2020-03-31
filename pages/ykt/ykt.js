@@ -50,6 +50,7 @@ Page({
     }
     // check wx login
     if(App.globalData.userInfo) {
+      
       reqBalance()
       return
     }

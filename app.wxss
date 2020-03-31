@@ -28,6 +28,9 @@
   background: linear-gradient(175deg,rgba(194,240,252, 0.575),rgb(13, 148, 182));
   box-shadow: 0px 3px 8px #777;
 }
+.pad-around {
+  padding: 40rpx;
+}
 /* 登陆按钮五角星 */
 
 .star {
