@@ -1,33 +1,17 @@
-import {
-  prices
-} from "../../utils/enum.js"
-
-import {
-  hasToLogin
-} from "../../utils/util.js"
-import {
-  toLogin
-} from "../../utils/navigate.js"
-import {
-  getBalance
-} from "../../utils/api.js"
-import {
-  toOrder,
-  parseBalance,
-  parseAccount,
-} from "./helper.js"
+import { prices } from "../../utils/enum.js"
+import { hasToLogin } from "../../utils/util.js"
+import { toLogin } from "../../utils/navigate.js"
+import { getBalance } from "../../utils/api.js"
+import { toOrder, parseBalance, parseAccount, } from "./helper.js"
 
 const App = getApp()
 Page({
   data: {
     // 一卡通账户
     account: {},
-    balance: {
-      int: 0,
-      float: '00'
-    },
+    balance: { int: 0, float: '00' },
     modal: false,
-    prices: prices
+    prices: prices,
   },
 
   onLoad: function(options) {

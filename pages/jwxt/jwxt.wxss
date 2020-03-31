@@ -12,10 +12,15 @@
 .selector {
   padding: 0 40rpx;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
-.selcet-btn {
-  box-shadow: 
+
+.select-btn {
+  padding: 0 20rpx;
+}
+
+.selected {
+  border-bottom: 2px solid rgba(82, 51, 255, 0.932);
 }
 
 .exam {
@@ -51,14 +56,17 @@
   border-radius: 8rpx;
   box-shadow: 8rpx 14rpx 18rpx #ccc;
 }
+
 .grade-list {
   padding: 40rpx;
 }
-.grade-item{
+
+.grade-item {
   display: flex;
-  padding: 30rpx;
+  padding: 40rpx;
   border-bottom: 1px solid #ccc;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* 通用 */
@@ -67,3 +75,12 @@
   font-size: 20rpx;
 }
 
+.show {
+  
+}
+.unshow {
+  display: none;
+}
+.transition {
+  transition: 0.3s;
+}

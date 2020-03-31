@@ -1,12 +1,12 @@
 <view class="page-wrapper">
   <navbar mode="menu"></navbar>
   <view class="selector">
-    <button class="n-text select-btn">查询考试</button>
-    <button class="n-text select-btn" style="margin-left:40rpx;">查询成绩</button>
+    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'selected':''}}">查询考试</view>
+    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'':'selected'}}" style="margin-left:40rpx;">查询成绩</view>
   </view>
   <view class="container">
     <!-- 考试 -->
-    <view class="exam">
+    <view class="exam {{selectorIsLeft?'show':'unshow'}} transition">
       <!-- wx:for -->
       <view class="exam-item n-text" wx:for="{{5}}">
         <view class="exam-time l-text">72天</view>
@@ -19,11 +19,11 @@
       <view class="none exam-item n-text">暂时没有考试 ~~</view>
     </view>
     <!-- 成绩 -->
-    <view class="grade margin-top">
+    <view class="grade {{selectorIsLeft?'unshow':'show'}} transition margin-top">
       <view class="grade-list">
         <view class="grade-item n-text" wx:for="{{6}}">
-          <view>科目</view>
-          <view>72分</view>
+          <view class="l-text">72分</view>
+          <view class="n-text">科目</view>
         </view>
         <view class="none n-text grade-item">
           本学期还未考试哦 ~~
