@@ -70,7 +70,8 @@ Page({
     for (let i = 0, lenI = items.length; i < lenI; ++i) {
       if (items[i].value == values) {
         items[i].checked = !items[i].checked;
-        break
+      }else{
+        items[i].checked = false
       }
     }
     this.setData({

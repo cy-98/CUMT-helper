@@ -1,57 +1,65 @@
-<navbar mode="menu"></navbar>
-<view class="container">
-  <view class="account-avatar pad-around">
+<view class="page-wrapper">
+  <navbar mode="menu"></navbar>
+  <view class="container">
+    <!-- <view class="account-avatar pad-around">
     <view></view>
-  </view>
-  <view class="account-number pad-around">
-    <view class="inner-wrap">
-      <text class="number text-blue bl-shadow">{{balance.int}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
+  </view> -->
+    <view class="account-number pad-around">
+      <view class="inner-wrap">
+        <text class="number text-blue bl-shadow">{{balance.int}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
+      </view>
+      <view class="n-text txt-center gr-shadow" style="color:#888;">Balance / ¥</view>
+      <!-- 工具列表 -->
+      <view class="menu pad-around">
+        <!-- 选中 账单 checked : 白色-->
+        <view class="cu-item padding-sm checked">
+          <view class="txt-center">
+            <text class="cuIcon-sort lg text-blue"></text>
+          </view>
+          <text class="s-text text-blue">最近账单</text>
+        </view>
+        <!-- 余额充值  unchecked : 蓝色-->
+        <view class="cu-item padding-sm unchecked" bindtap="showModal">
+          <view class="txt-center">
+            <text class="cuIcon-shop lg text-white"></text>
+          </view>
+          <text class="s-text text-white">余额充值</text>
+        </view>
+        <!-- 统计  unchecked : 蓝色-->
+        <view class="cu-item padding-sm unchecked">
+          <view class="txt-center">
+            <text class="cuIcon-icloading lg text-white"></text>
+          </view>
+          <text class="s-text text-white">开销统计</text>
+        </view>
+      </view>
     </view>
-    <view class="n-text txt-center gr-shadow">Balance / ¥</view>
-    <!-- 工具列表 -->
-    <view class="menu pad-around">
-      <!-- 选中 账单 checked : 白色-->
-      <view class="cu-item padding-sm checked">
-        <view class="txt-center">
-          <text class="cuIcon-sort lg text-blue"></text>
+    <!-- 流水列表 -->
+    <scroll-view class="list-wrap" scroll-y="true">
+      <view class="order-list">
+        <view class="list-item" style="display:flex;">
+          <view class="time s-text">
+            <text class="cuIcon-edit text-blue lg"></text> 2019.09.17
+          </view>
+          <view class="bill negt">-11.2</view>
         </view>
-        <text class="s-text text-blue">最近账单</text>
       </view>
-      <!-- 余额充值  unchecked : 蓝色-->
-      <view class="cu-item padding-sm unchecked" bindtap="showModal">
-        <view class="txt-center">
-          <text class="cuIcon-shop lg text-white"></text>
-        </view>
-        <text class="s-text text-white">余额充值</text>
-      </view>
-      <!-- 统计  unchecked : 蓝色-->
-      <view class="cu-item padding-sm unchecked">
-        <view class="txt-center">
-          <text class="cuIcon-icloading lg text-white"></text>
-        </view>
-        <text class="s-text text-white">开销统计</text>
-      </view>
-    </view>
-  </view>
-  <!-- 流水列表 -->
-  <scroll-view>
-    <view class=""></view>
-  </scroll-view>
+    </scroll-view>
 
-<!-- 模态框 -->
-<!-- {{}} -->
-<view class="cu-modal bottom-modal {{modal===true?'show':''}}"   bindtap="hideModal">
-  <view class="cu-dialog" catchtap>
-    <view class="cu-bar bg-white">
-      <view class="action text-blue" bindtap="hideModal">取消</view>
-      <view class="action text-green" bindtap="hideModal">确定</view>
-    </view>
-    <view class="grid col-3 padding-sm">
-      <view wx:for="{{prices}}" class="padding-sm" wx:key="{{index}}">
-        <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
-        </button>
+    <!-- 模态框 -->
+    <view class="cu-modal bottom-modal {{modal===true?'show':''}}" bindtap="hideModal">
+      <view class="cu-dialog" catchtap>
+        <view class="cu-bar bg-white">
+          <view class="action text-blue" bindtap="hideModal">取消</view>
+          <view class="action text-green" bindtap="hideModal">确定</view>
+        </view>
+        <view class="grid col-3 padding-sm">
+          <view wx:for="{{prices}}" class="padding-sm" wx:key="index">
+            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
+            </button>
+          </view>
+        </view>
       </view>
     </view>
   </view>
-</view>
 </view>

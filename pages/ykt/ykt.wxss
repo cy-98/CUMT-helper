@@ -1,8 +1,11 @@
+.page-wrapper{
+
+}
 .container {
   padding: 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .account-avatar {
@@ -55,8 +58,31 @@
 }
 
 /* 账单列表 */
+.list-wrap {
+  padding:80rpx;
+  flex: 1;
+}
 .order-list {
+  height: 100%;
+  width: 100%;
 
+}
+.list-item {
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8rpx;
+  box-shadow: 8rpx 10rpx 10rpx #f5f3f3;
+
+}
+.list-item .bill {
+  font-size: 24rpx;
+}
+.bill.negt {
+  color: #e54d42;
+}
+.bill .post {
+  color: #0081ff;
 }
 .cu-btn.block {
   width: 100%;

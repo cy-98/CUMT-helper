@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/ykt/ykt",
-    "pages/ykt/order/order",
     "pages/lib/lib",    
     "pages/jwxt/jwxt",
     "pages/home/home",
