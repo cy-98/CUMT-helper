@@ -54,9 +54,9 @@ Page({
       reqBalance()
       return
     }
-    wx.showLoading({
-      title: '认证信息中',
-    })
+    // wx.showLoading({
+    //   title: '认证信息中',
+    // })
     getWxUser()
       .then(res => {
         const {

@@ -5,15 +5,6 @@
   flex-direction: column;
 }
 
-.bl-shadow {
-  text-shadow: 10rpx 10rpx 10rpx rgba(51, 136, 255, 0.438);
-  font-weight: 900;
-}
-
-.gr-shadow {
-  text-shadow: 6rpx 6rpx 5rpx rgba(133, 138, 146, 0.582);
-}
-
 .account-avatar {
 }
 
@@ -35,8 +26,49 @@
   -webkit-background-clip: text;
   background-clip: text;
 }
-
+/* 
+工具菜单 
+  选中
+  未选中
+*/
 .menu {
   display: flex;
   justify-content: space-between;
+}
+
+.checked {
+  border-radius: 8rpx;
+  box-shadow: 8rpx 10rpx 10rpx #f3f3f3;
+}
+.unchecked {
+  border-radius: 8rpx;
+  box-shadow: 8rpx 10rpx 14rpx rgba(51, 136, 255, 0.527);
+  background: rgb(67, 139, 240);
+  color: #fff;
+}
+
+.checked .s-text {
+  color: #38f;
+}
+.unchecked .s-text{
+  color: #fff;
+}
+
+/* 账单列表 */
+.order-list {
+
+}
+/* 统一样式 */
+.padding-sm {
+  padding: 20rpx;
+}
+
+
+.bl-shadow {
+  text-shadow: 10rpx 10rpx 10rpx rgba(51, 136, 255, 0.438);
+  font-weight: 900;
+}
+
+.gr-shadow {
+  text-shadow: 6rpx 6rpx 5rpx rgba(133, 138, 146, 0.582);
 }

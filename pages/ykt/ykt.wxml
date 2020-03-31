@@ -5,28 +5,35 @@
   </view>
   <view class="account-number pad-around">
     <view class="inner-wrap">
-      <text class="number text-blue bl-shadow">45.12</text>
+      <text class="number text-blue bl-shadow">{{balance.int}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
     </view>
     <view class="n-text txt-center gr-shadow">Balance / ¥</view>
+    <!-- 工具列表 -->
     <view class="menu pad-around">
-      <view class="cu-item">
+      <!-- 选中 账单 checked : 白色-->
+      <view class="cu-item padding-sm checked">
         <view class="txt-center">
-          <text class="cuIcon-sort lg text-gray"></text>
+          <text class="cuIcon-sort lg text-blue"></text>
         </view>
-        <text class="s-text">最近账单</text>
+        <text class="s-text text-blue">最近账单</text>
       </view>
-      <view class="cu-item">
+      <!-- 余额充值  unchecked : 蓝色-->
+      <view class="cu-item padding-sm unchecked">
         <view class="txt-center">
-          <text class="cuIcon-shop lg text-gray"></text>
+          <text class="cuIcon-shop lg text-white"></text>
         </view>
-        <text class="s-text">余额充值</text>
+        <text class="s-text text-white">余额充值</text>
       </view>
-      <view class="cu-item">
+      <!-- 统计  unchecked : 蓝色-->
+      <view class="cu-item padding-sm unchecked">
         <view class="txt-center">
-          <text class="cuIcon-icloading text-gray"></text>
+          <text class="cuIcon-icloading lg text-white"></text>
         </view>
-        <text class="s-text">账单统计</text>
+        <text class="s-text text-white">开销统计</text>
       </view>
     </view>
+  </view>
+  <view class="order-list">
+
   </view>
 </view>
