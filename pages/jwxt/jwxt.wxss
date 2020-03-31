@@ -9,18 +9,61 @@
   flex-direction: column;
 }
 
+.selector {
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.selcet-btn {
+  box-shadow: 
+}
+
 .exam {
-  padding: 20rpx;
-  height: 500rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 8rpx;
   box-shadow: 8rpx 14rpx 18rpx #ccc;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .exam-item {
-  width: 40%;
+  flex: 1;
+  padding: 30rpx;
+  border-bottom: 1px solid #ccc;
   display: flex;
-  justify-content: space-between;
-  padding: 10rpx;
 }
+
+.exam-item .exam-info {
+  text-align: right;
+  flex: 1;
+}
+
+.exam-item .exam-time {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+/* 分数 */
+
+.grade {
+  border-radius: 8rpx;
+  box-shadow: 8rpx 14rpx 18rpx #ccc;
+}
+.grade-list {
+  padding: 40rpx;
+}
+.grade-item{
+  display: flex;
+  padding: 30rpx;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+}
+
+/* 通用 */
+
+.s-text {
+  font-size: 20rpx;
+}
+

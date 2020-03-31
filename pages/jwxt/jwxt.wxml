@@ -1,21 +1,34 @@
 <view class="page-wrapper">
   <navbar mode="menu"></navbar>
+  <view class="selector">
+    <button class="n-text select-btn">查询考试</button>
+    <button class="n-text select-btn" style="margin-left:40rpx;">查询成绩</button>
+  </view>
   <view class="container">
     <!-- 考试 -->
-    <scroll-view class="exam" scroll-y="true">
+    <view class="exam">
       <!-- wx:for -->
-      <view class="exam-item margin-top" wx:for="{{5}}">
-        <view class="exam-time">72天</view>
-        <view>
-          <view class="exam-name n-text">热工</view>
-          <view class="exam-location n-text">教5</view>
+      <view class="exam-item n-text" wx:for="{{5}}">
+        <view class="exam-time l-text">72天</view>
+        <view class="exam-info">
+          <view class="exam-name s-text">热工</view>
+          <view class="exam-location s-text">教5B401</view>
+          <view class="exam-date s-text">2019.01.22</view>
         </view>
       </view>
-      <view class=" exam-item margin-top none l-text">
-        暂无考试 ~
-      </view>
-    </scroll-view>
+      <view class="none exam-item n-text">暂时没有考试 ~~</view>
+    </view>
     <!-- 成绩 -->
-    <view class="grade border margin-top"></view>
+    <view class="grade margin-top">
+      <view class="grade-list">
+        <view class="grade-item n-text" wx:for="{{6}}">
+          <view>科目</view>
+          <view>72分</view>
+        </view>
+        <view class="none n-text grade-item">
+          本学期还未考试哦 ~~
+        </view>
+      </view>
+    </view>
   </view>
 </view>
