@@ -1,4 +1,8 @@
 import {
+  prices
+} from "../../utils/enum.js"
+
+import {
   getWxUser
 } from "../../utils/util.js"
 import {
@@ -12,76 +16,83 @@ import {
   parseBalance,
   parseAccount,
 } from "./helper.js"
+
 const App = getApp()
 Page({
   data: {
-
-    nickName: '',
-    avatarUrl: '',
     // 一卡通账户
     account: {},
-    balance:{
-      int:0,
-      float:'00'
-    }
+    balance: {
+      int: 0,
+      float: '00'
+    },
+    modal: false,
+    prices: prices
   },
 
   onLoad: function(options) {
-    const reqBalance = ()=>{
-      // 获取余额
-      getBalance()
-        .then(res => {
-          const text = res.data.data
-          const account = parseAccount(text)
-          const balance = parseBalance(account, "db_balance")
+    wx.showLoading({
+      title: '认证信息中',
+    })
 
-          this.setData({
-            account: account,
-            balance: {
-              int: balance.split('.')[0],
-              float: balance.split('.')[1]
-            }
-          })
-          wx.hideLoading()
-        })
-        .catch(err => {
-          console.log(err) // 超时
-        })
-    }
-    // check wx login
-    if(App.globalData.userInfo) {
-      
-      reqBalance()
-      return
-    }
-    // wx.showLoading({
-    //   title: '认证信息中',
-    // })
-    getWxUser()
+    getBalance()
       .then(res => {
-        const {
-          avatarUrl,
-          nickName
-        } = res.userInfo
+        if(res.code === 400) { return new Promise().reject() }
+
+        const text = res.data.data
+        const account = parseAccount(text)
+        const balance = parseBalance(account, "db_balance")
+
         this.setData({
-          avatarUrl: avatarUrl,
-          nickName: nickName,
-        })
-      })
-      .then(() => {
-        reqBalance()
-      })
-      .catch(err => {
-        wx.showModal({
-          title: '请先授权登录微信',
-          success: function(res) {
-            toLogin()
+          account: account,
+          balance: {
+            int: balance.split('.')[0],
+            float: balance.split('.')[1]
           }
         })
+        wx.hideLoading()
+      })
+      .catch(err => {
+        console.log(err)
+        wx.hideLoading()
+        // wx.showModal({
+        //   title: '请先登陆教务系统',
+        //   success: function(res) {
+        //     toLogin()
+        //   }
+        // })
       })
   },
-  toOrderList:function(){
-    const { account } = this.data
+  // 多选
+  ChooseCheckbox(e) {
+    let items = this.data.prices;
+    let values = e.currentTarget.dataset.value;
+    for (let i = 0, lenI = items.length; i < lenI; ++i) {
+      if (items[i].value == values) {
+        items[i].checked = !items[i].checked;
+        break
+      }
+    }
+    this.setData({
+      prices: items
+    })
+  },
+  // modal
+  showModal(e) {
+    this.setData({
+      modal: true
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modal: false
+    })
+  },
+  // list页面
+  toOrderList: function() {
+    const {
+      account
+    } = this.data
     toOrder(account)
   },
   onShow: function() {

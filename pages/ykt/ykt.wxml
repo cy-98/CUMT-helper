@@ -18,7 +18,7 @@
         <text class="s-text text-blue">最近账单</text>
       </view>
       <!-- 余额充值  unchecked : 蓝色-->
-      <view class="cu-item padding-sm unchecked">
+      <view class="cu-item padding-sm unchecked" bindtap="showModal">
         <view class="txt-center">
           <text class="cuIcon-shop lg text-white"></text>
         </view>
@@ -33,7 +33,25 @@
       </view>
     </view>
   </view>
-  <view class="order-list">
+  <!-- 流水列表 -->
+  <scroll-view>
+    <view class=""></view>
+  </scroll-view>
 
+<!-- 模态框 -->
+<!-- {{}} -->
+<view class="cu-modal bottom-modal {{modal===true?'show':''}}"   bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="cu-bar bg-white">
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+      <view class="action text-green" bindtap="hideModal">确定</view>
+    </view>
+    <view class="grid col-3 padding-sm">
+      <view wx:for="{{prices}}" class="padding-sm" wx:key="{{index}}">
+        <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
+        </button>
+      </view>
+    </view>
   </view>
+</view>
 </view>

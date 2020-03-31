@@ -1,4 +1,3 @@
-// pages/lib/lib.js
 Page({
 
   /**
@@ -13,13 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    // 用户信息
     wx.getUserInfo({
       withCredentials: true,
       success: (res) => {
@@ -32,10 +25,23 @@ Page({
           nickName: nickName
         })
       },
-      fail: (res)=>{
+      fail: (res) => {
         console.log(res)
       }
     })
+
+    // 图书馆信息
+    
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+   
+
+
   },
 
   /**

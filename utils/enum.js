@@ -110,10 +110,35 @@ const utils = [{
     '考试查询'
   ]
 }]
-
+const prices = [{
+  value: 0,
+  name: '10元',
+  checked: false,
+}, {
+  value: 1,
+  name: '20元',
+  checked: false,
+}, {
+  value: 2,
+  name: '30元',
+  checked: false,
+}, {
+  value: 3,
+  name: '60元',
+  checked: false,
+}, {
+  value: 4,
+  name: '80元',
+  checked: false,
+}, {
+  value: 5,
+  name: '100元',
+  checked: false,
+}]
 module.exports = {
   utils: utils,
   weeks: weeks,
+  prices: prices,
   schedules: schedules,
   lessonColors: lessonColors
 }

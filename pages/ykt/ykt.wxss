@@ -58,6 +58,10 @@
 .order-list {
 
 }
+.cu-btn.block {
+  width: 100%;
+  font-size: 32rpx;
+}
 /* 统一样式 */
 .padding-sm {
   padding: 20rpx;
