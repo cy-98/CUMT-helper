@@ -91,7 +91,8 @@
 }
 
 .recentLesson-wrap .inner-wrap {
-  padding: 30rpx;
+
+  padding: 0 30rpx;
 }
 
 .lesson {
@@ -99,18 +100,15 @@
   padding: 40rpx 20rpx;
   border-radius: 8rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
+   display: flex;
+  justify-content: space-between;
 }
 
 /* 
   单个课程的样式
  */
 
-.lesson {
-  background: #fff;
-  height: 40rpx;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 /* 课程时间地点 */
 

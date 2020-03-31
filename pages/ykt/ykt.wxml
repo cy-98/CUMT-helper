@@ -14,12 +14,27 @@
     <!-- 余额 -->
     <view class="account">
       <view class="acnt-data s-text">余额:
-        <text class="l-text">{{balance.int}}</text><text class="s-text">.{{balance.float}}</text>
+        <text class="l-text">{{balance.int}}</text>
+        <text class="s-text">.{{balance.float}}</text>
       </view>
     </view>
     <!-- 流水 -->
     <view class="ykt-history">
       <view class="a history n-text" bindtap="toOrderList">历史账单</view>
     </view>
+    <!-- 充值 -->
+    <view class="grid col-5 padding-sm s-text">
+      <view class="padding-sm">
+        <view class="text-center text-shadow text-blue">
+          <view class="cuIcon-ellipse text-xxl">充值</view>
+        </view>
+      </view>
+    </view>
+    <view class="charge">
+      <button class="cu-btn bg-blue s-text" style="margin-right:40rpx;color:#fff;">20元</button>
+      <button class="cu-btn bg-blue s-text" style="margin-right:40rpx;color:#fff">50元</button>
+      <button class="cu-btn bg-blue s-text" style="color:#fff">100元</button>
+    </view>
+    <button class="bg-red s-text charge-btn">充值</button>
   </view>
 </view>

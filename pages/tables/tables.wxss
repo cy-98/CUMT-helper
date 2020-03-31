@@ -32,7 +32,7 @@
 }
 
 .page-wrapper {
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .navbar {

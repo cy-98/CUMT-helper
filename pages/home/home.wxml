@@ -2,7 +2,7 @@
   <!-- 背景 -->
   <!-- <view class="backgroundColor"></view> -->
   <!-- 导航 -->
-  <view class="nav" style="height:{{navHeight}}px;;">
+  <view class="nav" style="height:{{navHeight}}px;">
     <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
       <!-- 设置选钮 -->
       <view class="btn"></view>
@@ -26,7 +26,7 @@
       <view class="inner-wrap">
         <view class="l-text context">今日课程</view>
         <!-- 今日课程 -->
-        <view class="lesson" wx:if="{{todaysLessons.length}}" wx:for="{{todaysLessons}}" wx:key="id">
+        <view class="lesson shadow-blur" wx:if="{{todaysLessons.length}}" wx:for="{{todaysLessons}}" wx:key="id">
           <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
           <view class="s-text lesson-info">{{item.time}}</view>
           <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
@@ -36,7 +36,7 @@
           <view class="txt-center l-text lesson-info">今日无事 ~</view>
         </view>
         <!-- 假期中 -->
-        <view wx:if="{{store && !currentWeekLessons.length}}" class="lesson">
+        <view wx:if="{{store && !currentWeekLessons['lessons'].length}}" class="lesson">
           <view class="txt-center l-text lesson-info">假期中 ~</view>
         </view>
         <!-- 未登录 -->
@@ -52,7 +52,7 @@
         <view class="l-text context">常用工具</view>
         <view class="utils">
           <view class="util util-sort" bindtap="tapUtil" data-path="{{item.path}}" wx:for="{{utils}}" wx:key="id">
-            <view class="s-text sub-util" >{{item.name}}</view>
+            <view class="s-text sub-util">{{item.name}}</view>
           </view>
         </view>
       </view>

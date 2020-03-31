@@ -28,6 +28,7 @@ Page({
         avatarUrl: avatarUrl,
         nickName: nickName
       })
+      App.globalData.userInfo = res.userInfo
     }).catch(err => {
       console.log(err)
     })

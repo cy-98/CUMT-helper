@@ -1,10 +1,17 @@
 <navbar mode="menu"></navbar>
 <!-- 导入echarts统计 -->
 <view class="container">
+  <view class="orderList">
+    <view class="title">最近流水</view>
+  </view>
   <!-- 选择时间 -->
   <view class="time-select">
-    <input class="start" placeholder="选择开始时间"></input>
-    <input class="end" placeholder="选择结束时间"></input>
+    <picker mode="date" class="n-text">请选择开始时间</picker>
+    <input class=""></input>
+  </view>
+    <view class="time-select">
+    <picker mode="date" class="n-text">请选择结束时间</picker>
+    <input class=""></input>
   </view>
   <view class="order-list">
 

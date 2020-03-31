@@ -39,3 +39,12 @@
   text-align: right;
   color: #666;
 }
+.charge{
+  margin-top: 40rpx;
+  display: flex;
+}
+.charge-btn {
+  width:100%;
+  margin:40rpx 0;
+  color: #fff;
+}

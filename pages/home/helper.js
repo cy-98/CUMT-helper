@@ -10,8 +10,9 @@ import {
 
 // 获取今日课程
 const getLessonsOfDay = (day, currentLessons) => {
+  console.log(day, currentLessons)
   const todayLessons = []
-  currentLessons.forEach(lesson => {
+  currentLessons["lessons"].forEach(lesson => {
     lesson.day === day &&
       todayLessons.push(lesson) &&
       (lesson.time = schedules[lesson.start].begin) // 设置时间
