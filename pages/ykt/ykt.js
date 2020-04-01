@@ -1,17 +1,18 @@
 import { prices } from "../../utils/enum.js"
-import { hasToLogin } from "../../utils/util.js"
+import { hasToLogin, decrypt } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
-import { getBalance } from "../../utils/api.js"
-import { toOrder, parseBalance, parseAccount, } from "./helper.js"
+import { getBalance, getOrder } from "../../utils/api.js"
+import { parseBalance, parseAccount, processParamsForOrder } from "./helper.js"
 
 const App = getApp()
 Page({
   data: {
     // 一卡通账户
-    account: {},
-    balance: { int: 0, float: '00' },
-    modal: false,
-    prices: prices,
+    account   : {},
+    balance   : { int: 0, float: '00' },
+    modal     : false,
+    prices    : prices,
+    orderList : []
   },
 
   onLoad: function(options) {
@@ -36,9 +37,30 @@ Page({
           }
         })
         wx.hideLoading()
+        return account.account
+      })
+      .then(id => {
+        let params = {
+          account: id,
+          page   : 1,
+          row    : 5 // 最近五单
+                     // 以row划分page  拿到以往账单[page]<row个> ，截止时间好像没有影响
+                     // 如果要拿到上一个月的就是 page = 2 row = 31或30
+        }
+        params = processParamsForOrder(params)
+        getOrder(params).then(res => {
+          const text = res.data.data
+          const data = JSON.parse(JSON.parse(decrypt(text)))
+          const orderList = data.rows
+
+          this.setData({
+            orderList: orderList
+          })
+        })
       })
       .catch(err => {
         console.log(err)
+        hasToLogin()
         wx.hideLoading()
         // wx.showModal({
         //   title: '请先登陆教务系统',
@@ -73,13 +95,6 @@ Page({
     this.setData({
       modal: false
     })
-  },
-  // list页面
-  toOrderList: function() {
-    const {
-      account
-    } = this.data
-    toOrder(account)
   },
   onShow: function() {
 

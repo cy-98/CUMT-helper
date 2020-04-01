@@ -2,7 +2,8 @@ import {
   utils
 } from "../../utils/enum.js"
 import {
-  navTo
+  navTo,
+  toTable
 } from "../../utils/navigate.js"
 import {
   getCurrentWeek,
@@ -62,6 +63,10 @@ Page({
     // 今日课程
     getStore('timetable')
       .then(res => {
+        if (res.errMsg === "getStorage:fail data not found") {
+          console.log(res)
+          toTable()
+        }
         let todaysLessons
 
         const {
@@ -81,6 +86,7 @@ Page({
 
       .catch(err => {
         console.log(err)
+
         this.setData({
           todaysLessons: [],
           currentWeekLessons: [],

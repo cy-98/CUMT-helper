@@ -59,7 +59,7 @@
 
 /* 账单列表 */
 .list-wrap {
-  padding:80rpx;
+  padding: 0 80rpx;
   flex: 1;
 }
 .order-list {
@@ -81,8 +81,8 @@
 .bill.negt {
   color: #e54d42;
 }
-.bill .post {
-  color: #0081ff;
+.bill.post {
+  color: #39b54a;
 }
 .cu-btn.block {
   width: 100%;

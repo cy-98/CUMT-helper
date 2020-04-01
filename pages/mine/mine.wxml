@@ -13,7 +13,7 @@
   </view>
 
   <view class="info-wrapper">
-    <view class="info-icons flex-list ">
+    <view class="info-icons flex-list">
       <view class="list-item s-text"style="text-align:left;" >学院</view>
       <view class="list-item s-text"style="text-align:left;" >专业</view>
       <view class="list-item s-text"style="text-align:left;" >关于我们</view>

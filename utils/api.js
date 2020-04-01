@@ -58,10 +58,11 @@ const getBalance = () => {
   return http_get(payload)
 }
 // 流水
-const getOrder = ()=>{
+const getOrder = (params)=>{
   const path = 'ykt/orderList'
   const payload = {
-    path: path
+    path: path,
+    params: params
   }
   processPayload(payload)
   return http_get(payload)

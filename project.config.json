@@ -97,15 +97,9 @@
 				},
 				{
 					"id": -1,
-					"name": "流水查询",
-					"pathName": "pages/ykt/order/order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/jwxt/jwxt",
 					"pathName": "pages/jwxt/jwxt",
+					"query": "",
 					"scene": null
 				}
 			]

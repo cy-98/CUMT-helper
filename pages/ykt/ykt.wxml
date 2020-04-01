@@ -37,11 +37,11 @@
     <!-- 流水列表 -->
     <scroll-view class="list-wrap" scroll-y="true">
       <view class="order-list">
-        <view class="list-item" style="display:flex;">
+        <view class="list-item" style="display:flex;" wx:for="{{orderList}}" wx:key="index">
           <view class="time s-text">
-            <text class="cuIcon-edit text-blue lg"></text> 2019.09.17
+            <text class="cuIcon-edit text-blue lg"></text> {{item.TRANNAME}}
           </view>
-          <view class="bill negt">-11.2</view>
+          <view class="bill {{ item.TRANAMT > 0 ? 'post' :'negt'}}">{{item.TRANAMT}}</view>
         </view>
       </view>
     </scroll-view>

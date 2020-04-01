@@ -8,24 +8,25 @@
     <!-- 考试 -->
     <view class="exam {{selectorIsLeft?'show':'unshow'}} transition">
       <!-- wx:for -->
-      <view class="exam-item n-text" wx:for="{{5}}">
+      <view class="exam-item n-text" wx:for="{{exam}}" wx:key="index">
         <view class="exam-time l-text">72天</view>
         <view class="exam-info">
-          <view class="exam-name s-text">热工</view>
-          <view class="exam-location s-text">教5B401</view>
-          <view class="exam-date s-text">2019.01.22</view>
+          <view class="exam-name s-text">{{item.name}}</view>
+          <view class="exam-location s-text">{{item.room}}</view>
+          <view class="exam-date s-text">{{item.time}}</view>
         </view>
       </view>
-      <view class="none exam-item n-text">暂时没有考试 ~~</view>
+      <view wx:if="{{exam.length === 0}}" class="none exam-item n-text">暂时没有考试 ~~</view>
     </view>
     <!-- 成绩 -->
     <view class="grade {{selectorIsLeft?'unshow':'show'}} transition margin-top">
       <view class="grade-list">
-        <view class="grade-item n-text" wx:for="{{6}}">
-          <view class="l-text">72分</view>
-          <view class="n-text">科目</view>
+        <view class="grade-item n-text" wx:for="{{grade}}" wx:key="index">
+          <view class="l-text" style="color:{{item.grade > 60? '#0081ff':'#e54d42'}}">{{item.grade}}</view>
+          <view class="n-text">{{item.name}}</view>
+          <text class="s-text">{{item.gpa}}</text>
         </view>
-        <view class="none n-text grade-item">
+        <view wx:if="{{grade.length === 0}}" class="none n-text grade-item">
           本学期还未考试哦 ~~
         </view>
       </view>

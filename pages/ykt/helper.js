@@ -17,15 +17,18 @@ const parseBalance = (account,key)=>{
   return int.join('') + '.' +float.join('')
 }
 
-const toOrder = (account)=>{
-  console.log(account)
-  const accountId = account['account']
-  wx.navigateTo({
-    url: `./order/order?account=${accountId}`,
-  })
+const processParamsForOrder = ({ account, start, end, page, row })=>{
+  const params = {}
+  params.account = account
+  params.start = start? start : '0'
+  params.end = end? end: '0'
+  params.page = page? page : 1
+  params.row = row? row : 10 * 31
+  return params
 }
+
 module.exports= {
-  toOrder: toOrder,
   parseBalance: parseBalance,
-  parseAccount: parseAccount
+  parseAccount: parseAccount,
+  processParamsForOrder: processParamsForOrder
 }

@@ -29,7 +29,7 @@ const decrypt = (text) => {
 }
 // 路由: 请先登录
 const hasToLogin = () => {
-  const token = getStore('token')
+  const token = wx.getStorageSync('token')
 
   !token 
     && wx.showToast({
