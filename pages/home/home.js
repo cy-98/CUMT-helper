@@ -79,7 +79,7 @@ Page({
         const currentWeekLessons = timetable[currentWeek]
 
         const hours = date.getHours()
-        if(hours > 10 ) {   // 判断时间是否是晚上
+        if(hours > 20 ) {   // 判断时间是否是晚上
           const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
           this.setData({
             tomorrowLessons: tomorrowLessons,

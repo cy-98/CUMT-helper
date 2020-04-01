@@ -67,11 +67,22 @@ const getOrder = (params)=>{
   processPayload(payload)
   return http_get(payload)
 }
+// 充值
+const recharge = (data)=>{
+  const path = 'ykt/recharge'
+  const payload = {
+    path: path,
+    data: data
+  }
+  processPayload(payload)
+  return http_post(payload)
+}
 
 module.exports = {
   getUser: getUser,                   // 教务
   loginCUMT: loginCUMT,
   getTimeTables: getTimeTables,
-  getOrder: getOrder,                 // 一卡通
+  recharge: recharge,                 // 一卡通
+  getOrder: getOrder,                 
   getBalance: getBalance              
 }

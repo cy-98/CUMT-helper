@@ -1,17 +1,18 @@
 import { prices } from "../../utils/enum.js"
 import { hasToLogin, decrypt } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
-import { getBalance, getOrder } from "../../utils/api.js"
+import { getBalance, getOrder, recharge } from "../../utils/api.js"
 import { parseBalance, parseAccount, processParamsForOrder } from "./helper.js"
 
 const App = getApp()
 Page({
   data: {
-    // 一卡通账户
-    account   : {},
-    balance   : { int: 0, float: '00' },
     modal     : false,
+    // - 静态数据 - 
     prices    : prices,
+    // - 网络数九
+    account: {},
+    balance: { int: 0, float: '00' },
     orderList : []
   },
 
@@ -78,6 +79,9 @@ Page({
     for (let i = 0, lenI = items.length; i < lenI; ++i) {
       if (items[i].value == values) {
         items[i].checked = !items[i].checked;
+        this.setData({
+          chargeNum: items[i].price
+        })
       }else{
         items[i].checked = false
       }
@@ -97,6 +101,25 @@ Page({
       modal: false
     })
   },
+
+  commit(){
+    const { account, chargeNum } = this.data
+    recharge({
+      account: account.account,
+      num: chargeNum
+    })
+      .then(res => {
+        const data = JSON.parse(JSON.parse(decrypt(res.data.data)))
+        const { errmsg } = JSON.parse(data.Msg)['transfer']
+        if (errmsg === "当前时间不允许交易") {
+          wx.showToast({
+            title: "当前时间不允许交易"
+          })
+        }
+      })
+    this.hideModal()
+  },
+
   onShow: function() {
 
   },

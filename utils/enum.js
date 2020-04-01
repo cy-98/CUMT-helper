@@ -112,27 +112,27 @@ const utils = [{
 }]
 const prices = [{
   value: 0,
-  name: '10元',
+  price: 10,
   checked: false,
 }, {
   value: 1,
-  name: '20元',
+  price: 20,
   checked: false,
 }, {
   value: 2,
-  name: '30元',
+  price: 30,
   checked: false,
 }, {
   value: 3,
-  name: '60元',
+  price: 60,
   checked: false,
 }, {
   value: 4,
-  name: '80元',
+  price: 80,
   checked: false,
 }, {
   value: 5,
-  name: '100元',
+  price: 100,
   checked: false,
 }]
 module.exports = {

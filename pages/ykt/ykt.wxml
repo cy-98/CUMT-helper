@@ -51,11 +51,11 @@
       <view class="cu-dialog" catchtap>
         <view class="cu-bar bg-white">
           <view class="action text-blue" bindtap="hideModal">取消</view>
-          <view class="action text-green" bindtap="hideModal">确定</view>
+          <view class="action text-green" bindtap="commit">确定</view>
         </view>
         <view class="grid col-3 padding-sm">
           <view wx:for="{{prices}}" class="padding-sm" wx:key="index">
-            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
+            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.price}}元
             </button>
           </view>
         </view>
