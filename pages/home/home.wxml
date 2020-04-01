@@ -15,20 +15,20 @@
     <!-- 徐州今日天气 -->
     <view class="weather-wrap wrap">
       <view class="inner-wrap">
-        <view class="n-text temp">Temperature: {{temperature}}°</view>
+        <view class="n-text temp">Temperature: <text class="{{temperature > 25 ? 'text-red': 'text-blue'}}">{{temperature}}°</text></view>
         <view class="s-text humidity">Humidity: {{humidity}}°</view>
         <view class="s-text city">徐州</view>
         <view class="s-text date">{{month}}月{{date}}日 {{weather}}</view>
       </view>
     </view>
     <!-- 今日课程 -->
-    <view class="recentLesson-wrap wrap">
+    <view wx:if="{{!night}}" class="recentLesson-wrap wrap">
       <view class="inner-wrap">
         <view class="l-text context">今日课程</view>
         <!-- 今日课程 -->
         <view class="lesson shadow-blur" wx:if="{{todaysLessons.length}}" wx:for="{{todaysLessons}}" wx:key="id">
           <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
-          <view class="s-text lesson-info">{{item.time}}</view>
+          <view class="s-text lesson-info text-blue">{{item.time}}</view>
           <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
         </view>
         <!-- 今日无课 -->
@@ -41,7 +41,30 @@
         </view>
         <!-- 未登录 -->
         <view wx:if="{{!store}}" class="lesson">
-          <view class="txt-center l-text lesson-info">您好,请登录 ~</view>
+          <view class="txt-center l-text lesson-info" bindtap="login">欢迎,请登录 ~</view>
+        </view>
+      </view>
+    </view>
+    <!-- 明日课程 -->
+    <view wx:if="{{night}}" class="recentLesson-wrap wrap">
+      <view class="inner-wrap">
+        <view class="l-text context">明日课程</view>
+        <view class="lesson shadow-blur" wx:if="{{tomorrowLessons.length}}" wx:for="{{tomorrowLessons}}" wx:key="index">
+          <view class="s-text lesson-info" style="text-align:left;">{{item.name}}</view>
+          <view class="s-text lesson-info text-blue">{{item.time}}</view>
+          <view class="s-text lesson-info" style="flex:0.5">{{item.room}}</view>
+        </view>
+        <!-- 明天没课 -->
+         <view wx:if="{{!tomorrowLessons.length && store }}" class="lesson">
+          <view class="txt-center l-text lesson-info">明日无课哦 ~</view>
+        </view>
+        <!-- 假期中 -->
+        <view wx:if="{{store && !currentWeekLessons['lessons'].length}}" class="lesson">
+          <view class="txt-center l-text lesson-info">假期中 ~</view>
+        </view>
+         <!-- 未登录 -->
+        <view wx:if="{{!store}}" class="lesson">
+          <view class="txt-center l-text lesson-info" bindtap="login">欢迎,请登录 ~</view>
         </view>
       </view>
     </view>

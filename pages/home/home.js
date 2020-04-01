@@ -10,7 +10,8 @@ import {
   processimeForLessons
 } from "../../pages/tables/helper.js"
 import {
-  getStore
+  getStore,
+  hasToLogin
 } from "../../utils/util.js"
 import {
   getWeather,
@@ -24,23 +25,25 @@ Page({
   // init data
   data: {
     // --- 页面数据 ---
-    navHeight: App.globalData.navHeight,
-    navTop: App.globalData.navTop,
+    navHeight : App.globalData.navHeight,
+    navTop    : App.globalData.navTop,
     // --- 计算数据 ---
-    currentWeek: getCurrentWeek()[0],
-    currentDay: getCurrentWeek()[1],
-    date: date.getDate(),
-    month: date.getMonth() + 1,
+    currentWeek : getCurrentWeek()[0],
+    currentDay  : getCurrentWeek()[1],
+    date : date.getDate(),
+    month : date.getMonth() + 1,
     // --- 请求数据 ---
-    weather: '',
-    temperature: 0,
-    humidity: 0,
-    winddirection: '',
-    todaysLessons: [],
-    currentWeekLessons: [],
-    store: false,
+    humidity    : 0,
+    weather     : '',
+    temperature : 0,
+    winddirection : '',
+    todaysLessons : [],
+    tomorrowLessons : [],    // 当夜晚的时候显示明日课程
+    currentWeekLessons : [],
+    store : false,
+    night : false,
     // --- 静态数据 ---
-    utils: utils
+    utils : utils
   },
   onLoad: function(options) {
     // 今日徐州天气
@@ -60,28 +63,40 @@ Page({
         winddirection: winddirection
       })
     })
-    // 今日课程
+    
     getStore('timetable')
       .then(res => {
         if (res.errMsg === "getStorage:fail data not found") {
           console.log(res)
           toTable()
         }
-        let todaysLessons
 
         const {
           currentWeek,
           currentDay
         } = this.data
         const timetable = res.data
-
         const currentWeekLessons = timetable[currentWeek]
-        todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
-        this.setData({
-          todaysLessons: todaysLessons,
-          currentWeekLessons: currentWeekLessons,
-          store: true
-        })
+
+        const hours = date.getHours()
+        if(hours > 10 ) {   // 判断时间是否是晚上
+          const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
+          this.setData({
+            tomorrowLessons: tomorrowLessons,
+            currentWeekLessons: currentWeekLessons,
+            store: true,
+            night: true
+          })
+        } else {            // 时间是白天
+          // 今日课程
+          const todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
+          this.setData({
+            todaysLessons: todaysLessons,
+            currentWeekLessons: currentWeekLessons,
+            store: true,
+            night: false
+          })
+        }
       })
 
       .catch(err => {
@@ -100,6 +115,9 @@ Page({
   tapUtil: function(e) {
     const { path } = e.currentTarget.dataset
     navTo(path)
+  },
+  login:()=>{
+    hasToLogin()
   },
 
   onPullDownRefresh: function() {

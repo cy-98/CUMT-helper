@@ -24,26 +24,26 @@ const date = new Date()
 Page({
   data: {
     // --- 静态数据 ---
-    is_pre: false,
-    is_hidden: true,
-    weeks: weeks,
-    schedules: schedules,
-    lessonsColors: lessonColors,
-    lessonBlockMarginTop: '100%/10',
-    lessonBlockMarginLeft: '(100%)/7',
+    is_pre    : false,
+    is_hidden : true,
+    weeks         : weeks,
+    schedules     : schedules,
+    lessonsColors : lessonColors,
+    lessonBlockMarginTop  : '100%/10',
+    lessonBlockMarginLeft : '(100%)/7',
     // --- 导航高度 ---
-    navTop: App.globalData.navTop,
-    navHeight: App.globalData.navHeight,
+    navTop    : App.globalData.navTop,
+    navHeight : App.globalData.navHeight,
     // --- 计算数据 ---
-    currentYear: date.getFullYear() - 1,
-    currentMonth: date.getMonth() + 1,
-    currentWeek: getCurrentWeek()[0],
-    currentDay: getCurrentWeek()[1],
-    currentTerm: getTerm(),
+    currentYear  : date.getFullYear() - 1,
+    currentMonth : date.getMonth() + 1,
+    currentWeek  : getCurrentWeek()[0],
+    currentDay   : getCurrentWeek()[1],
+    currentTerm  : getTerm(),
     // --- 请求数据 ---
-    timetable: [],
-    grade: [],
-    exam: [],
+    timetable : [],
+    grade     : [],
+    exam      : [],
   },
   // lifetimes: onload
   onLoad: function(options) {

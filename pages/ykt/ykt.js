@@ -19,6 +19,7 @@ Page({
     wx.showLoading({
       title: '认证信息中',
     })
+
     hasToLogin()
 
     getBalance()

@@ -151,3 +151,10 @@
 .sub-util {
   text-align: center;
 }
+
+.text-blue {
+	color: #0081ff;
+}
+.text-red {
+  color: #e54d42;
+}
