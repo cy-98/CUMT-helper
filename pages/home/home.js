@@ -9,6 +9,8 @@ import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
+import { getBalance } from "../../utils/api.js"
+
 import {
   getStore,
   hasToLogin
@@ -114,6 +116,9 @@ Page({
   // 工具详情
   tapUtil: function(e) {
     const { path } = e.currentTarget.dataset
+    if(path === 'ykt') {
+      App.globalData.getBalance = getBalance()
+    }
     navTo(path)
   },
   login:()=>{

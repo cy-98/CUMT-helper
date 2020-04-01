@@ -10,7 +10,6 @@ import {
 
 // 获取今日课程
 const getLessonsOfDay = (day, currentLessons) => {
-  console.log(day, currentLessons)
   const todayLessons = []
   currentLessons["lessons"].forEach(lesson => {
     lesson.day === day &&

@@ -22,8 +22,8 @@ Page({
     })
 
     hasToLogin()
-
-    getBalance()
+    const { getBalance } = App.globalData
+    getBalance // preRequest
       .then(res => {
         if(res.code === 400) { return new Promise().reject() }
 
@@ -113,7 +113,7 @@ Page({
         const { errmsg } = JSON.parse(data.Msg)['transfer']
         if (errmsg === "当前时间不允许交易") {
           wx.showToast({
-            title: "当前时间不允许交易"
+            title: errmsg
           })
         }
       })

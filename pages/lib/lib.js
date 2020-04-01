@@ -1,7 +1,7 @@
 import {
   hasToLogin
 } from "../../utils/util.js"
-
+const App = getApp()
 Page({
   data: {
     avatarUrl: '',
@@ -12,6 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+ 
     // check token
     hasToLogin()
     // 用户信息
@@ -33,7 +34,6 @@ Page({
     })
 
     // 图书馆信息
-
 
   },
 
