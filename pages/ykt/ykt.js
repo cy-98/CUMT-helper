@@ -45,7 +45,7 @@ Page({
         let params = {
           account: id,
           page   : 1,
-          row    : 5 // 最近五单
+          row    : 7 // 最近五单
                      // 以row划分page  拿到以往账单[page]<row个> ，截止时间好像没有影响
                      // 如果要拿到上一个月的就是 page = 2 row = 31或30
         }
