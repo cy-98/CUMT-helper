@@ -4,7 +4,7 @@
   <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog basis-lg" catchtap style="top:{{navHeight}}px;height:calc(100vh - {{navHeight}}px)">
       <view class="cu-list menu text-left">
-        <view class="list-item n-text text-center arrow">统计课程</view>
+        <view class="list-item n-text text-center arrow" bindtap="toCharts">统计课程</view>
         <view class="list-item n-text text-center arrow">选择学期</view>
         <view class="list-item n-text text-center arrow">添加课程</view>
       </view>

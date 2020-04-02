@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/charts/ykt-stat/ykt-stat",
+    "pages/charts/tbs-stat/tbs-stat",
     "pages/ykt/ykt",
     "pages/lib/lib",    
     "pages/jwxt/jwxt",

@@ -12,6 +12,7 @@
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -22,7 +23,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
+	"libVersion": "2.10.4",
 	"appid": "wxb4effe4a7b1d714f",
 	"projectname": "%E7%9F%BF%E5%B0%8F%E7%8C%AA",
 	"debugOptions": {
@@ -99,6 +100,20 @@
 					"id": -1,
 					"name": "pages/jwxt/jwxt",
 					"pathName": "pages/jwxt/jwxt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/charts/tbs-stat/tbs-stat",
+					"pathName": "pages/charts/tbs-stat/tbs-stat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addLesson/addLesson",
+					"pathName": "pages/addLesson/addLesson",
 					"query": "",
 					"scene": null
 				}

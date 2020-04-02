@@ -24,7 +24,7 @@ Page({
     hasToLogin()
     const { preGetBalance, preGetOrder } = App.globalData
 
-    preGetBalance // preRequest
+    preGetBalance && preGetBalance // preRequest
       .then(res => {
         if(res.code === 400) { return new Promise().reject() }
 
@@ -61,11 +61,10 @@ Page({
           params = processParamsForOrder(params)
           getOrder(params).then(res => {
             const orderList = parseOrder(res)
-
             this.setData({
               orderList: orderList
             })
-
+            
             // 将用户accountid存储在本地，首页可以发起预请求
             setStore({
               accountid: id

@@ -109,6 +109,12 @@ Page({
     })
   },
 
+  toCharts(){
+    wx.navigateTo({
+      url: '/pages/charts/tbs-stat/tbs-stat',
+    })
+  },
+
   // show modal
   showModal(e) {
     this.setData({
