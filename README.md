@@ -54,9 +54,7 @@
 
 :star:UI界面美化
 
-:star:课程统计
+:white_check_mark::star:课程统计
 
 :star:账单统计
-
-
 
