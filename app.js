@@ -11,16 +11,10 @@ App({
     this.globalData.navHeight = navHeight;
     this.globalData.navTop = navTop;
     this.globalData.windowHeight = systemInfo.windowHeight;
-    // wx.getStorage({
-    //   key: 'token',
-    //   success: (token)=>{
-    //     if(token === '') return
-    //     this.globalData.token = token
-    //   }
-    // })
+ 
     wx.login({
       success: function(res) {
-        // console.log(res.code);  用户认证token
+
       },
     });
     wx.getSetting({

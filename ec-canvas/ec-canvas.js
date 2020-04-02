@@ -105,12 +105,16 @@ Component({
         .select('.ec-canvas')
         .fields({ node: true, size: true })
         .exec(res => {
+          
           const canvasNode = res[0].node
           this.canvasNode = canvasNode
 
           const canvasDpr = wx.getSystemInfoSync().pixelRatio
           const canvasWidth = res[0].width
-          const canvasHeight = res[0].height
+          const canvasHeight = res[0].height 
+          // console.log(res[0])
+          // const canvasWidth = this.width
+          // const canvasHeight = this.height   // -----------可以自定义宽高
 
           const ctx = canvasNode.getContext('2d')
 

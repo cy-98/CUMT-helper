@@ -1,8 +1,27 @@
 <view class="page-wrap">
   <navbar mode="menu"></navbar>
   <view class="container">
+    <!-- 统计课程进度 -->
+    <view class="charts-wrap">
+      <ec-canvas ec="{{ec_pie}}" id="pie"></ec-canvas>
+    </view>
+    <view class="datas-wrap margin-top">
+      <view class="lesson-data data-block s-tex txt-center">
+        <view class="s-text">课程进度</view>
+        <view class="n-text text-blue">{{process}}%</view>
+        <view class="s-text">课程数</view>
+        <view class="n-text text-blue"> {{passedLessonsCount}}
+          <text style="font-size:20rpx;"> ({{allLessonsCount}})</text>
+        </view>
+      </view>
+      <view class="data-block txt-center">
+        <view class="s-text">学期最多课程</view>
+        <view class="n-text text-blue">{{maxLessonCount}}</view>
+        <view class="s-text">学期最多课程</view>
+        <view class="s-text text-blue">{{maxLessonName}}</view>
+      </view>
+    </view>
+    <ec-canvas ec="{{ec_bar}}" id="bar"></ec-canvas>
     
-    <view></view>
   </view>
 </view>
-
