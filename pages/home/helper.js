@@ -14,7 +14,7 @@ const getLessonsOfDay = (day, currentLessons) => {
   currentLessons["lessons"].forEach(lesson => {
     lesson.day === day &&
       todayLessons.push(lesson) &&
-      (lesson.time = schedules[lesson.start].begin) // 设置时间
+      (lesson.time = schedules[lesson.start - 1].begin) // 设置时间
   })
   return todayLessons
 }

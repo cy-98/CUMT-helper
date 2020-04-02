@@ -29,10 +29,10 @@ Page({
     const { currentTerm, currentYear } = this.data
 
     getTimeTables({
-      // year: currentYear,
-      // term: currentTerm
-      year: 2019,
-      term:1
+      year: currentYear,
+      term: currentTerm
+      // year: 2019,
+      // term:1
     })
       .then(res => {
         const text = res.data.data

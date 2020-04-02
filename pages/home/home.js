@@ -9,8 +9,7 @@ import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
-import { getBalance } from "../../utils/api.js"
-
+import { getBalance, getOrder } from "../../utils/api.js"
 import {
   getStore,
   hasToLogin
@@ -19,6 +18,9 @@ import {
   getWeather,
   getLessonsOfDay,
 } from "./helper.js"
+import {
+  processParamsForOrder
+} from "../ykt/helper.js"
 
 
 const date = new Date()
@@ -69,7 +71,6 @@ Page({
     getStore('timetable')
       .then(res => {
         if (res.errMsg === "getStorage:fail data not found") {
-          console.log(res)
           toTable()
         }
 
@@ -110,15 +111,25 @@ Page({
           store: false
         })
       })
-    // 近日考试
   },
-
+  onShow(){
+    // 一卡通预请求
+  App.globalData.preGetBalance = getBalance()
+   const accountid = wx.getStorageSync('accountid')
+   if(accountid) {
+     let params = {
+       account: accountid,
+       page: 1,
+       row: 6
+     }
+     params = processParamsForOrder(params)
+     App.globalData.preGetOrder = getOrder(params)
+   }
+  },
   // 工具详情
   tapUtil: function(e) {
     const { path } = e.currentTarget.dataset
-    if(path === 'ykt') {
-      App.globalData.getBalance = getBalance()
-    }
+   
     navTo(path)
   },
   login:()=>{

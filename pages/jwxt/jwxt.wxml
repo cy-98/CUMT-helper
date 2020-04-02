@@ -19,7 +19,7 @@
       <view wx:if="{{exam.length === 0}}" class="none exam-item n-text">暂时没有考试 ~~</view>
     </view>
     <!-- 成绩 -->
-    <view class="grade {{selectorIsLeft?'unshow':'show'}} transition margin-top">
+    <view class="grade {{selectorIsLeft?'unshow':'show'}} transition">
       <view class="grade-list">
         <view class="grade-item n-text" wx:for="{{grade}}" wx:key="index">
           <view class="l-text" style="color:{{item.grade > 60? '#0081ff':'#e54d42'}}">{{item.grade}}</view>

@@ -27,7 +27,14 @@ const processParamsForOrder = ({ account, start, end, page, row })=>{
   return params
 }
 
+const parseOrder = (res)=>{
+  const text = res.data.data
+  const data = JSON.parse(JSON.parse(decrypt(text)))
+  const orderList = data.rows
+  return orderList
+}
 module.exports= {
+  parseOrder: parseOrder,
   parseBalance: parseBalance,
   parseAccount: parseAccount,
   processParamsForOrder: processParamsForOrder

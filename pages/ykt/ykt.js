@@ -1,8 +1,8 @@
 import { prices } from "../../utils/enum.js"
-import { hasToLogin, decrypt } from "../../utils/util.js"
+import { hasToLogin, decrypt, setStore } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
 import { getBalance, getOrder, recharge } from "../../utils/api.js"
-import { parseBalance, parseAccount, processParamsForOrder } from "./helper.js"
+import { parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
 
 const App = getApp()
 Page({
@@ -22,8 +22,9 @@ Page({
     })
 
     hasToLogin()
-    const { getBalance } = App.globalData
-    getBalance // preRequest
+    const { preGetBalance, preGetOrder } = App.globalData
+
+    preGetBalance // preRequest
       .then(res => {
         if(res.code === 400) { return new Promise().reject() }
 
@@ -42,23 +43,35 @@ Page({
         return account.account
       })
       .then(id => {
-        let params = {
-          account: id,
-          page   : 1,
-          row    : 7 // 最近五单
-                     // 以row划分page  拿到以往账单[page]<row个> ，截止时间好像没有影响
-                     // 如果要拿到上一个月的就是 page = 2 row = 31或30
-        }
-        params = processParamsForOrder(params)
-        getOrder(params).then(res => {
-          const text = res.data.data
-          const data = JSON.parse(JSON.parse(decrypt(text)))
-          const orderList = data.rows
-
-          this.setData({
-            orderList: orderList
+        if(preGetOrder) {
+          preGetOrder.then(res => {
+            const orderList = parseOrder(res)
+            this.setData({
+              orderList: orderList
+            })
           })
-        })
+        }else {
+          let params = {
+            account: id,
+            page: 1,
+            row: 6 // 最近6单
+            // 以row划分page  拿到以往账单[page]<row个> ，截止时间好像没有影响
+            // 如果要拿到上一个月的就是 page = 2 row = 31或30
+          }
+          params = processParamsForOrder(params)
+          getOrder(params).then(res => {
+            const orderList = parseOrder(res)
+
+            this.setData({
+              orderList: orderList
+            })
+
+            // 将用户accountid存储在本地，首页可以发起预请求
+            setStore({
+              accountid: id
+            })
+          })
+        }
       })
       .catch(err => {
         console.log(err)
@@ -110,6 +123,7 @@ Page({
     })
       .then(res => {
         const data = JSON.parse(JSON.parse(decrypt(res.data.data)))
+        console.log(data)
         const { errmsg } = JSON.parse(data.Msg)['transfer']
         if (errmsg === "当前时间不允许交易") {
           wx.showToast({
