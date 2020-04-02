@@ -27,34 +27,12 @@
   flex-shrink: 0;
 }
 
+.stat {
+  color: be9fe1;
+}
+
 .s-text {
   font-size: 20rpx;
-}
-
-.btn {
-  width: 50rpx;
-  height: 0;
-  position: relative;
-  transform: translateY(10rpx);
-  border-top: 8rpx solid #fff;
-}
-
-.btn-before {
-  top: 10rpx;
-  height: 0;
-  width: 40rpx;
-  display: block;
-  position: absolute;
-  border-top: 8rpx solid #fff;
-}
-
-.btn-after {
-  width: 40rpx;
-  height: 0;
-  top: 28rpx;
-  position: absolute;
-  border-top: 8rpx solid #fff;
-  display: block;
 }
 
 .nav {

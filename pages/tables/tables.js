@@ -115,18 +115,6 @@ Page({
     })
   },
 
-  // show modal
-  showModal(e) {
-    this.setData({
-      modalName: e.currentTarget.dataset.target
-    })
-  },
-  hideModal(e) {
-    this.setData({
-      modalName: null
-    })
-  },
-
   onPullDownRefresh: function() {
     // 页面下拉事件的处理函数
   },

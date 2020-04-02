@@ -109,13 +109,6 @@
 					"pathName": "pages/charts/tbs-stat/tbs-stat",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/addLesson/addLesson",
-					"pathName": "pages/addLesson/addLesson",
-					"query": "",
-					"scene": null
 				}
 			]
 		}

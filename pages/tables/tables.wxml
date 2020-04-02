@@ -1,7 +1,7 @@
 <view class="single-page">
 
   <!-- modal - start-->
-  <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
+  <!-- <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog basis-lg" catchtap style="top:{{navHeight}}px;height:calc(100vh - {{navHeight}}px)">
       <view class="cu-list menu text-left">
         <view class="list-item n-text text-center arrow" bindtap="toCharts">统计课程</view>
@@ -9,16 +9,17 @@
         <view class="list-item n-text text-center arrow">添加课程</view>
       </view>
     </view>
-  </view>
+  </view> -->
   <!-- modal - end -->
-  <view class="page-wrapper" style="{{!is_hidden && 'transform:translate(60%,0)'}}">
+  <view class="page-wrapper">
     <!-- 导航 -->
     <view class="nav" style="height:{{navHeight}}px;">
       <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
-        <view class="btn context" bindtap="showModal" data-target="DrawerModalL">
-          <view class="btn-before"></view>
-          <view class="btn-after"></view>
+        <!-- fenxi -->
+        <view class="stat context" bindtap="toCharts">
+          <text class="iconfont icon-shujufenxi-"></text>
         </view>
+        <!-- fenxi -->
         <view class="context" bindtap="togglePre">
           第
           <text>{{currentWeek}}</text> 周

@@ -1,7 +1,8 @@
 <view class="page-wrap">
   <navbar mode="menu"></navbar>
   <view class="container">
-    <ec-canvas></ec-canvas>
+    
+    <view></view>
   </view>
 </view>
 
