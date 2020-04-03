@@ -40,6 +40,7 @@ Page({
 
   onLoad: function (options) {
     const timetable =  getStore('timetable')
+    if(!timetable) return
 
     //  统计已上课程
     const currentWeek = getCurrentWeek()[0]  // 得到本周
@@ -66,7 +67,7 @@ Page({
 
     lessons_passed.value = lessons_passed.name = passedLessonsCount
     lessons_rest.value = lessons_rest.name = allLessonsCount - passedLessonsCount  // 剩余课程
-    process = (passedLessonsCount / allLessonsCount) * 100 
+    process = Math.floor(((passedLessonsCount / allLessonsCount) * 100))
     this.setData({
         allLessonsCount: allLessonsCount,
         passedLessonsCount: passedLessonsCount,
@@ -97,7 +98,6 @@ Page({
       barChartConfig.category.push(key)
       roomsData.push(value)
     }
-    console.info(lessonMap)
     for(const key in lessonMap) {
       const value = lessonMap[key]
  
@@ -107,8 +107,8 @@ Page({
     }
 
     this.setData({
-      maxLessonCount: max,
-      maxLessonName: maxLessonName
+      maxLessonCount : max,
+       maxLessonName : maxLessonName
     })
   },
 
@@ -138,10 +138,10 @@ function initPieChart(canvas, width, height, dpr) {
           fontSize: 10
         }
       },
-      type: pieChartsConfig.type,
+      type  : pieChartsConfig.type,
       center: pieChartsConfig.center,
       radius: pieChartsConfig.radius,
-      data: pieChartsConfig.computedLessons
+      data  : pieChartsConfig.computedLessons
     }]
   }
   chart.setOption(option)
@@ -151,7 +151,7 @@ function initPieChart(canvas, width, height, dpr) {
 // 
 function initBarChart(canvas, width, height, dpr) {
   let chart = echarts.init(canvas, null, {
-    width: width,
+    width : width,
     height: height,
     devicePixelRatio: dpr // new
   });
@@ -189,20 +189,20 @@ function initBarChart(canvas, width, height, dpr) {
     ],
     series: [
       {
-        name: '课程数',
-        type: 'bar',
-        barWidth: 10,
+        name : '课程数',
+        type : 'bar',
         label: {
           normal: {
             show: false,
-            // position: 'inside'
-          }
+            position: 'inside'
+          },
+        barWidth: 20
         },
         data: roomsData,
         itemStyle: {
-          // emphasis: {
-          //   color: '#37a2da'
-          // }
+          emphasis: {
+            color: '#37a2da'
+          }
         }
       },
     ]

@@ -1,2 +1,27 @@
-<!--pages/charts/ykt-stat/ykt-stat.wxml-->
-<text>pages/charts/ykt-stat/ykt-stat.wxml</text>
+<view class="page-wrap">
+  <navbar mode="menu"></navbar>
+  <view class="container">
+
+    <!-- 饼图 -->
+    <view class="datas-wrap">
+
+      <view class="charts-wrap">
+        <view class="s-text">
+          账单分布统计
+        </view>
+        <ec-canvas ec="{{ec_pie}}" id="pie"></ec-canvas>
+      </view>
+    </view>
+
+    <!-- 折线图 -->
+    <view class="datas-wrap">
+
+      <view class="charts-wrap">
+        <view class="s-text">
+          月开销概览
+        </view>
+        <ec-canvas ec="{{ec_line}}" id="line"></ec-canvas>
+      </view>
+    </view>
+  </view>
+</view>

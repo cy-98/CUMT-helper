@@ -23,7 +23,7 @@ const processParamsForOrder = ({ account, start, end, page, row })=>{
   params.start = start? start : '0'
   params.end = end? end: '0'
   params.page = page? page : 1
-  params.row = row? row : 10 * 31
+  params.row = row? row :  600
   return params
 }
 

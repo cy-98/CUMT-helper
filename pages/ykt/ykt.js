@@ -1,7 +1,7 @@
 import { prices } from "../../utils/enum.js"
 import { hasToLogin, decrypt, setStore } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
-import { getBalance, getOrder, recharge } from "../../utils/api.js"
+import { getOrder, recharge } from "../../utils/api.js"
 import { parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
 
 const App = getApp()
@@ -43,34 +43,37 @@ Page({
         return account.account
       })
       .then(id => {
+        let orderList
         if(preGetOrder) {
           preGetOrder.then(res => {
-            const orderList = parseOrder(res)
+            orderList = parseOrder(res)
             this.setData({
-              orderList: orderList
+              orderList: orderList.slice(0,6)
             })
+            
+            App.globalData.orderList = orderList // 订单
           })
         }else {
           let params = {
             account: id,
             page: 1,
-            row: 6 // 最近6单
-            // 以row划分page  拿到以往账单[page]<row个> ，截止时间好像没有影响
-            // 如果要拿到上一个月的就是 page = 2 row = 31或30
           }
           params = processParamsForOrder(params)
           getOrder(params).then(res => {
-            const orderList = parseOrder(res)
+            orderList = parseOrder(res)
             this.setData({
-              orderList: orderList
+              orderList: orderList.slice(0,6)
             })
-            
+
             // 将用户accountid存储在本地，首页可以发起预请求
             setStore({
               accountid: id
             })
+
+            App.globalData.orderList = orderList // 订单
           })
         }
+
       })
       .catch(err => {
         console.log(err)
@@ -132,7 +135,11 @@ Page({
       })
     this.hideModal()
   },
-
+  toChart () {
+    wx.navigateTo({
+      url: '/pages/charts/ykt-stat/ykt-stat'
+    })
+  },
   onShow: function() {
 
   },

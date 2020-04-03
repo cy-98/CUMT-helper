@@ -1,1 +1,33 @@
-/* pages/charts/ykt-stat/ykt-stat.wxss */
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+
+.charts-wrap {
+  display: flex;
+  padding: 30rpx;
+  border-radius: 8rpx;
+  box-shadow: 8rpx 8rpx 14rpx #f3f3f3;
+}
+.charts-wrap {
+  display: flex;
+  padding: 30rpx;
+  border-radius: 8rpx;
+  box-shadow: 8rpx 8rpx 14rpx #f3f3f3;
+}
+ec-canvas#pie {
+  flex: 1;
+  height: 450rpx;
+}
+ec-canvas#line {
+  flex: 1;
+  height: 450rpx;
+}

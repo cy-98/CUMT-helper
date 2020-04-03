@@ -120,7 +120,6 @@ Page({
      let params = {
        account: accountid,
        page: 1,
-       row: 6
      }
      params = processParamsForOrder(params)
      App.globalData.preGetOrder = getOrder(params)
@@ -129,7 +128,7 @@ Page({
   // 工具详情
   tapUtil: function(e) {
     const { path } = e.currentTarget.dataset
-   
+
     navTo(path)
   },
   login:()=>{

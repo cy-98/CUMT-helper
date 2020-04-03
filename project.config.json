@@ -109,6 +109,12 @@
 					"pathName": "pages/charts/tbs-stat/tbs-stat",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/charts/ykt-stat/ykt-stat",
+					"pathName": "pages/charts/ykt-stat/ykt-stat",
+					"scene": null
 				}
 			]
 		}
