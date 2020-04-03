@@ -1,6 +1,6 @@
 
 .nav {
-  background: #1da1f2;
+  /* background: #1da1f2; */
   position: relative;
   box-sizing: border-box;
 }
@@ -72,6 +72,7 @@
   margin: 30rpx;
   padding: 30rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
+  border-radius: 8rpx;
 }
 
 .date {
@@ -91,7 +92,6 @@
 }
 
 .recentLesson-wrap .inner-wrap {
-
   padding: 0 30rpx;
 }
 
@@ -100,8 +100,9 @@
   padding: 40rpx 20rpx;
   border-radius: 8rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
-   display: flex;
+  display: flex;
   justify-content: space-between;
+  background: rgb(256,256,256,0.8);
 }
 
 /* 
@@ -134,7 +135,6 @@
 }
 
 .util {
-
 }
 .util-sort {
   margin: 20rpx 0;

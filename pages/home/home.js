@@ -36,6 +36,7 @@ Page({
     currentDay  : getCurrentWeek()[1],
     date : date.getDate(),
     month : date.getMonth() + 1,
+    is_night: date.getHours() >= 22 ,
     // --- 请求数据 ---
     humidity    : 0,
     weather     : '',

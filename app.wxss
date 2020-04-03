@@ -2,6 +2,7 @@
 @import "colorui/icon.wxss";
 @import "colorui/animation.wxss";
 @import "icon/iconfont.wxss";
+@import "img/bg.wxss";
 
 .page-wrapper {
   height: 100vh;
@@ -10,44 +11,6 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-}
-
-.container {
-  display: flex;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-
-/* 背景 */
-
-.backgroundColor {
-  height: 800rpx;
-  width: 1800rpx;
-  z-index: -1;
-  position: fixed;
-  top: -200rpx;
-  left: -200rpx;
-  border-radius: 50%;
-  /* background: -webkit-linear-gradient(#89bef060, #7781f0); */
-  background: linear-gradient(175deg, rgba(194, 240, 252, 0.575), rgb(13, 148, 182));
-  box-shadow: 0px 3px 8px rgba(194, 240, 252, 0.875);
-}
-
-.pad-around {
-  padding: 40rpx;
-}
-
-/* 登陆按钮五角星 */
-
-.star {
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-right: 10rpx solid transparent;
-  border-bottom: 7rpx solid #fff;
-  border-left: 10rpx solid transparent;
-  transform: rotate(35deg);
-  color: #fff;
 }
 
 .star::before {
@@ -113,6 +76,10 @@
   font-size: 34rpx;
   font-family: "cuIcon";
   line-height: 30rpx;
+}
+
+.back-white {
+  background: rgb(256,256,256,0.8);
 }
 
 .margin-top {

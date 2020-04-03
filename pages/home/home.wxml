@@ -1,4 +1,4 @@
-<view class="page-wrapper">
+<view class="page-wrapper {{is_night ?'bg-night':'bg-day'}}">
   <!-- 背景 -->
   <!-- <view class="backgroundColor"></view> -->
   <!-- 导航 -->
@@ -14,7 +14,7 @@
   <view class="container">
     <!-- 徐州今日天气 -->
     <view class="weather-wrap wrap">
-      <view class="inner-wrap">
+      <view class="inner-wrap back-white">
         <view class="n-text temp">Temperature: <text class="{{temperature > 25 ? 'text-red': 'text-blue'}}">{{temperature}}°</text></view>
         <view class="s-text humidity">Humidity: {{humidity}}°</view>
         <view class="s-text city">徐州</view>
@@ -74,7 +74,7 @@
       <view class="inner-wrap">
         <view class="l-text context">常用工具</view>
         <view class="utils">
-          <view class="util util-sort" bindtap="tapUtil" data-path="{{item.path}}" wx:for="{{utils}}" wx:key="id">
+          <view class="util util-sort back-white" bindtap="tapUtil" data-path="{{item.path}}" wx:for="{{utils}}" wx:key="id">
             <view class="s-text sub-util">{{item.name}}</view>
           </view>
         </view>
