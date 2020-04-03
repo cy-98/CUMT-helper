@@ -102,7 +102,7 @@
   box-shadow: 0 4rpx 10rpx #bbb;
   display: flex;
   justify-content: space-between;
-  background: rgb(256,256,256,0.8);
+  background: rgb(256,256,256,0.9);
 }
 
 /* 

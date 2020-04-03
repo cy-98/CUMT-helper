@@ -79,9 +79,19 @@
 }
 
 .back-white {
-  background: rgb(256,256,256,0.8);
+  background: rgba(255, 255, 255, 0.9);
 }
 
+.backgroundColor {
+  height: 800rpx;
+  width: 1800rpx;
+  z-index: -1;
+  position: fixed;
+  top: -200rpx;
+  left: -200rpx;
+  border-radius: 50%;
+  background: linear-gradient(#f67280, #9198e5);
+}
 .margin-top {
   margin-top: 40rpx;
 }

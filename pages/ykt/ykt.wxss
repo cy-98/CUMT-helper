@@ -37,6 +37,7 @@
 .menu {
   display: flex;
   justify-content: space-between;
+  padding: 40rpx 80rpx;
 }
 
 .checked {
