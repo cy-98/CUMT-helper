@@ -26,7 +26,7 @@
 
 高德API查询徐州天气
 
-根据天气显示不同背景
+~~根据天气显示不同背景~~
 
 ### 用户体验
 
@@ -38,7 +38,7 @@
 
 ##### 1.对某个特别耗时的请求，采用预加载
 
-因为小程序有APP。所以将某个promise请求在进入页面前挂在到App上
+将某个promise请求在进入页面前挂在到App上
 
 进入页面后拿到这个promise调用then方法
 
@@ -46,15 +46,15 @@
 
 ## TODO-LIST
 
-:exclamation:对图片的缓存优化
-
-:exclamation:对代码体积的优化
-
-:nail_care:用户交互反馈
+:nail_care:用户交互操作反馈
 
 :star:UI界面美化
 
 :white_check_mark::star:课程统计
 
-:star:账单统计
+:white_check_mark: :star:账单统计
+
+:white_check_mark: :star:优化网络请求
+
+
 
