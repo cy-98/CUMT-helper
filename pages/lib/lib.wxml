@@ -1,1 +1,7 @@
-<navbar mode="menu"></navbar>
+<view class="page-wrapper">
+  <navbar mode="menu"></navbar>
+  <view class="container">
+    借阅记录
+    
+  </view>
+</view>

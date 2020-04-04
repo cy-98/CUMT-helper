@@ -1,6 +1,12 @@
 import {
-  hasToLogin
+  hasToLogin,
+  decrypt
 } from "../../utils/util.js"
+
+import {
+  getLibUser,
+  findBook
+} from "../../utils/api.js"
 const App = getApp()
 Page({
   data: {
@@ -15,6 +21,39 @@ Page({
  
     // check token
     hasToLogin()
+    getLibUser().then(res => {
+      const text = res.data.data
+      const data = JSON.parse(JSON.parse(decrypt(text)))
+
+      const { numFound, searchResult } = data
+      // author: "刘火良, 杨森编著"
+      // barcode: "C01849247"
+      // docAbstract: null
+      // docCode: "1"
+      // isbn: "978-7-111-42637-0"
+      // loanDate: "2019-11-01"
+      // loanId: 6515929
+      // loanType: null
+      // locationName: "南湖自然科学图书阅览室"
+      // normReturnDate: "2019-12-07"
+      // phyLibName: "中国矿业大学"
+      // publishYear: "2013"
+      // publisher: "机械工业出版社"
+      // recordId: 479045
+      // returnDate: "2019-12-07"
+      // title: "STM32库开发实战指南"
+    })
+
+    findBook({
+      name: 'web'
+    }).then(res => {
+      const text = res.data.data
+      const data = JSON.parse(JSON.parse(decrypt(text)))
+      console.log(data)
+    })
+
+
+
     // 用户信息
     wx.getUserInfo({
       withCredentials: true,
@@ -36,55 +75,4 @@ Page({
     // 图书馆信息
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-   
-
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

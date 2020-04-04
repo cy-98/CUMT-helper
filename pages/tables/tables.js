@@ -114,16 +114,4 @@ Page({
       url: '/pages/charts/tbs-stat/tbs-stat',
     })
   },
-
-  onPullDownRefresh: function() {
-    // 页面下拉事件的处理函数
-  },
-
-  onReachBottom: function() {
-    //页面上拉触底事件的处理函数
-  },
-
-  onShareAppMessage: function() {
-    // 用户点击右上角分享
-  }
 })

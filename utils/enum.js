@@ -81,7 +81,7 @@ i = 0
 
 // 课表颜色
 const lessonColors = [
-  '#EF5350', '#26C6DA', '#66BB6A', '#ff4a00', '#13d0ab', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e', '#13d0ab', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e'
+  '#EF5350', '#26C6DA', '#66BB6A', '#ff4a00', '#13d0ab', '#ffc43e', '#13d0ab', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e', '#5f6c72', '#ffc43e', '#5f6c72',
 ]
 
 // 首页工具

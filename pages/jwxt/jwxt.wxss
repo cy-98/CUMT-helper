@@ -63,7 +63,7 @@
 
 .grade-item {
   display: flex;
-  padding: 40rpx;
+  padding: 30rpx;
   border-bottom: 1px solid #ccc;
   justify-content: space-between;
   align-items: center;

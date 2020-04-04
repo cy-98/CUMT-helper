@@ -1,6 +1,6 @@
 
 .nav {
-  /* background: #1da1f2; */
+  background: #1da1f2;
   position: relative;
   box-sizing: border-box;
 }
@@ -46,6 +46,7 @@
 }
 
 .context {
+  /* color: #fff; */
   padding: 10rpx 0;
   border-bottom: 1px solid #999;
 }
@@ -130,20 +131,19 @@
 
 .utils {
   display: flex;
-  flex-direction: column;
   vertical-align: top;
+  justify-content: space-around;
 }
 
-.util {
-}
 .util-sort {
   margin: 20rpx 0;
   padding: 30rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
   border-radius: 8rpx;
-  display: flex;
+  display: inline-block;
   justify-content: space-evenly;
 }
+
 .util-sort .title {
   width: 100%;
 }

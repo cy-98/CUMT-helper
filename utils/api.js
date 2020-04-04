@@ -58,7 +58,7 @@ const getBalance = () => {
   return http_get(payload)
 }
 // 流水
-const getOrder = (params)=>{
+const getOrder = (params) => {
   const path = 'ykt/orderList'
   const payload = {
     path: path,
@@ -68,7 +68,7 @@ const getOrder = (params)=>{
   return http_get(payload)
 }
 // 充值
-const recharge = (data)=>{
+const recharge = (data) => {
   const path = 'ykt/recharge'
   const payload = {
     path: path,
@@ -78,11 +78,31 @@ const recharge = (data)=>{
   return http_post(payload)
 }
 
+// 图书馆
+const getLibUser = () => {
+  const path = 'lib/userInfo'
+  const payload = {
+    path
+  }
+  processPayload(payload)
+  return http_get(payload)
+}
+const findBook = (params)=>{
+  const path = 'lib/findBook'
+  const payload = {
+    path,
+    params
+  }
+  processPayload(payload)
+  return http_get(payload)
+}
 module.exports = {
-  getUser: getUser,                   // 教务
+  getUser: getUser, // 教务
   loginCUMT: loginCUMT,
   getTimeTables: getTimeTables,
-  recharge: recharge,                 // 一卡通
-  getOrder: getOrder,                 
-  getBalance: getBalance              
+  recharge: recharge, // 一卡通
+  getOrder: getOrder,
+  getBalance: getBalance, // 图书馆
+  getLibUser: getLibUser,
+  findBook: findBook
 }

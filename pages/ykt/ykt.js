@@ -139,11 +139,5 @@ Page({
     wx.navigateTo({
       url: '/pages/charts/ykt-stat/ykt-stat'
     })
-  },
-  onShow: function() {
-
-  },
-  onPullDownRefresh: function() {
-
-  },
+  }
 })
