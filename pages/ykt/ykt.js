@@ -10,7 +10,7 @@ Page({
     modal     : false,
     // - 静态数据 - 
     prices    : prices,
-    // - 网络数九
+    // - 网络数据 -
     account: {},
     balance: { int: 0, float: '00' },
     orderList : []

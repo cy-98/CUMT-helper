@@ -9,6 +9,11 @@ module.exports = {
       url: '/pages/mine/mine',
     })
   },
+  toIndex: ()=>{
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+  },
   toBack: ()=>{
     wx.navigateBack({
       delta: 1,

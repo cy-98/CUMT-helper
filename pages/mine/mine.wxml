@@ -18,7 +18,7 @@
       <view class="list-item s-text"style="text-align:left;" >专业</view>
       <view class="list-item s-text"style="text-align:left;" >关于我们</view>
       <view class="list-item s-text">切换账号</view>
-      <view class="list-item s-text">克服反馈</view>
+      <view class="list-item s-text">客服反馈</view>
     </view>
     <view class="info-list flex-list">
     <view class="list-item s-text">{{userInfo.school}}</view>

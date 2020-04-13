@@ -7,7 +7,8 @@ import {
   loginCUMT
 } from '../../utils/api'
 import {
-  toBack
+  toBack,
+  toIndex
 } from '../../utils/navigate.js'
 
 var app = getApp();
@@ -44,7 +45,10 @@ Page({
           setStore({ 'token': token })
 
           wx.hideLoading()
-          toBack()
+          try{ toBack() }
+          catch(e) {
+            toIndex()
+          }
         }
       })
       .catch(err => {

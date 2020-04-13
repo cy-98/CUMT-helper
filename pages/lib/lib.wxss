@@ -1,1 +1,33 @@
-/* pages/lib/lib.wxss */
+.container {
+  padding: 40rpx;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid royalblue;
+}
+.func-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.block {
+  /* border: 1px solid royalblue; */
+  padding: 10rpx;
+  line-height: 30rpx;
+  border-radius: 8rpx;
+}
+
+.xl {
+  width: 30%;
+  border: 1px solid royalblue;
+  padding: 10rpx 0;
+}
+
+.search {
+  margin-top: 40rpx;
+  flex: 1;
+  border: royalblue;
+}

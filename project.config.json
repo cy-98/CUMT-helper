@@ -114,6 +114,14 @@
 					"id": -1,
 					"name": "pages/charts/ykt-stat/ykt-stat",
 					"pathName": "pages/charts/ykt-stat/ykt-stat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lib/lib",
+					"pathName": "pages/lib/lib",
+					"query": "",
 					"scene": null
 				}
 			]
