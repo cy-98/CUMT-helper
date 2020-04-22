@@ -1,0 +1,30 @@
+<view class="page-wrapper">
+  <navbar mode="menu" page-name="书馆"></navbar>
+  <view class="container">
+    <view class="options l-text title ">馆藏查询</view>
+    <view class="s-text cu-form-group" style="padding:30rpx;">
+      <input placeholder="搜索想看的书籍" class="n-text" style="padding:0 30rpx;" bindinput="inputWord"></input>
+      <view class=" title" bindtap="searchBook">搜索</view>
+    </view>
+    <!-- list -->
+    <view class="list">
+      <view class="list-item" wx:for="{{ searchResult }}">
+        <view class="title l-text">
+          {{ item.title }}
+        </view>
+        <view class="info author s-text">
+          <view>作者:</view>
+          <view>{{ item.author }}</view>
+        </view>
+        <view class="info abstract s-text">
+          <view>简介:</view>
+          <view>{{ item.abstract }}</view>
+        </view>
+        <view class="info pubilisher s-text">
+          <view>出版社:</view>
+          <view>{{ item.publisher }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -96,13 +96,16 @@ const findBook = (params)=>{
   processPayload(payload)
   return http_get(payload)
 }
+const getLoanInfo = () => {
+}
 module.exports = {
   getUser: getUser, // 教务
   loginCUMT: loginCUMT,
   getTimeTables: getTimeTables,
   recharge: recharge, // 一卡通
   getOrder: getOrder,
-  getBalance: getBalance, // 图书馆
-  getLibUser: getLibUser,
-  findBook: findBook
+  getBalance: getBalance, 
+  getLibUser: getLibUser, // 图书馆
+  findBook: findBook,
+  getLoanInfo: getLoanInfo
 }

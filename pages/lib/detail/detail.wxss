@@ -1,0 +1,22 @@
+@import "/pages/lib/lib.wxss";
+
+.list {
+  background: #fff;
+  padding: 0;
+}
+.list-item {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8rpx 14rpx 18rpx #ccc;
+  background: #fff;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #888;
+}
+view.author,.author {
+  flex-wrap: nowrap;
+}

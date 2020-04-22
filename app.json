@@ -4,6 +4,7 @@
     "pages/charts/tbs-stat/tbs-stat",
     "pages/ykt/ykt",
     "pages/lib/lib",    
+    "pages/lib/detail/detail",
     "pages/jwxt/jwxt",
     "pages/home/home",
     "pages/tables/tables",

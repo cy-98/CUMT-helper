@@ -8,26 +8,69 @@
   flex-direction: column;
   border: 1px solid royalblue;
 }
-.func-wrap {
+.User-info{
   display: flex;
-  justify-content: space-around;
-}
-
-.block {
-  /* border: 1px solid royalblue; */
-  padding: 10rpx;
-  line-height: 30rpx;
+  font-size: 1.4rem;
+  padding: 40rpx 50rpx;
   border-radius: 8rpx;
+  /* background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); */
+  background: #45a0dd;
+  justify-content: space-between;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
 }
 
-.xl {
-  width: 30%;
-  border: 1px solid royalblue;
-  padding: 10rpx 0;
+.info .name{
+  color: #fff;
+  font-size: 1.2rem;
 }
 
-.search {
-  margin-top: 40rpx;
-  flex: 1;
-  border: royalblue;
+.small {
+  text-align: right;
+  font-size: 22rpx;
 }
+
+
+/* 功能 */
+.options {
+  /* border-radius: 8rpx; */
+}
+.title {
+  padding: 20rpx;
+  border-bottom: 1px solid #999;
+  display: flex;
+  justify-content: space-between;
+}
+/* 专业推荐 */
+
+.list {
+  padding: 20rpx 30rpx;
+}
+.list-item {
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background: #f3f3f3;
+}
+.dead-line {
+  border-bottom: 1px solid #f3f3f3;
+}
+.border {
+  border: #f3f3f3 1px solid;
+}
+.cu-btn {
+  width: 40rpx;
+}
+/* 馆藏搜索 */
+.cu-form-group .title {
+  border-radius: 8rpx;
+  box-shadow: 3rpx 2rpx 2rpx #f3f3f3;
+  background: #16a085;
+  color: #fff;
+}
+/* 专业推荐 */
+
+

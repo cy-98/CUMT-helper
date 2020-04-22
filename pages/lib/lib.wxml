@@ -1,20 +1,38 @@
-<!-- <view class="page-wrapper">
-  <navbar mode="menu"></navbar>
-  <view class="container"> -->
-    <!-- 功能选项 -->
-    <!-- <view class="nav">
-      <view class="func-wrap s-text">
-        <view class="block">图书馆借阅记录</view>
-        <view class="block">查询图书内容</view>
-        <view class="block">图书续借</view>
-        <view class="block xl l-text txt-center">搜书</view>
+<view class="page-wrapper">
+  <navbar mode="menu" page-name="书馆"></navbar>
+  <view class="container">
+    <!-- 图书借阅记录 -->
+    <view class="User-info">
+      <view class="info">
+        <view class="s-text name">{{name}}</view>
       </view>
-      <view class="search">
-        <input class="input" placeholder="请输入要搜索的内容"></input>
+      <view class="info">
+        <view class="small college">{{school}}</view>
+        <view class="small major">{{major}}</view>
       </view>
     </view>
+       <!-- 馆藏搜索   搜索事件 -->
+    <view class="options s-text title ">馆藏查询</view>
+    <view class="s-text cu-form-group" style="padding:30rpx;">
+      <input placeholder="搜索想看的书籍" class="n-text" style="padding:0 30rpx;" bindinput="inputWord"></input>
+      <view class=" title" bindtap="searchBook">搜索</view>
+    </view>
+    <!-- 专业推荐 -->
+    <view class="options l-text title">专业推荐</view>
+    <view class="list">
+      <view wx:for="{{commendBook}}" class="s-text list-item">{{item.title}}</view>
+    </view>
+    <!-- 借阅记录  展开事件-->
+    <view class="options l-text title">
+      <view>借阅记录</view>
+      <view bindtap="getHistory">{{extend?'-':'+'}}</view>
+    </view>
+    <view class="list">
+      <view wx:if="{{!!extend}}" class="list-item s-text" wx:for="{{user_searchResult}}">{{item.title}}</view>
+      <view wx:if="{{!!extend}}" class="s-text txt-center deadline">我是有底线的 0.0</view>
+    </view>
   </view>
-</view> -->
-<view style="margin:200rpx;">
-施工中。。。。。
 </view>
+<!-- <view style="margin:200rpx;">
+施工中。。。。。
+</view> -->

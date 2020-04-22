@@ -7,25 +7,71 @@ import {
   getLibUser,
   findBook
 } from "../../utils/api.js"
+
+import {
+  fiveRandomBooks
+} from "./helper.js"
+
 const App = getApp()
 Page({
   data: {
-    avatarUrl: '',
-    nickName: 'nickName'
+    name: '',
+    major: '',
+    school: '',
+    commendBook: [],
+    user_numFound: [],
+    user_searchResult: [],
+    extend: false,
+    keyWord: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
- 
-    // check token
+  onLoad: function(options) {
+    // check Token
     hasToLogin()
-    getLibUser().then(res => {
-      const text = res.data.data
-      const data = JSON.parse(JSON.parse(decrypt(text)))
 
-      const { numFound, searchResult } = data
+    // 获取专业信息
+    const userInfo = wx.getStorageSync('userInfo')
+    const {
+      name,
+      major,
+      school
+    } = userInfo
+    this.setData({
+      name: name,
+      school: school,
+      major: major
+    })
+
+    // 根据专业推荐
+    findBook({
+        name: major
+      })
+      .then(res => {
+        const text = res.data.data
+        const data = JSON.parse(JSON.parse(decrypt(text))).data
+        const { searchResult } = data
+        const filtedResult = fiveRandomBooks(searchResult)
+
+        this.setData({
+          commendBook: filtedResult
+        })
+      })
+
+    // 用户借阅历史
+    getLibUser()
+      .then(res => {
+        const text = res.data.data
+        const data = JSON.parse(JSON.parse(decrypt(text))).data
+
+        const {
+          numFound,
+          searchResult
+        } = data
+        console.log(data.searchResult)
+        this.setData({
+          user_numFound: numFound,
+          user_searchResult: searchResult
+        })
       // author: "刘火良, 杨森编著"
       // barcode: "C01849247"
       // docAbstract: null
@@ -43,36 +89,25 @@ Page({
       // returnDate: "2019-12-07"
       // title: "STM32库开发实战指南"
     })
-
-    findBook({
-      name: 'web'
-    }).then(res => {
-      const text = res.data.data
-      const data = JSON.parse(JSON.parse(decrypt(text)))
-      console.log(data)
-    })
-
-
-
-    // 用户信息
-    wx.getUserInfo({
-      withCredentials: true,
-      success: (res) => {
-        const {
-          avatarUrl,
-          nickName
-        } = res.userInfo
-        this.setData({
-          avatarUrl: avatarUrl,
-          nickName: nickName
-        })
-      },
-      fail: (res) => {
-        console.log(res)
-      }
-    })
-
-    // 图书馆信息
-
   },
+  getHistory() {
+    const { extend } = this.data
+    this.setData({
+      extend: !extend
+    })  
+  },
+  inputWord(e){
+    this.setData({
+      keyWord: (e.detail.value + '').trim()
+    })
+  },
+  searchBook(){
+    const { keyWord } = this.data
+    App.findBook = findBook({
+      name: keyWord
+    })
+    wx.navigateTo({
+      url: './detail/detail',
+    })
+  }
 })
