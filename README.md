@@ -54,6 +54,20 @@
 
 用户余额查询和流水都采取了预加载
 
+
+
+#### 预览
+
+![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview)
+
+![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview1)
+
+![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview2)
+
+
+
+
+
 ## TODO-LIST
 
 :nail_care:用户交互操作反馈
