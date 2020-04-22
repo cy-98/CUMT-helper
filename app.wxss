@@ -13,34 +13,7 @@
   box-sizing: border-box;
 }
 
-.star::before {
-  width: 0;
-  height: 0;
-  position: absolute;
-  display: block;
-  top: -4.5rpx;
-  left: -5.0rpx;
-  border-bottom: 8rpx solid #fff;
-  border-left: 3rpx solid transparent;
-  border-right: 3rpx solid transparent;
-  content: '';
-  transform: rotate(-35deg);
-}
 
-.star::after {
-  width: 0;
-  height: 0;
-  position: absolute;
-  display: block;
-  top: 0.2rpx;
-  left: -10rpx;
-  color: #fff;
-  border-right: 10rpx solid transparent;
-  border-bottom: 7rpx solid #fff;
-  border-left: 10rpx solid transparent;
-  content: '';
-  transform: rotate(-70deg);
-}
 
 .l-text {
   font-size: 34rpx;

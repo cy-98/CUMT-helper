@@ -7,7 +7,7 @@ const App = getApp()
 // 初始化图表配置: 课程饼状图
 const lessons_passed = { value: 0 }
 const lessons_rest = { value:0 }
-const computedLessons = [lessons_passed, lessons_rest]
+const computedLessons = [lessons_rest, lessons_passed]
 
 const pieChartsConfig = {
   type: 'pie',

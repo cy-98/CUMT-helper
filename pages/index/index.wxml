@@ -17,16 +17,13 @@
   </view>
 </view>
 <view class="btn-wrapper" style="transform:translateY(120rpx);">
-  <button class="form-item login btn" bindtap="login">登陆</button>
+  <button class="form-item login btnn" bindtap="login">登陆</button>
   <view class="star one"></view>
-  <view class="star two"></view>
   <view class="star three"></view>
   <view class="star four"></view>
   <view class="star five"></view>
   <view class="star six"></view>
   <view class="star seven"></view>
-
-
 </view>
 <view class="s-text txt-center small"style="transform:translateY(120rpx);">
 账号为学号，密码为统一认证密码，即挂VPN的密码。

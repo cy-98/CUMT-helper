@@ -67,7 +67,7 @@ input.form-item {
   padding: 20rpx;
 }
 
-.login.btn {
+.login.btnn {
   border: none;
   box-shadow: 0px 4px 10px #aaa;
   margin: auto;
@@ -78,8 +78,45 @@ input.form-item {
   color: #fff;
   font-weight: 900;
 }
+.star {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-right: 10rpx solid transparent;
+  border-bottom: 7rpx solid #fff;
+  border-left: 10rpx solid transparent;
+  transform: rotate(35deg);
+  color: #fff;
+}
 
+.star::before {
+  width: 0;
+  height: 0;
+  position: absolute;
+  display: block;
+  top: -4.5rpx;
+  left: -5.0rpx;
+  border-bottom: 8rpx solid #fff;
+  border-left: 3rpx solid transparent;
+  border-right: 3rpx solid transparent;
+  content: '';
+  transform: rotate(-35deg);
+}
 
+.star::after {
+  width: 0;
+  height: 0;
+  position: absolute;
+  display: block;
+  top: 0.2rpx;
+  left: -10rpx;
+  color: #fff;
+  border-right: 10rpx solid transparent;
+  border-bottom: 7rpx solid #fff;
+  border-left: 10rpx solid transparent;
+  content: '';
+  transform: rotate(-70deg);
+}
 /* 登陆表单 */
 
 
@@ -89,11 +126,6 @@ input.form-item {
   transform: scale(0.9, 0.9);
 }
 
-.two {
-  top: 51%;
-  left: 32%;
-  transform: scale(0.7, 0.7);
-}
 
 .three {
   top: 63%;
