@@ -4,6 +4,7 @@ import { toLogin } from "../../utils/navigate.js"
 import { getBalance, getOrder, recharge } from "../../utils/api.js"
 import { fetchBalance, fetchOrder, parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
 
+
 const App = getApp()
 Page({
   data: {
@@ -21,24 +22,31 @@ Page({
     wx.showLoading({
       title: '认证信息中',
     })
-
     hasToLogin()
-    let account_id
+
+    const getOrd = getStore('orderList')
+      .then(res => {
+        this.setData({ orderList: res.data })
+      })
+      .catch(e => {
+        console.log(e)
+      })
     const getBlc = getStore('balance')
       .then(balanceFromStore => {
         const balance = balanceFromStore.data
-        
         this.setData({
           balance:{
             int: balance.split('.')[0],
             float: balance.split('.')[1]
           }
         })
-      }).catch(e => {
+      })
+      .catch(e => {
+        console.log(e)
         fetchBalance()
           .then(res => {
             const balance = parseBalance(res)
-            account_id = res.account
+            const account_id = res.account
 
             this.setData({
               balance: {
@@ -50,35 +58,65 @@ Page({
               balance: balance,
               account_id: account_id
             })
+            return account_id
+          })
+          .then(id  => fetchOrder(id))
+          .then(res => {
+            this.setData({
+              orderList: res
+            })
+            setStore({
+              orderList:res
+            })
+          })
+          .finally((r,e) => {
+            wx.hideLoading()
           })
       })
-
-
-
-      // const getOrd = getStore
-    const getOrd = getStore('orderlist')
-      .then(res => {
-        const order = res.data
-      })
-      .catch(e =>{ // 获取失败
-        if(account_id) {
-          fetchOrder(account_id)
-        }else{
-          getStore('accountid')
-            .then(res => res.data)
-              .then(res =>{
-                return fetchOrder(res)
-              })
-              .then(order => {
-                console.log(order)
-              })
-        }
-      })
-   
+    Promise.all([getBlc, getOrd]).then(()=>{
+      wx.hideLoading()
+    })
   },
 
   updateAccount() {
-
+    wx.showLoading({
+      title: '加载信息',
+    })
+    fetchBalance()
+      .then(res => {
+        const balance = parseBalance(res)
+        const account_id = res.account
+        this.setData({
+          balance: {
+            int: balance.split('.')[0],
+            float: balance.split('.')[1]
+          }
+        })
+        setStore({
+          balance: balance
+        })
+        return  account_id
+      })
+      .then(id => {
+        return fetchOrder(id)
+      })
+      .then(res => {
+        this.setData({
+          orderList: res
+        })
+        setStore({
+          orderList: res
+        })
+      })
+      .catch(e => {
+        console.log(e)
+        wx.showToast({
+          title: '网络错误,换个时间吧~',
+        })
+      })
+      .finally((r,e) =>{
+        wx.hideLoading()
+      })
   },
   // 多选
   ChooseCheckbox(e) {

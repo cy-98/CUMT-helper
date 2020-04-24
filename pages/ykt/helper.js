@@ -14,13 +14,20 @@ const fetchBalance = ()=>{
 }
 
 const fetchOrder = (id) => {
-  return getOrder({
-    account: id
-  }).then(res => {
-    const orderList = parseOrder(res)
-    console.log(orderList)
-    return orderList
-  })
+  const params = {
+    account: id,
+    start: '2020-03-12',
+    end: '2020-01-12',
+    page: 1,
+    row: 6
+  }
+  
+  return getOrder(params)
+    .then(res => {
+      const orderList = parseOrder(res)
+      console.log(orderList)
+      return orderList
+    })
 }
 
 const parseAccount = (text)=>{
