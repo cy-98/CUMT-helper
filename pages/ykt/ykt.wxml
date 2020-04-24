@@ -12,11 +12,11 @@
       <!-- 工具列表 -->
       <view class="menu pad-around">
         <!-- 选中 账单 checked : 白色-->
-        <view class="cu-item padding-sm checked">
+        <view class="cu-item padding-sm checked" bindtap="updateAccount">
           <view class="txt-center">
-            <text class="cuIcon-sort lg text-blue"></text>
+            <text class="cuIcon-icloading lg text-blue"></text>
           </view>
-          <text class="s-text text-blue">最近账单</text>
+          <text class="s-text text-blue">更新余额</text>
         </view>
         <!-- 余额充值  unchecked : 蓝色-->
         <view class="cu-item padding-sm unchecked" bindtap="showModal">
@@ -28,7 +28,7 @@
         <!-- 统计  unchecked : 蓝色-->
         <view class="cu-item padding-sm unchecked" bindtap="toChart">
           <view class="txt-center">
-            <text class="cuIcon-icloading lg text-white"></text>
+            <text class="cuIcon-sort lg text-white"></text>
           </view>
           <text class="s-text text-white" >开销统计</text>
         </view>

@@ -9,7 +9,7 @@ import {
   getCurrentWeek,
   processimeForLessons
 } from "../../pages/tables/helper.js"
-import { getBalance, getOrder } from "../../utils/api.js"
+
 import {
   getStore,
   hasToLogin
@@ -29,26 +29,26 @@ Page({
   // init data
   data: {
     // --- 页面数据 ---
-    navHeight : App.globalData.navHeight,
-    navTop    : App.globalData.navTop,
+    navHeight: App.globalData.navHeight,
+    navTop: App.globalData.navTop,
     // --- 计算数据 ---
-    currentWeek : getCurrentWeek()[0],
-    currentDay  : getCurrentWeek()[1],
-    date : date.getDate(),
-    month : date.getMonth() + 1,
-    is_night: date.getHours() >= 22 ,
+    currentWeek: getCurrentWeek()[0],
+    currentDay: getCurrentWeek()[1],
+    date: date.getDate(),
+    month: date.getMonth() + 1,
+    is_night: date.getHours() >= 22,
     // --- 请求数据 ---
-    humidity    : 0,
-    weather     : '',
-    temperature : 0,
-    winddirection : '',
-    todaysLessons : [],
-    tomorrowLessons : [],    // 当夜晚的时候显示明日课程
-    currentWeekLessons : [],
-    store : false,
-    night : false,
+    humidity: 0,
+    weather: '',
+    temperature: 0,
+    winddirection: '',
+    todaysLessons: [],
+    tomorrowLessons: [], // 当夜晚的时候显示明日课程
+    currentWeekLessons: [],
+    store: false,
+    night: false,
     // --- 静态数据 ---
-    utils : utils
+    utils: utils
   },
   onLoad: function(options) {
     // 今日徐州天气
@@ -68,69 +68,76 @@ Page({
         winddirection: winddirection
       })
     })
-    
-    getStore('timetable')
-      .then(res => {
-        if (res.errMsg === "getStorage:fail data not found") {
-          toTable()
-        }
 
-        const {
-          currentWeek,
-          currentDay
-        } = this.data
-        const timetable = res.data
-        const currentWeekLessons = timetable[currentWeek]
-
-        const hours = date.getHours()
-        if(hours > 20 ) {   // 判断时间是否是晚上
-          const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
-          this.setData({
-            tomorrowLessons: tomorrowLessons,
-            currentWeekLessons: currentWeekLessons,
-            store: true,
-            night: true
-          })
-        } else {            // 时间是白天
-          // 今日课程
-          const todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
-          this.setData({
-            todaysLessons: todaysLessons,
-            currentWeekLessons: currentWeekLessons,
-            store: true,
-            night: false
-          })
-        }
-      })
-
-      .catch(err => {
-        this.setData({
-          todaysLessons: [],
-          currentWeekLessons: [],
-          store: false
-        })
-      })
   },
-  onShow(){
+  onShow() {
+
+    const { store } = this.data
+    if (!store) {
+
+      getStore('timetable')
+        .then(res => {
+          if (res.errMsg === "getStorage:fail data not found") {
+            toTable()
+          }
+
+          const {
+            currentWeek,
+            currentDay
+          } = this.data
+          const timetable = res.data
+          const currentWeekLessons = timetable[currentWeek]
+
+          const hours = date.getHours()
+          if (hours > 20) { // 判断时间是否是晚上
+            const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
+            this.setData({
+              tomorrowLessons: tomorrowLessons,
+              currentWeekLessons: currentWeekLessons,
+              store: true,
+              night: true
+            })
+          } else { // 时间是白天
+            // 今日课程
+            const todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
+            this.setData({
+              todaysLessons: todaysLessons,
+              currentWeekLessons: currentWeekLessons,
+              store: true,
+              night: false
+            })
+          }
+        })
+
+        .catch(err => {
+          this.setData({
+            todaysLessons: [],
+            currentWeekLessons: [],
+            store: false
+          })
+        })
+    }
     // 一卡通预请求
-  App.globalData.preGetBalance = getBalance()
-   const accountid = wx.getStorageSync('accountid')
-   if(accountid) {
-     let params = {
-       account: accountid,
-       page: 1,
-     }
-     params = processParamsForOrder(params)
-     App.globalData.preGetOrder = getOrder(params)
-   }
+    // App.globalData.preGetBalance = getBalance()
+    // const accountid = wx.getStorageSync('accountid')
+    // if (accountid) {
+    //   let params = {
+    //     account: accountid,
+    //     page: 1,
+    //   }
+    //   params = processParamsForOrder(params)
+    //   App.globalData.preGetOrder = getOrder(params)
+    // }
   },
   // 工具详情
   tapUtil: function(e) {
-    const { path } = e.currentTarget.dataset
+    const {
+      path
+    } = e.currentTarget.dataset
 
     navTo(path)
   },
-  login:()=>{
+  login: () => {
     hasToLogin()
   },
 })

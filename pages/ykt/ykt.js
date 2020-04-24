@@ -1,8 +1,8 @@
 import { prices } from "../../utils/enum.js"
-import { hasToLogin, decrypt, setStore } from "../../utils/util.js"
+import { hasToLogin, decrypt, getStore, setStore } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
-import { getOrder, recharge } from "../../utils/api.js"
-import { parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
+import { getBalance, getOrder, recharge } from "../../utils/api.js"
+import { fetchBalance, fetchOrder, parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
 
 const App = getApp()
 Page({
@@ -13,7 +13,8 @@ Page({
     // - 网络数据 -
     account: {},
     balance: { int: 0, float: '00' },
-    orderList : []
+    orderList : [],
+    store: false
   },
 
   onLoad: function(options) {
@@ -22,70 +23,150 @@ Page({
     })
 
     hasToLogin()
-    const { preGetBalance, preGetOrder } = App.globalData
-
-    preGetBalance && preGetBalance // preRequest
-      .then(res => {
-        if(res.code === 400) { return new Promise().reject() }
-
-        const text = res.data.data
-        const account = parseAccount(text)
-        const balance = parseBalance(account, "db_balance")
-
+    let account_id
+    const getBlc = getStore('balance')
+      .then(balanceFromStore => {
+        const balance = balanceFromStore.data
+        
         this.setData({
-          account: account,
-          balance: {
+          balance:{
             int: balance.split('.')[0],
             float: balance.split('.')[1]
           }
         })
-        wx.hideLoading()
-        return account.account
-      })
-      .then(id => {
-        let orderList
-        if(preGetOrder) {
-          preGetOrder.then(res => {
-            orderList = parseOrder(res)
-            this.setData({
-              orderList: orderList.slice(0,6)
-            })
-            
-            App.globalData.orderList = orderList // 订单
-          })
-        }else {
-          let params = {
-            account: id,
-            page: 1,
-          }
-          params = processParamsForOrder(params)
-          getOrder(params).then(res => {
-            orderList = parseOrder(res)
-            this.setData({
-              orderList: orderList.slice(0,6)
-            })
+      }).catch(e => {
+        fetchBalance()
+          .then(res => {
+            const balance = parseBalance(res)
+            account_id = res.account
 
-            // 将用户accountid存储在本地，首页可以发起预请求
+            this.setData({
+              balance: {
+                int: balance.split('.')[0],
+                float: balance.split('.')[1]
+              }
+            })
             setStore({
-              accountid: id
+              balance: balance,
+              account_id: account_id
             })
-
-            App.globalData.orderList = orderList // 订单
           })
-        }
+      })
 
+
+
+      // const getOrd = getStore
+    const getOrd = getStore('orderlist')
+      .then(res => {
+        const order = res.data
       })
-      .catch(err => {
-        console.log(err)
-        hasToLogin()
-        wx.hideLoading()
-        // wx.showModal({
-        //   title: '请先登陆教务系统',
-        //   success: function(res) {
-        //     toLogin()
-        //   }
-        // })
-      })
+      .catch(e =>{ // 获取失败
+        if(account_id) {
+          fetchOrder(account_id)
+        }else{
+          getStore('accountid').then(res => res.data)
+            .then(res =>{
+              fetchOrder(account_id)
+            })
+        }
+      }
+   
+    // getStore('balance')
+    //   .then(balance => {
+    //     console.log(account_id,balance)
+    //     this.setData({
+    //         balance: {
+    //           int: balance.split('.')[0],
+    //           float: balance.split('.')[1]
+    //         }
+    //     })
+    //     wx.hideLoading()
+    //   })
+      // .catch(e => {
+      //   fetchBalance()
+      //   .then(res => {
+      //     console.log(res)
+      //     setStore({"balance":res})
+      //   })
+      // })
+
+    // getStore('orderList')
+    //   .then(orderLsit => {
+    //     this.setData({
+    //       orderList: orderLsit
+    //     })
+    //   })
+    //   .catch(e =>{
+    //     fetchOrderList(account_id)
+    //       .then(orderList => {
+    //         this.setData({
+    //           orderList: orderList.slice(0, 6)
+    //         })
+    //       })
+    //   })
+
+  },
+
+
+  //   getBalance()
+  //     .then(res => {
+  //       if(res.code === 400) { return new Promise().reject() }
+
+  //       const text = res.data.data
+  //       const account = parseAccount(text)
+  //       const balance = parseBalance(account, "db_balance")
+
+  //       this.setData({
+  //         account: account,
+  //         balance: {
+  //           int: balance.split('.')[0],
+  //           float: balance.split('.')[1]
+  //         }
+  //       })
+  //       wx.hideLoading()
+  //       return account.account
+  //     })
+  //     .then(id => {
+  //       let orderList
+  //       if(getOrder) {
+  //         getOrder.then(res => {
+  //           orderList = parseOrder(res)
+  //           this.setData({
+  //             orderList: orderList.slice(0,6)
+  //           })
+            
+  //           App.globalData.orderList = orderList // 订单
+  //         })
+  //       }else {
+  //         let params = {
+  //           account: id,
+  //           page: 1,
+  //         }
+  //         params = processParamsForOrder(params)
+  //         getOrder(params).then(res => {
+  //           orderList = parseOrder(res)
+  //           this.setData({
+  //             orderList: orderList.slice(0,6)
+  //           })
+
+  //           // 将用户accountid存储在本地，首页可以发起预请求
+  //           setStore({
+  //             accountid: id
+  //           })
+
+  //           App.globalData.orderList = orderList // 订单
+  //         })
+  //       }
+
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //       hasToLogin()
+  //       wx.hideLoading()
+  //     })
+  // },
+  updateAccount() {
+
   },
   // 多选
   ChooseCheckbox(e) {
