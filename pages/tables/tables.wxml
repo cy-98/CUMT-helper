@@ -1,5 +1,5 @@
 <view class="single-page">
-  <!-- modal -->
+  <!-- modal start -->
   <view class="cu-modal {{modalName=='Modal'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog" catchtap>
       <view class="list">
@@ -19,7 +19,7 @@
             <view>上课时间:</view>
             <view>{{lessonDetail.time}}</view>
           </view>
-           <view class="line">
+          <view class="line">
             <view>课时:</view>
             <view>{{lessonDetail.step}}</view>
           </view>
@@ -27,7 +27,7 @@
       </view>
     </view>
   </view>
-  <!-- modal -->
+  <!-- modal end -->
   <view class="page-wrapper">
     <!-- 导航 -->
     <view class="nav" style="height:{{navHeight}}px;">
@@ -41,7 +41,10 @@
           第
           <text>{{currentWeek}}</text> 周
         </view>
-        <view class="context" style="font-size:30rpx;" bindtap="togglePre">⤵</view>
+        <view class="context" style="font-size:30rpx;" bindtap="togglePre">
+          ⤵
+          <!-- <text class="s-text" style="line-height:30rpx; color:#fff;">选择当前周</text> -->
+        </view>
       </view>
     </view>
 
@@ -49,7 +52,7 @@
     <view class="lesson-pre-view" style="display:{{is_pre?'block;':'none;'}}">
       <!-- 展开 -->
       <scroll-view class="inner-wrap" scroll-x="true">
-        <view class="pre-week " wx:for="{{timetable}}">
+        <view class="pre-week " wx:for="{{timetable}}" bindtap="changeWeekTable" data-id="{{item.id}}">
           <view class="ss-text week-text">第{{item.id}}周</view>
           <!-- 按五天显示 -->
           <view class="les-wrap">

@@ -55,10 +55,6 @@ Page({
           timetable: res.data
         })
       })
-    Promise.all([getTimeTable])
-      .then(res => {
-        console.log('get exam, grad and timeTable success') // all success
-      })
       .catch((err) => { // storage wrong 存储情况出现错误, 重新请求
         wx.showLoading({
           title: '加载课表中'
@@ -125,7 +121,13 @@ Page({
       is_pre: !is_pre
     })
   },
-
+  changeWeekTable(e){
+    const { id } = e.currentTarget.dataset
+    const currentWeek = id
+    this.setData({
+      currentWeek: currentWeek
+    })
+  },
   toCharts(){
     wx.navigateTo({
       url: '/pages/charts/tbs-stat/tbs-stat',
