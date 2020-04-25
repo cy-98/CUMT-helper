@@ -19,7 +19,7 @@ const fetchOrder = (id) => {
     start: '2020-03-12',
     end: '2020-01-12',
     page: 1,
-    row: 6
+    row: 600
   }
   
   return getOrder(params)

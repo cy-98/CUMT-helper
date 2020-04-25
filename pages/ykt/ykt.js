@@ -26,7 +26,8 @@ Page({
 
     const getOrd = getStore('orderList')
       .then(res => {
-        this.setData({ orderList: res.data })
+        App.globalData.orderList = res.data    // 开销统计页面
+        this.setData({ orderList: res.data.slice(0,6) })
       })
       .catch(e => {
         console.log(e)
@@ -42,7 +43,6 @@ Page({
         })
       })
       .catch(e => {
-        console.log(e)
         fetchBalance()
           .then(res => {
             const balance = parseBalance(res)
@@ -66,8 +66,10 @@ Page({
               orderList: res
             })
             setStore({
-              orderList:res
+              orderList:res.slice(0,6)
             })
+            App.globalData.orderList = res    // 开销统计页面
+            console.log(res)
           })
           .finally((r,e) => {
             wx.hideLoading()
@@ -105,8 +107,9 @@ Page({
           orderList: res
         })
         setStore({
-          orderList: res
+          orderList: res.slice(0,6)
         })
+        App.globalData.orderList = res    // 开销统计页面
       })
       .catch(e => {
         console.log(e)
