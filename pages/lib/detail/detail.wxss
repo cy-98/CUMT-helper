@@ -1,5 +1,6 @@
 @import "/pages/lib/lib.wxss";
 
+
 .list {
   background: #fff;
   padding: 0;
@@ -16,6 +17,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: #888;
+  padding: 0 20rpx;
 }
 view.author,.author {
   flex-wrap: nowrap;

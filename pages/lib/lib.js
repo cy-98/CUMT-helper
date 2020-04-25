@@ -72,22 +72,6 @@ Page({
           user_numFound: numFound,
           user_searchResult: searchResult
         })
-      // author: "刘火良, 杨森编著"
-      // barcode: "C01849247"
-      // docAbstract: null
-      // docCode: "1"
-      // isbn: "978-7-111-42637-0"
-      // loanDate: "2019-11-01"
-      // loanId: 6515929
-      // loanType: null
-      // locationName: "南湖自然科学图书阅览室"
-      // normReturnDate: "2019-12-07"
-      // phyLibName: "中国矿业大学"
-      // publishYear: "2013"
-      // publisher: "机械工业出版社"
-      // recordId: 479045
-      // returnDate: "2019-12-07"
-      // title: "STM32库开发实战指南"
     })
   },
   getHistory() {
