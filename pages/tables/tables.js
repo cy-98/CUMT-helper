@@ -99,6 +99,21 @@ Page({
       })
 
   },
+  showModal(e) {
+    console.log(e)
+    const { lesson } = e.target.dataset
+
+    this.setData({
+      modalName: 'Modal',
+      lessonDetail: lesson
+    })
+  },
+  hideModal() {
+    this.setData({
+      modalName: '',
+      lessonDetail: {}
+    })
+  },
   togglePre: function() {
     const {
       is_pre
