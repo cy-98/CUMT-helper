@@ -63,13 +63,12 @@ Page({
           .then(id  => fetchOrder(id))
           .then(res => {
             this.setData({
-              orderList: res
+              orderList: res.slice(0,6)
             })
             setStore({
-              orderList:res.slice(0,6)
+              orderList:res
             })
             App.globalData.orderList = res    // 开销统计页面
-            console.log(res)
           })
           .finally((r,e) => {
             wx.hideLoading()
@@ -104,15 +103,14 @@ Page({
       })
       .then(res => {
         this.setData({
-          orderList: res
+          orderList: res.slice(0,6)
         })
         setStore({
-          orderList: res.slice(0,6)
+          orderList: res
         })
         App.globalData.orderList = res    // 开销统计页面
       })
       .catch(e => {
-        console.log(e)
         wx.showToast({
           title: '网络错误,换个时间吧~',
         })
@@ -159,7 +157,6 @@ Page({
     })
       .then(res => {
         const data = JSON.parse(JSON.parse(decrypt(res.data.data)))
-        console.log(data)
         const { errmsg } = JSON.parse(data.Msg)['transfer']
         if (errmsg === "当前时间不允许交易") {
           wx.showToast({
