@@ -75,6 +75,7 @@ Page({
     })
 
     // 统计最多教室
+   
     const lessonMap = {}
     const roomMap = {}
     let max = 0,
@@ -92,12 +93,14 @@ Page({
           : lessonMap[lesson_name] = 1
       })
     }
-
-    for(const key in roomMap) {
-      const value = roomMap[key]
-      barChartConfig.category.push(key)
-      roomsData.push(value)
+    if (roomsData.length === 0) {
+      for (const key in roomMap) {
+        const value = roomMap[key]
+        barChartConfig.category.push(key)
+        roomsData.push(value)
+      }
     }
+
     for(const key in lessonMap) {
       const value = lessonMap[key]
  
