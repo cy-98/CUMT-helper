@@ -3,8 +3,28 @@
   position: relative;
 }
 
-.madal {
+/* modal */
+/* 课程详情 */
+.cu-dialog {
+  border-radius: 8rpx;
 }
+.list {
+  padding: 30rpx;
+}
+.list .title {
+  text-align: center;
+}
+
+.list .info {
+  display: flex;
+  flex-direction: column;
+}
+.list .line {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rpx;
+}
+
 
 .list-item {
   padding: 20rpx;

@@ -40,6 +40,7 @@ Page({
     currentWeek  : getCurrentWeek()[0],
     currentDay   : getCurrentWeek()[1],
     currentTerm  : getTerm(),
+    lessonDetail: null,
     // --- 请求数据 ---
     timetable : [],
     grade     : [],
@@ -101,8 +102,9 @@ Page({
   },
   showModal(e) {
     console.log(e)
-    const { lesson } = e.target.dataset
-
+    const { lesson } = e.currentTarget.dataset
+    const { schedules } = this.data
+    lesson.time = schedules[lesson.start].begin
     this.setData({
       modalName: 'Modal',
       lessonDetail: lesson
