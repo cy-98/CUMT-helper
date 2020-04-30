@@ -58,7 +58,7 @@
         </view>
         <view class="grid col-3 padding-sm">
           <view wx:for="{{prices}}" class="padding-sm" wx:key="index">
-            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.price}}元
+            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{(-item.price)/100}}元
             </button>
           </view>
         </view>

@@ -110,7 +110,7 @@ const utils = [{
     '考试查询'
   ]
 }]
-const prices = [{
+let prices = [{
   value: 0,
   price: 10,
   checked: false,
@@ -135,10 +135,14 @@ const prices = [{
   price: 100,
   checked: false,
 }]
+const pricesComputed = prices.map(item => {
+  item.price = -item.price * 100
+  return item
+})
 module.exports = {
   utils: utils,
   weeks: weeks,
-  prices: prices,
+  prices: pricesComputed,
   schedules: schedules,
   lessonColors: lessonColors
 }

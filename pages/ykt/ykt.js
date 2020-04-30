@@ -3,7 +3,7 @@ import { hasToLogin, decrypt, getStore, setStore } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
 import { getBalance, getOrder, recharge } from "../../utils/api.js"
 import { fetchBalance, fetchOrder, parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
-
+console.log(prices)
 
 const App = getApp()
 Page({
@@ -150,6 +150,9 @@ Page({
   },
 
   commit(){
+    wx.showLoading({
+      title: '充值中',
+    })
     const { account, chargeNum } = this.data
     recharge({
       account: account.account,
@@ -158,6 +161,7 @@ Page({
       .then(res => {
         const data = JSON.parse(JSON.parse(decrypt(res.data.data)))
         const { errmsg } = JSON.parse(data.Msg)['transfer']
+        wx.hideLoading()
         if (errmsg === "当前时间不允许交易") {
           wx.showToast({
             title: errmsg
