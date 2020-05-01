@@ -136,7 +136,7 @@ let prices = [{
   checked: false,
 }]
 const pricesComputed = prices.map(item => {
-  item.price = -item.price * 100
+  item.price = +item.price * 100
   return item
 })
 module.exports = {

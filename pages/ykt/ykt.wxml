@@ -8,7 +8,7 @@
       <view class="inner-wrap">
         <text class="number text-blue bl-shadow">{{balance.int}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
       </view>
-      <view class="n-text txt-center gr-shadow" style="color:#888;">Balance / ¥</view>
+      <view class="n-text txt-center gr-shadow" style="color:#888;">{{tempMoney? tempMoney : 'Balance / ¥'}}</view>
       <!-- 工具列表 -->
       <view class="menu pad-around">
         <!-- 选中 账单 checked : 白色-->
@@ -58,7 +58,7 @@
         </view>
         <view class="grid col-3 padding-sm">
           <view wx:for="{{prices}}" class="padding-sm" wx:key="index">
-            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{(-item.price)/100}}元
+            <button class="cu-btn blue lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{(0+item.price)/100}}元
             </button>
           </view>
         </view>

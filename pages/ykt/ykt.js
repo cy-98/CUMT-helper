@@ -15,7 +15,8 @@ Page({
     account: {},
     balance: { int: 0, float: '00' },
     orderList : [],
-    store: false
+    store: false,
+    tempMoney: '',
   },
 
   onLoad: function(options) {
@@ -52,7 +53,8 @@ Page({
               balance: {
                 int: balance.split('.')[0],
                 float: balance.split('.')[1]
-              }
+              },
+         
             })
             setStore({
               balance: balance,
@@ -91,7 +93,9 @@ Page({
           balance: {
             int: balance.split('.')[0],
             float: balance.split('.')[1]
-          }
+          },
+          tempMoney: balance.unsettle_amount ?
+            balance.unsettle_amount.slice(0, -2) : 0
         })
         setStore({
           balance: balance
@@ -166,7 +170,28 @@ Page({
           wx.showToast({
             title: errmsg
           })
+        }else {
+          const tempMoney = chargeNum.slice(0,-2)
+          this.setData({
+            tempMoney: `过渡余额：${tempMoney}`
+          })
         }
+      })
+      .then(res => {
+
+        // fetchBalance()
+        //   .then(res => {
+        //     const balance = parseBalance(res)
+        //     this.setData({
+        //       balance: {
+        //         int: balance.split('.')[0],
+        //         float: balance.split('.')[1]
+        //       }
+        //     })
+        //     setStore({
+        //       balance: balance,
+        //     })
+        //   })
       })
     this.hideModal()
   },
