@@ -1,8 +1,9 @@
 <view class="page-wrapper">
-  <navbar page-name="{{nickName}}" mode="index"></navbar>
+  <navbar page-name="{{nickName}}" mode="index" wx:if="{{nickName}}"></navbar>
   <view class="backgroundColor"></view>
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
+    <button open-type='getUserInfo' class="getUser" wx:if="{{!nickName}}">获取授权</button>
     <view class="bubbels-wrapper">
       <view class="bubbel one"></view>
       <view class="bubbel two"></view>
@@ -14,9 +15,9 @@
 
   <view class="info-wrapper">
     <view class="info-icons flex-list">
-      <view class="list-item s-text"style="text-align:left;" >学院</view>
-      <view class="list-item s-text"style="text-align:left;" >专业</view>
-      <view class="list-item s-text"style="text-align:left;" >关于我们</view>
+      <view class="list-item s-text txt-left">学院</view>
+      <view class="list-item s-text txt-left">专业</view>
+      <view class="list-item s-text txt-left">关于我们</view>
       <view class="list-item s-text">切换账号</view>
       <view class="list-item s-text">客服反馈</view>
     </view>

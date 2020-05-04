@@ -3,7 +3,6 @@ import { hasToLogin, decrypt, getStore, setStore } from "../../utils/util.js"
 import { toLogin } from "../../utils/navigate.js"
 import { getBalance, getOrder, recharge } from "../../utils/api.js"
 import { fetchBalance, fetchOrder, parseBalance, parseAccount, processParamsForOrder, parseOrder } from "./helper.js"
-console.log(prices)
 
 const App = getApp()
 Page({

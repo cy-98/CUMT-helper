@@ -17,6 +17,38 @@ Page({
     avatarUrl: '',
     nickName: ''
   },
+  onShow() {
+    const { userInfo, nickName } = this.data
+    if(!userInfo) {
+      console.log(userInfo)
+      getUser()
+        .then((res) => {
+          if (res.data.code === 400) {
+            wx.showToast({
+              title: '服务器错误',
+            })
+            return
+          }
+          const text = res.data.data
+          const userInfo = JSON.parse(decrypt(text))
+
+          setStore({
+            'userInfo': userInfo
+          })
+          this.setData({
+            userInfo: userInfo
+          })
+        })
+    }
+    if(!nickName) {
+      wx.getUserInfo({
+        withCredentials: true,
+        success: function(res) {
+          console.log(res)
+        },
+      })
+    }
+  },
   // lifetimes 
   onLoad: function(options) {
     hasToLogin()
@@ -66,5 +98,12 @@ Page({
             hasToLogin()
           })
       })
+  },
+  getUserInfo: function (e) {
+    app.globalData.userInfo = e.detail.userInfo;
+    this.setData({
+      nickName: e.detail.userInfo.nickName,
+      avatarUrl: e.detail.userInfo.avatarUrl,
+    });
   },
 })

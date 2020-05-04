@@ -7,7 +7,7 @@ import {
   loginCUMT
 } from '../../utils/api'
 import {
-  toBack,
+  toTable,
   toIndex
 } from '../../utils/navigate.js'
 
@@ -25,7 +25,6 @@ Page({
     const {hasUserInfo} = this.data
     if(!hasUserInfo) {
       wx.showModal({ title: '请先授权登陆微信', content: '点击按钮获取头像昵称' })
-      return
     }
 
     wx.showLoading({ title: '登陆中' })
@@ -38,6 +37,7 @@ Page({
       .then((res) => {
         wx.hideLoading()
         if (res.data.code !== 200) {
+          console.log(res)
           wx.showModal({ title: '登陆失败' })
           return
         }else {
@@ -45,8 +45,9 @@ Page({
           setStore({ 'token': token })
 
           wx.hideLoading()
-          try{ toBack() }
+          try{ toTable() }
           catch(e) {
+            console.log(e)
             toIndex()
           }
         }
@@ -56,7 +57,7 @@ Page({
         console.log(err)
       })
   },
-  onLoad: function() { // 获取微信头像和昵称
+  onReady: function() { // 获取微信头像和昵称
     var _this = this;
     if (app.globalData.userInfo) {
       this.setData({

@@ -1,3 +1,4 @@
+import { getTimeTables } from "../../utils/api.js"
 import {
   utils
 } from "../../utils/enum.js"
@@ -77,8 +78,10 @@ Page({
 
       getStore('timetable')
         .then(res => {
+          console.log(res)
           if (res.errMsg === "getStorage:fail data not found") {
-            toTable()
+            
+            return
           }
 
           const {
@@ -117,17 +120,6 @@ Page({
           })
         })
     }
-    // 一卡通预请求
-    // App.globalData.preGetBalance = getBalance()
-    // const accountid = wx.getStorageSync('accountid')
-    // if (accountid) {
-    //   let params = {
-    //     account: accountid,
-    //     page: 1,
-    //   }
-    //   params = processParamsForOrder(params)
-    //   App.globalData.preGetOrder = getOrder(params)
-    // }
   },
   // 工具详情
   tapUtil: function(e) {
@@ -138,6 +130,7 @@ Page({
     navTo(path)
   },
   login: () => {
+    console.log(1)
     hasToLogin()
   },
 })

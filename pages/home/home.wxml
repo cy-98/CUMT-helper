@@ -63,8 +63,8 @@
           <view class="txt-center l-text lesson-info">假期中 ~</view>
         </view>
          <!-- 未登录 -->
-        <view wx:if="{{!store}}" class="lesson">
-          <view class="txt-center l-text lesson-info" bindtap="login">欢迎,请登录 ~</view>
+        <view wx:if="{{!store}}" class="lesson" bindtap="login">
+          <view class="txt-center l-text lesson-info" >欢迎,请登录 ~</view>
         </view>
       </view>
     </view>

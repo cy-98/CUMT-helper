@@ -1,6 +1,12 @@
 .page-wrapper {
 }
 
+.getUser {
+  margin-top: 80rpx;
+  display: flex;
+  padding: 0 80rpx;
+}
+
 .userinfo {
   margin-top: 80rpx;
   display: flex;
@@ -11,7 +17,6 @@
   margin: auto 0;
   width: 128rpx;
   height: 128rpx;
-
   border-radius: 50%;
 }
 
@@ -62,6 +67,7 @@
   top: 30%;
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
 }
+
 .five {
   width: 170rpx;
   height: 170rpx;
@@ -70,7 +76,6 @@
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
   animation-delay: 1s;
 }
-
 
 .info-wrapper {
   padding: 20rpx 40rpx;
@@ -108,9 +113,11 @@
     opacity: 0;
     transform: translateY(0);
   }
-  20%{
+
+  20% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     transform: translateY(-500rpx);

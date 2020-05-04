@@ -46,6 +46,37 @@ Page({
     grade     : [],
     exam      : [],
   },
+  onReady() {
+    const { timetable } = this.data
+    if(!timetable) {
+      const {
+        currentYear,
+        currentTerm
+      } = this.data
+      getTimeTables({
+        year: currentYear,
+        term: currentTerm
+      })
+        .then(res => {
+          let state
+          const text = res.data.data
+          const datas = JSON.parse(decrypt(text))
+          let {
+            timetable
+          } = datas
+
+          processColorForLessons(lessonColors, timetable)
+          timetable = processFormatForLesson(timetable)
+
+          state = {
+            'timetable': timetable
+          }
+          setStore(state)
+          this.setData(state)
+          wx.hideLoading()
+        })
+    }
+  },
   // lifetimes: onload
   onLoad: function(options) {
     hasToLogin()
