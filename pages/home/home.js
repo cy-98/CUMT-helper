@@ -1,27 +1,10 @@
+import { utils } from "../../utils/enum.js"
 import { getTimeTables } from "../../utils/api.js"
-import {
-  utils
-} from "../../utils/enum.js"
-import {
-  navTo,
-  toTable
-} from "../../utils/navigate.js"
-import {
-  getCurrentWeek,
-  processimeForLessons
-} from "../../pages/tables/helper.js"
-
-import {
-  getStore,
-  hasToLogin
-} from "../../utils/util.js"
-import {
-  getWeather,
-  getLessonsOfDay,
-} from "./helper.js"
-import {
-  processParamsForOrder
-} from "../ykt/helper.js"
+import { getCurrentWeek, processimeForLessons } from "../../pages/tables/helper.js"
+import { getStore, hasToLogin } from "../../utils/util.js"
+import { getWeather, getLessonsOfDay, } from "./helper.js"
+import { processParamsForOrder } from "../ykt/helper.js"
+import { navTo, toTable } from "../../utils/navigate.js"
 
 
 const date = new Date()
@@ -51,7 +34,7 @@ Page({
     // --- 静态数据 ---
     utils: utils
   },
-  onLoad: function(options) {
+  onReady: function(options) {
     // 今日徐州天气
     getWeather().then(info => {
       const {
@@ -71,7 +54,7 @@ Page({
     })
 
   },
-  onShow() {
+  onLoad() {
 
     const { store } = this.data
     if (!store) {

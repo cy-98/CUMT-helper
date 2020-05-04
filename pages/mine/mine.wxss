@@ -20,6 +20,7 @@
   border-radius: 50%;
 }
 
+/* ------ 气泡 --------- */
 .bubbels-wrapper {
   margin-left: auto;
   flex: 1;
@@ -76,6 +77,7 @@
   background: linear-gradient(transparent, rgba(255, 255, 255, 0.252));
   animation-delay: 1s;
 }
+/* ------ 气泡 --------- */
 
 .info-wrapper {
   padding: 20rpx 40rpx;
@@ -105,7 +107,9 @@
 .studio {
   margin: 40rpx 0;
 }
-
+.txt-left {
+  text-align: left;
+}
 /* keyframes */
 
 @keyframes floatUp {

@@ -5,7 +5,7 @@ module.exports = {
     })
   },
   toMine: () => {
-    wx.redirectTo({
+    wx.switchTab({
       url: '/pages/mine/mine',
     })
   },
