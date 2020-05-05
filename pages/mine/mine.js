@@ -1,5 +1,6 @@
 import { getUser } from '../../utils/api.js'
 import { decrypt, hasToLogin, getStore, setStore, getWxUser } from '../../utils/util.js'
+import { toLogin } from "../../utils/navigate.js"
 
 const App = getApp()
 Page({
@@ -72,4 +73,7 @@ Page({
       hasUserInfo: true
     })
   },
+  toLogin: function() {
+    toLogin()
+  }
 })

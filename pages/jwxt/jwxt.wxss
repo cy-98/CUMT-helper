@@ -84,3 +84,6 @@
 .transition {
   transition: 0.3s;
 }
+.marg-left {
+  margin-left: 40rpx;
+}

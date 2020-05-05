@@ -16,7 +16,7 @@
     <input class="form-item" type="password" bindinput="getPassword"></input>
   </view>
 </view>
-<view class="btn-wrapper" style="transform:translateY(120rpx);">
+<view class="trans-btm btn-wrapper">
   <button class="form-item login btnn" bindtap="login">登陆</button>
   <view class="star one"></view>
   <view class="star three"></view>
@@ -25,9 +25,9 @@
   <view class="star six"></view>
   <view class="star seven"></view>
 </view>
-<view class="s-text txt-center small"style="transform:translateY(120rpx);">
+<view class="trans-btm s-text txt-center small">
 账号为学号，密码为统一认证密码，即挂VPN的密码。
 </view>
-<view class="s-text txt-center small"style="transform:translateY(120rpx);">
+<view class="trans-btm s-text txt-center small">
 初始密码为身份证后六位
 </view>

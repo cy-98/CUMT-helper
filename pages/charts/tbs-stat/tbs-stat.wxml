@@ -11,7 +11,7 @@
         <view class="n-text text-blue">{{process}}%</view>
         <view class="s-text">课程数</view>
         <view class="n-text text-blue"> {{passedLessonsCount}}
-          <text style="font-size:20rpx;"> ({{allLessonsCount}})</text>
+          <text class="l-txt"> ({{allLessonsCount}})</text>
         </view>
       </view>
       <view class="data-block txt-center">

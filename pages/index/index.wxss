@@ -55,11 +55,15 @@
   font-size: 24rpx;
   color: #999;
 }
+.trans-btm {
+  transform:translateY(120rpx);
+}
 
 input.form-item {
   border-bottom: 1px solid #ddd;
   color: #555;
 }
+
 
 /* 登陆按钮 */
 

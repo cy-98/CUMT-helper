@@ -45,3 +45,7 @@ ec-canvas#pie {
 .text-blue {
   color: #0081ff;
 }
+
+.l-txt {
+  font-size:20rpx;
+}

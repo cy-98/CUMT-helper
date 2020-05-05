@@ -118,6 +118,12 @@
   flex: 1;
   text-align: center;
 }
+.txt-left {
+  text-align: left;
+}
+.half-flex {
+  flex: 0.5;
+}
 
 /* 常用工具 */
 

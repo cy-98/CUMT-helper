@@ -10,7 +10,6 @@ import { navTo, toTable } from "../../utils/navigate.js"
 const date = new Date()
 const App = getApp()
 Page({
-  // init data
   data: {
     // --- 页面数据 ---
     navHeight: App.globalData.navHeight,
@@ -20,31 +19,24 @@ Page({
     currentDay: getCurrentWeek()[1],
     date: date.getDate(),
     month: date.getMonth() + 1,
-    is_night: date.getHours() >= 22,
+    is_night: date.getHours() >= 20,
+    store: false,
+    hasLogin: false,
     // --- 请求数据 ---
     humidity: 0,
     weather: '',
     temperature: 0,
     winddirection: '',
-    todaysLessons: [],
+    todayLessons: [],
     tomorrowLessons: [], // 当夜晚的时候显示明日课程
     currentWeekLessons: [],
-    store: false,
-    night: false,
     // --- 静态数据 ---
     utils: utils
   },
   onReady: function(options) {
     // 今日徐州天气
     getWeather().then(info => {
-      const {
-        city,
-        weather,
-        temperature,
-        humidity,
-        winddirection
-      } = info
-
+      const { city, weather, temperature, humidity, winddirection } = info
       this.setData({
         weather: weather,
         temperature: temperature,
@@ -54,66 +46,66 @@ Page({
     })
 
   },
-  onLoad() {
+  onShow() {
+    // 校验是否登陆
+    const token = wx.getStorageSync('token')
+    if (token) {
+      this.setData({
+        hasLogin: true
+      })
+    }
 
     const { store } = this.data
     if (!store) {
 
       getStore('timetable')
         .then(res => {
-          console.log(res)
-          if (res.errMsg === "getStorage:fail data not found") {
-            
-            return
-          }
-
-          const {
-            currentWeek,
-            currentDay
-          } = this.data
+          const { currentWeek, currentDay, is_night } = this.data
           const timetable = res.data
           const currentWeekLessons = timetable[currentWeek]
-
-          const hours = date.getHours()
-          if (hours > 20) { // 判断时间是否是晚上
+          if (is_night) { // 判断时间是否是晚上
             const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
-            this.setData({
-              tomorrowLessons: tomorrowLessons,
-              currentWeekLessons: currentWeekLessons,
-              store: true,
-              night: true
-            })
-          } else { // 时间是白天
+            this.setLessons(tomorrowLessons, is_night)
+          } else {
             // 今日课程
-            const todaysLessons = getLessonsOfDay(currentDay, currentWeekLessons)
-            this.setData({
-              todaysLessons: todaysLessons,
-              currentWeekLessons: currentWeekLessons,
-              store: true,
-              night: false
-            })
+            const todayLessons = getLessonsOfDay(currentDay, currentWeekLessons)
+            this.setLessons(todayLessons, is_night)
+            console.log(todayLessons, currentDay, currentWeek)
           }
         })
-
         .catch(err => {
+          console.log(err)
           this.setData({
-            todaysLessons: [],
+            todayLessons: [],
             currentWeekLessons: [],
             store: false
           })
         })
     }
   },
+  toTable() {
+    toTable()
+  },
   // 工具详情
   tapUtil: function(e) {
-    const {
-      path
-    } = e.currentTarget.dataset
-
-    navTo(path)
+    navTo(
+      e.currentTarget.dataset // path
+    )
   },
   login: () => {
-    console.log(1)
     hasToLogin()
   },
+  setLessons(lessons, isNight) {
+    if(isNight) {
+      this.setData({
+        store: true,
+        tomorrowLessons: lessons
+      })
+    }else {
+      this.setData({
+        todayLessons: lessons,
+        store: true
+      })
+    }
+  }
 })

@@ -22,3 +22,6 @@
 view.author,.author {
   flex-wrap: nowrap;
 }
+.pad-left {
+  padding-left: 30rpx;
+}

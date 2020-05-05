@@ -2,7 +2,7 @@
   <navbar mode="menu"></navbar>
   <view class="selector">
     <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'selected':''}}">查询考试</view>
-    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'':'selected'}}" style="margin-left:40rpx;">查询成绩</view>
+    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'':'selected'}} marg-left">查询成绩</view>
   </view>
   <view class="container">
     <!-- 考试 -->
