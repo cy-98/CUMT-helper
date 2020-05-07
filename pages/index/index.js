@@ -42,6 +42,7 @@ Page({
           wx.showModal({ title: '登陆失败' })
           return
         }else {
+          wx.clearStorage() // 清楚之前的用户信息
           let token = res.data.data
           setStore({ 'token': token })
 
