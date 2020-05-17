@@ -89,7 +89,7 @@ Page({
   // 工具详情
   tapUtil: function(e) {
     navTo(
-      e.currentTarget.dataset // path
+      e.currentTarget.dataset.path // path
     )
   },
   login: () => {

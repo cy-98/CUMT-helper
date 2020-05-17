@@ -16,23 +16,23 @@
     "list": [{
       "pagePath": "pages/home/home",
       "text": "首页",
-      "iconPath": "icon/apps.png",
-      "selectedIconPath": "icon/apps.png"
+      "iconPath": "icon/shoucang.png",
+      "selectedIconPath": "icon/shoucang.png"
     },{
       "pagePath": "pages/tables/tables",
       "text": "课表",
-      "iconPath": "icon/标记.png",
-      "selectedIconPath": "icon/标记.png"
+      "iconPath": "icon/shizhong.png",
+      "selectedIconPath": "icon/shezhi.png"
     },{
       "pagePath": "pages/jwxt/jwxt",
       "text": "考试",
-      "iconPath": "icon/考试.png",
-      "selectedIconPath": "icon/考试.png"
+      "iconPath": "icon/wenjian.png",
+      "selectedIconPath": "icon/wenjian_1.png"
     },{
       "pagePath": "pages/mine/mine",
       "text": "我的",
-      "iconPath": "icon/西装.png",
-      "selectedIconPath": "icon/西装.png"
+      "iconPath": "icon/lianxiren.png",
+      "selectedIconPath": "icon/lianxiren_1.png"
     }]
   },
   "window": {

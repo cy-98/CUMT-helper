@@ -24,8 +24,9 @@ const date = new Date()
 Page({
   data: {
     // --- 静态数据 ---
-    is_pre    : false,
+    is_pre    : true,
     is_hidden : true,
+    showSetModal: false,
     weeks         : weeks,
     schedules     : schedules,
     lessonsColors : lessonColors,
@@ -76,7 +77,7 @@ Page({
               timetable
             } = datas
 
-            processColorForLessons(lessonColors, timetable)
+            timetable = processColorForLessons(lessonColors, timetable)
             timetable = processFormatForLesson(timetable)
 
             state = {
@@ -125,12 +126,18 @@ Page({
     const { id } = e.currentTarget.dataset
     const currentWeek = id
     this.setData({
-      currentWeek: currentWeek
+      currentWeek
     })
   },
-  toCharts(){
+  toCharts() {
     wx.navigateTo({
       url: '/pages/charts/tbs-stat/tbs-stat',
     })
   },
+  showSetModal() {
+    const showSetModal = true
+    this.setData({
+      showSetModal
+    })
+  }
 })

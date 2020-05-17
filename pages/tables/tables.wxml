@@ -41,7 +41,7 @@
           第
           <text>{{currentWeek}}</text> 周
         </view>
-        <view class="context" style="font-size:30rpx;" bindtap="togglePre">
+        <view class="context ll-text" bindtap="togglePre">
           ⤵
           <!-- <text class="s-text" style="line-height:30rpx; color:#fff;">选择当前周</text> -->
         </view>
@@ -74,7 +74,7 @@
       </view>
       <!-- 课程表格 -->
       <view class="lessons-wrap">
-        <view wx:for="{{10}}" wx:key="id" style="border-top:1px solid #eee;" class="lesson-row"></view>
+        <view wx:for="{{10}}" wx:key="id" class="lesson-row"></view>
         <!-- 块:课程 -->
         <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};" data-lesson="{{item}}"
           bindtap="showModal">
@@ -91,5 +91,31 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class="back-modal" wx:if="{{showSetModal}}">
+
+  </view>
+  <!-- 选择学期 -->
+  <view class="{{showSetModal? 'set-modal' : 'set-wrap'}}">
+    <view wx:if="{{!showSetModal}}">
+      <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
+    </view>
+    <view wx:if="{{!showSetModal}}">
+      <image class="set-icon" src="/icon/设置.png"></image>
+    </view>
+    <!-- set form -->
+    <form wx:if="{{showSetModal}}">
+      <view class="txt-center n-text">选择学期</view>
+      <view class="cu-form-group n-text">
+        选择学年: <picker mode="date"></picker>
+      </view>
+      <view class="cu-form-group n-text">
+        选择学期: <picker mode=""></picker>
+      </view>
+      <view class="cu-form-group">
+        <button>确认</button>
+        <button>取消</button>
+      </view>
+    </form>
   </view>
 </view>

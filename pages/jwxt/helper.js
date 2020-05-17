@@ -1,17 +1,15 @@
-const processExamForTime = (exam)=>{
-  const examsFilted = []
-  const date = new Date()
-  exam.forEach(item => {
-    const examTime = new Date(item.time)
-    const instance = examTime.getTime - date.getTime()
-    const days = instance >= 0
-      && instance / 1000 / 60 / 60 / 24 
-    days 
-      && (item.days = days)
-      && texamsFilted.push(item)
+const computedTime = (exam)=>{
+  return exam.map((item)=>{
+    const todayDate = new Date().getTime()
+    const examDate = new Date(item.time).getTime()
+    const deadLine = ( examDate - todayDate ) / 1000 / 60 / 60 / 24
+
+    item.deadLine = deadLine > 0 ? Math.floor(deadLine) : -1
+    console.log(deadLine, todayDate, examDate)
+    return item
   })
-  return examsFilted
 }
+
 module.exports = {
-  processExamForTime: processExamForTime
+  computedTime
 }

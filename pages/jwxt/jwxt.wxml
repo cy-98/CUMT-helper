@@ -8,11 +8,11 @@
     <!-- 考试 -->
     <view class="exam {{selectorIsLeft?'show':'unshow'}} transition">
       <!-- wx:for -->
-      <view class="exam-item n-text" wx:for="{{exam}}" wx:key="index">
-        <view class="exam-time l-text">72天</view>
+      <view class="exam-item n-text" wx:for="{{exam}}" wx:key="{{index}}" wx:if="{{item.deadLine != -1}}">
+        <view class="exam-time l-text">{{item.deadLine}}天</view>
         <view class="exam-info">
-          <view class="exam-name s-text">{{item.name}}</view>
-          <view class="exam-location s-text">{{item.room}}</view>
+          <view class="exam-name n-text">{{item.name}}</view>
+          <view class="exam-location s-text weight">{{item.room}}</view>
           <view class="exam-date s-text">{{item.time}}</view>
         </view>
       </view>
@@ -32,4 +32,6 @@
       </view>
     </view>
   </view>
+  <!-- 选择当前学期 -->
+  <view class=""></view>
 </view>

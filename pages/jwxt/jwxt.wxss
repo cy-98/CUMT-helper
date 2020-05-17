@@ -38,6 +38,10 @@
   border-bottom: 1px solid #ccc;
   display: flex;
 }
+.exam-item:last-child {
+  border-bottom: none;
+  padding-bottom: 20rpx;
+}
 
 .exam-item .exam-info {
   text-align: right;
@@ -86,4 +90,7 @@
 }
 .marg-left {
   margin-left: 40rpx;
+}
+.weight {
+  font-weight: bolder;
 }

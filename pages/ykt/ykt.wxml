@@ -6,7 +6,7 @@
   </view> -->
     <view class="account-number pad-around">
       <view class="inner-wrap">
-        <text class="number text-blue bl-shadow">{{balance.int}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
+        <text class="number text-blue bl-shadow">{{balance.int || 0}}.<text style="font-size:3rem;">{{balance.float}}</text></text>
       </view>
       <view class="n-text txt-center gr-shadow" style="color:#888;">{{tempMoney? tempMoney : 'Balance / ¥'}}</view>
       <!-- 工具列表 -->

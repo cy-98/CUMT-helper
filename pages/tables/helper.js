@@ -72,7 +72,7 @@ const processColorForLessons = (colors, timetable)=>{
     lesson.color = hex2rgb( map[lesson.id] )
   })
 
-  return
+  return timetable
 }
 
 module.exports= {

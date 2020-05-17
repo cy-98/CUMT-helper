@@ -23,6 +23,7 @@
         <view class="s-text date">{{month}}月{{date}}日 {{weather}}</view>
       </view>
     </view>
+    <view class="s-text wth-tip" wx:if="{{temperature > 25 }}">记得做好防晒哦 ~</view>
     <!-- 今日课程 -->
     <view wx:if="{{!night}}" class="recentLesson-wrap wrap">
       <view class="inner-wrap">

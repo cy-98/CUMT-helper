@@ -164,3 +164,6 @@
 .text-red {
   color: #e54d42;
 }
+.wth-tip {
+  margin: 0 50rpx;
+}

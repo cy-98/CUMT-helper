@@ -234,6 +234,53 @@
   课程
 */
 
+/* 设置选项  20200517*/
+.set-wrap {
+  position: absolute;
+  right:  0;
+  bottom: 50rpx;
+  width: 200rpx;
+  height: 80rpx;
+  display: flex;
+  padding: 15rpx 0;
+  justify-content: space-evenly;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  box-shadow: 0 0 10rpx #ccc;
+  transition: 1s;
+}
+.set-icon {
+  box-sizing: border-box;
+  max-width: 60rpx;
+  max-height: 60rpx;
+  line-height: 80rpx;
+}
+.set-modal {
+  position: absolute;
+  width: 500rpx;
+  height: 600rpx;
+  left: 50%;
+  top: 50%;
+  padding: 30rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  box-shadow: 0 0 10rpx #ccc;
+  transform: translate(-50%, -50%);
+  transition: 0.8s;
+}
+.back-modal {
+  background: rgba(0, 0, 0, 0.26);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.2s;
+}
 /* 
   背景动画
  */
+
+.ll-text{
+  font-size:30rpx;
+}
