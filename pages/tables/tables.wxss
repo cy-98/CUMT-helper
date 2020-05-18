@@ -261,7 +261,7 @@
   height: 600rpx;
   left: 50%;
   top: 50%;
-  padding: 30rpx;
+  padding: 40rpx;
   border-radius: 10rpx;
   background: #fff;
   box-shadow: 0 0 10rpx #ccc;

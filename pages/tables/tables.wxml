@@ -92,10 +92,10 @@
       </view>
     </view>
   </view>
+<!-- 
   <view class="back-modal" wx:if="{{showSetModal}}">
-
   </view>
-  <!-- 选择学期 -->
+  选择学期
   <view class="{{showSetModal? 'set-modal' : 'set-wrap'}}">
     <view wx:if="{{!showSetModal}}">
       <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
@@ -103,7 +103,7 @@
     <view wx:if="{{!showSetModal}}">
       <image class="set-icon" src="/icon/设置.png"></image>
     </view>
-    <!-- set form -->
+
     <form wx:if="{{showSetModal}}">
       <view class="txt-center n-text">选择学期</view>
       <view class="cu-form-group n-text">
@@ -117,5 +117,5 @@
         <button>取消</button>
       </view>
     </form>
-  </view>
+  </view> -->
 </view>

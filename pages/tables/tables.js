@@ -1,23 +1,7 @@
-import {
-  weeks,
-  schedules,
-  lessonColors
-} from '../../utils/enum.js'
-import {
-  decrypt,
-  getStore,
-  setStore,
-  hasToLogin
-} from '../../utils/util.js'
-import {
-  getTimeTables
-} from '../../utils/api.js'
-import {
-  processFormatForLesson,
-  getTerm,
-  getCurrentWeek,
-  processColorForLessons
-} from './helper.js'
+import { getTimeTables } from '../../utils/api.js'
+import { weeks, schedules, lessonColors } from '../../utils/enum.js'
+import { decrypt, getStore, setStore, hasToLogin } from '../../utils/util.js'
+import { processFormatForLesson, getTerm, getCurrentWeek, processColorForLessons } from './helper.js'
 
 const App = getApp()
 const date = new Date()
@@ -61,10 +45,7 @@ Page({
           title: '加载课表中'
         })
 
-        const {
-          currentYear,
-          currentTerm
-        } = this.data
+        const { currentYear, currentTerm } = this.data
         getTimeTables({
             year: currentYear,
             term: currentTerm
@@ -114,10 +95,7 @@ Page({
     })
   },
   togglePre: function() {
-    const {
-      is_pre
-    } = this.data
-
+    const { is_pre } = this.data
     this.setData({
       is_pre: !is_pre
     })
