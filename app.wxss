@@ -14,7 +14,9 @@
 }
 
 
-
+.flex{
+  display: flex;
+}
 .l-text {
   font-size: 34rpx;
   color: #111;

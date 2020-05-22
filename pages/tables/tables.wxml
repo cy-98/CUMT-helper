@@ -76,7 +76,7 @@
       <view class="lessons-wrap">
         <view wx:for="{{10}}" wx:key="id" class="lesson-row"></view>
         <!-- 块:课程 -->
-        <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};" data-lesson="{{item}}"
+        <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};height:calc({{lessonBlockHeight+ '*' + item.step}});" data-lesson="{{item}}"
           bindtap="showModal">
           <view>{{item.name}}</view>
           <view>{{item.room}}</view>
@@ -92,10 +92,9 @@
       </view>
     </view>
   </view>
-<!-- 
+
   <view class="back-modal" wx:if="{{showSetModal}}">
   </view>
-  选择学期
   <view class="{{showSetModal? 'set-modal' : 'set-wrap'}}">
     <view wx:if="{{!showSetModal}}">
       <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
@@ -105,17 +104,19 @@
     </view>
 
     <form wx:if="{{showSetModal}}">
-      <view class="txt-center n-text">选择学期</view>
-      <view class="cu-form-group n-text">
-        选择学年: <picker mode="date"></picker>
+      <view class="txt-center n-text">导入课表</view>
+      <view class="cu-form-group n-text form-item">
+        <picker bindchange="changeYear" range="{{yearPicker}}">
+          选择学年： {{selectYear}}
+        </picker>
       </view>
-      <view class="cu-form-group n-text">
-        选择学期: <picker mode=""></picker>
+      <view class="cu-form-group n-text form-item">
+        <picker bindchange="changeTerm" range="{{termPicker}}">选择学期: {{selectTerm}}</picker>
       </view>
-      <view class="cu-form-group">
-        <button>确认</button>
-        <button>取消</button>
+      <view class="cu-form-group flex">
+        <button class="cu-btn l-text" bindtap="selectTable">确认</button>
+        <button class="cu-btn l-text" bindtap="cancelModal">取消</button>
       </view>
     </form>
-  </view> -->
+  </view>
 </view>

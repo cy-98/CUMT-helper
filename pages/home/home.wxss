@@ -122,7 +122,7 @@
   text-align: left;
 }
 .half-flex {
-  flex: 0.5;
+  flex: 0.8;
 }
 
 /* 常用工具 */
