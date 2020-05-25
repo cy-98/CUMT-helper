@@ -57,31 +57,32 @@ Page({
 
     const { store } = this.data
     if (!store) {
-
-      getStore('timetable')
-        .then(res => {
-          const { currentWeek, currentDay, is_night } = this.data
-          const timetable = res.data
-          const currentWeekLessons = timetable[currentWeek]
-          if (is_night) { // 判断时间是否是晚上
-            const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
-            this.setLessons(tomorrowLessons, is_night)
-          } else {
-            // 今日课程
-            const todayLessons = getLessonsOfDay(currentDay, currentWeekLessons)
-            this.setLessons(todayLessons, is_night)
-            console.log(todayLessons, currentDay, currentWeek)
-          }
-        })
-        .catch(err => {
-          console.log(err)
-          this.setData({
-            todayLessons: [],
-            currentWeekLessons: [],
-            store: false
-          })
-        })
+      this.getTimeTable()
     }
+  },
+  getTimeTable: function() {
+    getStore('timetable')
+      .then(res => {
+        const { currentWeek, currentDay, is_night } = this.data
+        const timetable = res.data
+        const currentWeekLessons = timetable[currentWeek]
+        if (is_night) { // 判断时间是否是晚上
+          const tomorrowLessons = getLessonsOfDay(currentDay + 1, currentWeekLessons)
+          this.setLessons(tomorrowLessons, is_night)
+        } else {
+          // 今日课程
+          const todayLessons = getLessonsOfDay(currentDay, currentWeekLessons)
+          this.setLessons(todayLessons, is_night)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        this.setData({
+          todayLessons: [],
+          currentWeekLessons: [],
+          store: false
+        })
+      })
   },
   toTable() {
     toTable()
