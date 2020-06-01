@@ -3,7 +3,7 @@ import {
   toLogin
 } from './navigate.js'
 
-import { key } from '../key'
+import { key } from '../desKey'
 
 // 用户信息加密
 const encypt = (text) => {
