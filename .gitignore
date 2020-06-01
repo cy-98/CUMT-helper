@@ -11,5 +11,5 @@ $RECYCLE.BIN/
 .Trashes
 
 # Node.js
-.key.js
+key.js
 node_modules/
