@@ -2,7 +2,6 @@
 @import "colorui/icon.wxss";
 @import "colorui/animation.wxss";
 @import "icon/iconfont.wxss";
-@import "img/bg.wxss";
 
 .page-wrapper {
   height: 100vh;

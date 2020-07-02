@@ -8,6 +8,11 @@
 
 接下来，小程序即将增加校车、校历、电费等功能，用户将可进行校园网一键连，任意增添删改课表，随时查看任课教师联系方式等等……应同学要求，小程序还会上线“校园社区”功能——一个只属于矿大同学的朋友圈！
 
+
+### preview
+![img](./preview.jpg)
+
+
 ## 矿小助请求接口
 
 使用promise风格的回调
@@ -58,11 +63,6 @@
 
 #### 预览
 
-![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview)
-
-![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview1)
-
-![img](https://github.com/CaiyueDamowang/CUMT-helper/blob/master/img/preview2)
 
 
 
