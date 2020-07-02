@@ -151,7 +151,8 @@ Page({
       modal: false
     })
   },
-
+  
+  // 充值
   commit(){
     wx.showLoading({
       title: '充值中',

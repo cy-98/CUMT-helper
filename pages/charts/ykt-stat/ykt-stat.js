@@ -1,78 +1,95 @@
 import * as echarts from "../../../ec-canvas/echarts.js"
-import { processDateMap, processOutMap } from "./helper.js"
-const currentMonth = new Date().getMonth() + 1
+import {
+  processDateMap,
+  processOutMap
+} from "./helper.js"
+import {
+  getStore
+} from '../../../utils/util.js'
 
-let outDatas = [],   // 流水商家分布
-    dateDatas = []   // 流水月份分布
+const currentMonth = new Date().getMonth() + 1
+let outDatas = [], // 流水商家分布
+  dateDatas = [] // 流水月份分布
 let billOfMonth = []
 const App = getApp()
-Page({
 
+Page({
   data: {
-    totalIn  : 0,
-    totalOutOfMonth : 0,
+    totalIn: 0,
+    totalOutOfMonth: 0,
     ec_pie: {
       onInit: initPieChart
     },
-    ec_line :{
+    ec_line: {
       onInit: initLineChart
     }
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     const {
       orderList
     } = App.globalData
 
     if (orderList) {
       this.calcOrder(orderList)
-    }else {
-      wx.showToast({
-        title: '操作频繁， 换个时间试试~',
-      })
+    } else {
+      this.fetchOrder()
+        .then(order => {
+          const orderList = order.data
+          this.calcOrder(orderList)
+        })
+        .catch(() => {
+          wx.navigateTo({
+            url: '/pages/ykt/ykt',
+          })
+        })
     }
+  },
+  fetchOrder() {
+    return getStore('orderList')
   },
   calcOrder(orderList) {
     const outMap = {}, // 输出地点         
       dateMap = {}, // 日期
-      monthMap = {}  // 本月统计
+      monthMap = {} // 本月统计
     let totalOutOfMonth = 0,
       totalIn = 0
 
-    orderList.forEach(item => {    // 开始处理数据
+    orderList.forEach(item => { // 开始处理数据
       const {
         MERCNAME, // 商家
-        TRANAMT,  // 消费金额
+        TRANAMT, // 消费金额
         TRANNAME, // 消费来源
         EFFECTDATE // 消费时间
       } = item
       const date = EFFECTDATE.split(' ')[0].split('-')[1]
 
-      TRANAMT < 0
-        && (outMap[MERCNAME]                  // 统计商家
-          ? outMap[MERCNAME] += TRANAMT
-          : outMap[MERCNAME] = TRANAMT)
-        && (dateMap[date]                     // 统计日期
-          ? dateMap[date] += TRANAMT
-          : dateMap[date] = TRANAMT)
-        && (date - currentMonth === 0) // 开始计算本月开销  '09'-9=0
+      TRANAMT < 0 &&
+        (outMap[MERCNAME] // 统计商家
+          ?
+          outMap[MERCNAME] += TRANAMT :
+          outMap[MERCNAME] = TRANAMT) &&
+        (dateMap[date] // 统计日期
+          ?
+          dateMap[date] += TRANAMT :
+          dateMap[date] = TRANAMT) &&
+        (date - currentMonth === 0) // 开始计算本月开销  '09'-9=0
       // && (monthMap[MERCNAME]      // 取消注释则统计本月  现在还未开学
       //     ? monthMap[MERCNAME] += TRANAMT
       //     : monthMap[MERCNAME]  = TRANAMT)
       // && (totalOutOfMonth += TRANAMT)
 
-      TRANAMT > 0
-        && (totalIn += TRANAMT)                 // 统计收入: 如果账单大于零就是收入
+      TRANAMT > 0 &&
+        (totalIn += TRANAMT) // 统计收入: 如果账单大于零就是收入
     })
 
     outDatas = processOutMap(outMap) // 所有账单的分布
     dateDatas = processDateMap(dateMap)
-    billOfMonth = processOutMap(monthMap)  // 本月账单的分布
+    billOfMonth = processOutMap(monthMap) // 本月账单的分布
     this.setData({
       totalIn,
       totalOutOfMonth
     })
-
   }
 })
 
@@ -93,8 +110,8 @@ function initPieChart(canvas, width, height, dpr) {
         }
       },
       type: 'pie',
-      center: ['50%','50%'],
-      radius: [30,40],
+      center: ['50%', '50%'],
+      radius: [30, 40],
       data: outDatas
     }]
   }
@@ -136,13 +153,12 @@ function initLineChart(canvas, width, height, dpr) {
       }
       // show: false
     },
-    series: [
-      {
-        label: {
-          normal: {
-            fontSize: 8
-          }
-        },
+    series: [{
+      label: {
+        normal: {
+          fontSize: 8
+        }
+      },
       name: '金额',
       type: 'line',
       smooth: true,

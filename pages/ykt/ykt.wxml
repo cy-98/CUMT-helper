@@ -45,7 +45,7 @@
         </view>
       </view>
       <view class="order-list" wx:if="{{!orderList.length}}">
-        <view class="list-item s-text">换个时间试试吧 ~</view>
+        <view class="list-item s-text">更新一下或者换个时间试试吧 ~</view>
       </view>
     </scroll-view>
 

@@ -1,11 +1,28 @@
-import { utils } from "../../utils/enum.js"
-import { getTimeTables } from "../../utils/api.js"
-import { getCurrentWeek, processimeForLessons } from "../../pages/tables/helper.js"
-import { getStore, hasToLogin } from "../../utils/util.js"
-import { getWeather, getLessonsOfDay, } from "./helper.js"
-import { processParamsForOrder } from "../ykt/helper.js"
-import { navTo, toTable } from "../../utils/navigate.js"
-
+import {
+  utils
+} from "../../utils/enum.js"
+import {
+  getTimeTables
+} from "../../utils/api.js"
+import {
+  getCurrentWeek,
+  processimeForLessons
+} from "../../pages/tables/helper.js"
+import {
+  getStore,
+  hasToLogin
+} from "../../utils/util.js"
+import {
+  getWeather,
+  getLessonsOfDay,
+} from "./helper.js"
+import {
+  processParamsForOrder
+} from "../ykt/helper.js"
+import {
+  navTo,
+  toTable
+} from "../../utils/navigate.js"
 
 const date = new Date()
 const App = getApp()
@@ -36,7 +53,13 @@ Page({
   onReady: function(options) {
     // 今日徐州天气
     getWeather().then(info => {
-      const { city, weather, temperature, humidity, winddirection } = info
+      const {
+        city,
+        weather,
+        temperature,
+        humidity,
+        winddirection
+      } = info
       this.setData({
         weather: weather,
         temperature: temperature,
@@ -46,24 +69,32 @@ Page({
     })
 
   },
+  onLoad() {
+    App.globalData.homePage = this
+    this.getTimeTable()
+  },
   onShow() {
-    // 校验是否登陆
-    const token = wx.getStorageSync('token')
-    if (token) {
+    // 检验登陆
+    const {
+      hasLogin
+    } = this.data
+    console.log(hasLogin)
+    if (!hasLogin) {
+      const user = wx.getStorageSync('userInfo')
       this.setData({
         hasLogin: true
       })
     }
-
-    const { store } = this.data
-    if (!store) {
-      this.getTimeTable()
-    }
   },
   getTimeTable: function() {
+    console.log('called')
     getStore('timetable')
       .then(res => {
-        const { currentWeek, currentDay, is_night } = this.data
+        const {
+          currentWeek,
+          currentDay,
+          is_night
+        } = this.data
         const timetable = res.data
         const currentWeekLessons = timetable[currentWeek]
         if (is_night) { // 判断时间是否是晚上
@@ -93,16 +124,31 @@ Page({
       e.currentTarget.dataset.path // path
     )
   },
+  toLesStat() {
+    this.toChart('tbs-stat')
+  },
+  toYktStat() {
+    wx.navigateTo({
+      url: '/pages/charts/ykt-stat/ykt-stat'
+    })
+  },
+  toChart(path) {
+    const url = `/pages/charts/${path}/${path}`
+    wx.navigateTo({
+      url
+    })
+  },
   login: () => {
+    console.log(1)
     hasToLogin()
   },
   setLessons(lessons, isNight) {
-    if(isNight) {
+    if (isNight) {
       this.setData({
         store: true,
         tomorrowLessons: lessons
       })
-    }else {
+    } else {
       this.setData({
         todayLessons: lessons,
         store: true

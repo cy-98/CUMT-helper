@@ -102,14 +102,16 @@ const utils = [{
     '查询图书管用户信息',
     '图书续借'
   ]
-}, {
-  name: '教务查询',
-  path: 'jwxt',
-  children: [
-    '成绩查询',
-    '考试查询'
-  ]
-}]
+}, 
+// {
+//   name: '生活统计',
+//   path: 'ykt-charts/ykt-stat',
+//   children: [
+//     '成绩查询',
+//     '考试查询'
+//   ]
+// }
+]
 let prices = [{
   value: 0,
   price: 10,

@@ -3,8 +3,8 @@ import {
   toLogin
 } from './navigate.js'
 
-import { key } from '../desKey'
-
+// import { key } from '../desKey'
+const key = 'flyingstudioisgood'
 // 用户信息加密
 const encypt = (text) => {
   const keyHex = CryptoJS.enc.Utf8.parse(key);
@@ -73,13 +73,17 @@ const parseParams = (params) => {
 
 // 本地存储
 const setStore = (datas) => {
-  for (const key in datas) {
-    const data = datas[key]
-    wx.setStorage({
-      key: key,
-      data: data,
-    })
-  }
+  return new Promise((resolve, reject)=>{
+    for (const key in datas) {
+      const data = datas[key]
+      // wx.setStorageSync({
+      //   key: key,
+      //   data: data,
+      // })
+      wx.setStorageSync(key, data)
+    }
+    resolve()
+  })
 }
 const getStore = (key) => {
   return new Promise((resolve, reject) => {

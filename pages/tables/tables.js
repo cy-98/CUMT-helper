@@ -72,6 +72,7 @@ Page({
         this.fetchTable(currentYear, currentTerm).then(state => {
           this.setData(state)
           setStore(state)
+          .then(this.transTablesOfHome) // 同步首页数据
         })
       })
 
@@ -103,10 +104,15 @@ Page({
         wx.showToast({
           title: '获取失败'
         })
-        console.log(err)
       })
   },
 
+  transTablesOfHome(){
+    const { homePage } = App.globalData
+    if(homePage){
+      homePage.getTimeTable()
+    }
+  },
   showModal(e) {
     const {
       lesson
@@ -165,6 +171,7 @@ Page({
     this.setData({
       showSetModal
     })
+    return false
   },
 
   changeYear(e) {

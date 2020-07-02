@@ -4,8 +4,7 @@ const computedTime = (exam)=>{
     const examDate = new Date(item.time).getTime()
     const deadLine = ( examDate - todayDate ) / 1000 / 60 / 60 / 24
 
-    item.deadLine = deadLine > 0 ? Math.floor(deadLine) : -1
-    console.log(deadLine, todayDate, examDate)
+    item.deadLine = deadLine > 0 ? Math.ceil(deadLine) : -1
     return item
   })
 }

@@ -22,8 +22,8 @@ const roomsData = []
 const barChartConfig = {
     category:[]
 }
-Page({
 
+Page({
   // 页面的初始数据
   data: {
     passedLessonsCount: 0,
@@ -40,19 +40,34 @@ Page({
 
   onLoad: function (options) {
     const timetable =  getStore('timetable')
-    if(!timetable) return
+    console.log(timetable)
+    if(!timetable) {
+      this.getTablesFirst()
+      return
+    }
+    this.getMostLessonRoom(timetable)
+    // 统计最多教室
+    this.getPassedLesson(timetable)
+  },
+  getTablesFirst() {
+    setTimeout(wx.navigateBack, 2000)
+    wx.showToast({
+      title: '请先请求课表',
+    })
+  },
 
+  getMostLessonRoom(timetable) {
     //  统计已上课程
     const currentWeek = getCurrentWeek()[0]  // 得到本周
-    const   currenDay = getCurrentWeek()[1]   // 得到今天
-    
+    const currenDay = getCurrentWeek()[1]   // 得到今天
+
     let process       // 课程进度
     let passedLessonsCount = 0
-    let    allLessonsCount = 0
+    let allLessonsCount = 0
 
-    for(let i = 1; i <= 20; i ++){
-      if(i <= currentWeek) {
-        if(i === currentWeek) {
+    for (let i = 1; i <= 20; i++) {
+      if (i <= currentWeek) {
+        if (i === currentWeek) {
           const lessonsOfWeek = timetable[i]['lessons']
           const lessonsPassed = comptLessonsOfWeek(currenDay, lessonsOfWeek) // 本周已上课程
           passedLessonsCount += lessonsPassed
@@ -69,27 +84,26 @@ Page({
     lessons_rest.value = lessons_rest.name = allLessonsCount - passedLessonsCount  // 剩余课程
     process = Math.floor(((passedLessonsCount / allLessonsCount) * 100))
     this.setData({
-        allLessonsCount: allLessonsCount,
-        passedLessonsCount: passedLessonsCount,
-        process: process
+      allLessonsCount: allLessonsCount,
+      passedLessonsCount: passedLessonsCount,
+      process: process
     })
-
-    // 统计最多教室
-   
+  },
+  getPassedLesson(timetable) {
     const lessonMap = {}
     const roomMap = {}
     let max = 0,
-        maxLessonName = ''
-    for(let i = 1; i < 20; i++) {
+      maxLessonName = ''
+    for (let i = 1; i < 20; i++) {
       timetable[i]['lessons'].forEach(lesson => {
         const room_name = sliceRoomName(lesson.room)
         roomMap[room_name]
-          ? roomMap[room_name] ++
-          : (roomMap[room_name]  = 1)
+          ? roomMap[room_name]++
+          : (roomMap[room_name] = 1)
 
         const lesson_name = lesson.name
         lessonMap[lesson_name]
-          ? lessonMap[lesson_name] ++
+          ? lessonMap[lesson_name]++
           : lessonMap[lesson_name] = 1
       })
     }
@@ -101,27 +115,19 @@ Page({
       }
     }
 
-    for(const key in lessonMap) {
+    for (const key in lessonMap) {
       const value = lessonMap[key]
- 
-      max < value 
-        && (max = value) 
+
+      max < value
+        && (max = value)
         && (maxLessonName = key)
     }
 
     this.setData({
-      maxLessonCount : max,
-       maxLessonName : maxLessonName
+      maxLessonCount: max,
+      maxLessonName: maxLessonName
     })
-  },
-
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-
-  onShow: function () {
-    // 生命周期函数--监听页面显示
-  },
+  }
 })
 
 function initPieChart(canvas, width, height, dpr) {

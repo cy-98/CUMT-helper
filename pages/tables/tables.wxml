@@ -42,7 +42,7 @@
           <text>{{currentWeek}}</text> 周
         </view>
         <view class="context ll-text" bindtap="togglePre">
-          ⤵
+          {{ is_pre ? '🔼': '🔽' }}
           <!-- <text class="s-text" style="line-height:30rpx; color:#fff;">选择当前周</text> -->
         </view>
       </view>
@@ -76,8 +76,8 @@
       <view class="lessons-wrap">
         <view wx:for="{{10}}" wx:key="id" class="lesson-row"></view>
         <!-- 块:课程 -->
-        <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};height:calc({{lessonBlockHeight+ '*' + item.step}});" data-lesson="{{item}}"
-          bindtap="showModal">
+        <view class="s-text lesson" wx:for="{{timetable[currentWeek].lessons}}" wx:key="id" style="top:calc({{lessonBlockMarginTop+'*'+(item.start -1)}});left:calc({{lessonBlockMarginLeft+'*' +(item.day -1)}});background:{{item.color}};height:calc({{lessonBlockHeight+ '*' + item.step}});"
+          data-lesson="{{item}}" bindtap="showModal">
           <view>{{item.name}}</view>
           <view>{{item.room}}</view>
         </view>
@@ -96,14 +96,15 @@
   <view class="back-modal" wx:if="{{showSetModal}}">
   </view>
   <view class="{{showSetModal? 'set-modal' : 'set-wrap'}}">
-    <view wx:if="{{!showSetModal}}">
-      <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
-    </view>
-    <view wx:if="{{!showSetModal}}">
-      <image class="set-icon" src="/icon/设置.png"></image>
-    </view>
 
-    <form wx:if="{{showSetModal}}">
+      <view wx:if="{{!showSetModal}}">
+        <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
+      </view>
+      <view wx:if="{{!showSetModal}}">
+        <image class="set-icon" src="/icon/设置.png"></image>
+      </view>
+
+    <form wx:if="{{showSetModal}}" style="{{showSetModal ? 'opacity:1':'opacity:0'}}">
       <view class="txt-center n-text">导入课表</view>
       <view class="cu-form-group n-text form-item">
         <picker bindchange="changeYear" range="{{yearPicker}}">

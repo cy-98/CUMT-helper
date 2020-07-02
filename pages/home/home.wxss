@@ -139,10 +139,11 @@
   display: flex;
   vertical-align: top;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .util-sort {
-  margin: 20rpx 0;
+  margin: 20rpx 5rpx;
   padding: 30rpx;
   box-shadow: 0 4rpx 10rpx #bbb;
   border-radius: 8rpx;

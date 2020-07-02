@@ -3,6 +3,7 @@ import { loginCUMT } from '../../utils/api'
 import { toMine, toIndex } from '../../utils/navigate.js'
 
 var app = getApp();
+
 Page({
   data: {
     userInfo: {},

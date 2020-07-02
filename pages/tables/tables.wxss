@@ -30,7 +30,7 @@
   padding: 20rpx;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
 }
 
 .page-wrapper {
@@ -191,7 +191,9 @@
   width: calc((100%) / 7);
   border-radius: 10rpx;
   box-sizing: border-box;
-  box-shadow: 0 0 1rpx 1rpx #999;
+  /* box-shadow: 0 0 1rpx 1rpx #999; */
+  border: 6rpx solid #fff;
+  padding: 4rpx;
   position: absolute;
   text-align: center;
   color: #eee;
@@ -291,7 +293,14 @@
 .form-item {
   padding: 20rpx;
 }
+.set-term {
+  line-height: 60rpx;
+}
 .cu-btn {
   padding: 10rpx;
   margin: 30rpx;
+}
+.set-icon {
+  border: 1px solid #38f;
+  border-radius: 10rpx;
 }
