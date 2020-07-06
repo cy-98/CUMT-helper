@@ -63,10 +63,7 @@ Page({
         const text = res.data.data
         const data = JSON.parse(JSON.parse(decrypt(text))).data
 
-        const {
-          numFound,
-          searchResult
-        } = data
+        const { numFound, searchResult } = data
         console.log(data.searchResult)
         this.setData({
           user_numFound: numFound,

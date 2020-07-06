@@ -10,7 +10,6 @@ import {
   decrypt,
   getStore,
   setStore,
-  hasToLogin
 } from '../../utils/util.js'
 import {
   processFormatForLesson,
@@ -54,7 +53,6 @@ Page({
   },
 
   onLoad: function(options) {
-    hasToLogin()
     const getTimeTable = getStore('timetable')
       .then(res => {
         this.setData({
@@ -65,10 +63,7 @@ Page({
         wx.showLoading({
           title: '加载课表中'
         })
-        const {
-          currentYear,
-          currentTerm
-        } = this.data
+        const { currentYear, currentTerm } = this.data
         this.fetchTable(currentYear, currentTerm).then(state => {
           this.setData(state)
           setStore(state)
@@ -144,9 +139,7 @@ Page({
   },
 
   changeWeekTable(e) {
-    const {
-      id
-    } = e.currentTarget.dataset
+    const { id } = e.currentTarget.dataset
     const currentWeek = id
     this.setData({
       currentWeek

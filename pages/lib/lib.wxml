@@ -12,7 +12,7 @@
       </view>
     </view>
        <!-- 馆藏搜索   搜索事件 -->
-    <view class="options s-text title ">馆藏查询</view>
+    <view class="options l-text title ">馆藏查询</view>
     <view class="s-text cu-form-group" style="padding:30rpx;">
       <input placeholder="搜索想看的书籍" class="n-text" style="padding:0 30rpx;" bindinput="inputWord"></input>
       <view class=" title" bindtap="searchBook">搜索</view>

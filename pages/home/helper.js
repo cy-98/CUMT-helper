@@ -9,8 +9,10 @@ import {
 } from "../../utils/util.js"
 
 // 获取今日课程
-const getLessonsOfDay = (day, currentLessons) => {
+const getLessonsOfDay = (day, currentLessons=[]) => {
+  if(currentLessons.length === 0) { return currentLessons}
   const todayLessons = []
+  console.log(currentLessons)
   currentLessons["lessons"].forEach(lesson => {
     lesson.day === day &&
       todayLessons.push(lesson) &&
@@ -22,10 +24,7 @@ const getLessonsOfDay = (day, currentLessons) => {
 // 高德api https://restapi.amap.com/v3/weather/weatherInfo
 // 徐州天气： appkey =	af63543d80ba0783a8d1ef2b4a408fb9 city=320300
 const getWeather = () => {
-  const params = {
-    key: '10ad7b200068779b0d08940cfc0a1aa4',
-    city: 320300
-  }
+  const params = { key: '10ad7b200068779b0d08940cfc0a1aa4', city: 320300 }
   const query = parseParams(params)
   return new Promise((resolve, reject) => {
     wx.request({

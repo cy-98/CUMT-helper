@@ -1,28 +1,10 @@
-import {
-  utils
-} from "../../utils/enum.js"
-import {
-  getTimeTables
-} from "../../utils/api.js"
-import {
-  getCurrentWeek,
-  processimeForLessons
-} from "../../pages/tables/helper.js"
-import {
-  getStore,
-  hasToLogin
-} from "../../utils/util.js"
-import {
-  getWeather,
-  getLessonsOfDay,
-} from "./helper.js"
-import {
-  processParamsForOrder
-} from "../ykt/helper.js"
-import {
-  navTo,
-  toTable
-} from "../../utils/navigate.js"
+import { utils } from "../../utils/enum.js"
+import { getTimeTables } from "../../utils/api.js"
+import { navTo, toTable } from "../../utils/navigate.js"
+import { getStore, hasToLogin } from "../../utils/util.js"
+import { processParamsForOrder } from "../ykt/helper.js"
+import { getWeather, getLessonsOfDay, } from "./helper.js"
+import { getCurrentWeek, processimeForLessons } from "../../pages/tables/helper.js"
 
 const date = new Date()
 const App = getApp()
@@ -78,7 +60,7 @@ Page({
     const {
       hasLogin
     } = this.data
-    console.log(hasLogin)
+
     if (!hasLogin) {
       const user = wx.getStorageSync('userInfo')
       this.setData({
@@ -87,7 +69,6 @@ Page({
     }
   },
   getTimeTable: function() {
-    console.log('called')
     getStore('timetable')
       .then(res => {
         const {
@@ -107,7 +88,6 @@ Page({
         }
       })
       .catch(err => {
-        console.log(err)
         this.setData({
           todayLessons: [],
           currentWeekLessons: [],
@@ -116,6 +96,7 @@ Page({
       })
   },
   toTable() {
+    hasToLogin()
     toTable()
   },
   // 工具详情
@@ -139,7 +120,7 @@ Page({
     })
   },
   login: () => {
-    console.log(1)
+
     hasToLogin()
   },
   setLessons(lessons, isNight) {
