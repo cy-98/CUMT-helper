@@ -18,10 +18,6 @@ Page({
     if(!userInfo) {
       getUser()
         .then((res) => {
-          if (res.data.code === 400) {
-            wx.showToast({ title: '服务器错误', })
-            return
-          }
           const text = res.data.data
           const userInfo = JSON.parse(decrypt(text))
           setStore({ 'userInfo': userInfo })
