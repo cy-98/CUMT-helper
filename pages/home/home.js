@@ -118,5 +118,11 @@ Page({
         store: true
       })
     }
+  },
+  // 跳转预约参观矿大
+  viewCUMT() {
+    wx.navigateToMiniProgram({
+      appId: 'wxe222065a311f7ca9'
+    })
   }
 })

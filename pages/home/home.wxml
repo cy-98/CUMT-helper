@@ -1,6 +1,5 @@
 <view class="page-wrapper {{is_night ?'bg-night':'bg-day'}}">
   <!-- 背景 -->
-  <!-- <view class="backgroundColor"></view> -->
   <!-- 导航 -->
   <view class="nav" style="height:{{navHeight}}px;">
     <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
@@ -90,8 +89,8 @@
           <view class="util util-sort back-white" bindtap="toYktStat">
             <view class="s-text sub-util">开销分布图</view>
           </view>
-           <view class="util util-sort back-white">
-            <view class="s-text sub-util">矿大头像戳</view>
+           <view class="util util-sort back-white" bindtap="viewCUMT">
+            <view class="s-text sub-util">预约小程序</view>
           </view>
           <!--  -->
         </view>
