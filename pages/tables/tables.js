@@ -11,6 +11,7 @@ import {
   getStore,
   setStore,
   getOwnYearPicker,
+  debounce
 } from '../../utils/util.js'
 import {
   getTerm,
@@ -55,6 +56,7 @@ Page({
   },
 
   onLoad: function(options) {
+    this.selectTable = debounce(this.selectTable)
     const getTimeTable = getStore('timetable')
       .then(res => {
         this.setData({
@@ -195,14 +197,13 @@ Page({
       selectTerm
     } = this.data
 
-    if (selectYear === 0 || selectTerm === 0) {
+    if (!selectYear || !selectTerm) {
       wx.showToast({
         title: '请选择学期',
       })
     } else {
-      this.fetchTable(selectYear, selectTerm).then((state) => {
-        this.setData(state)
-      })
+      this.fetchTable(selectYear, selectTerm)
+        .then(this.setData)
     }
     this.cancelModal()
   }

@@ -57,10 +57,6 @@ Page({
       })
   },
 
-  calcGPA(grade = []) {
-    const lessons = filteUseless(grade)
-    return GpaReducer(lessons)
-  },
   selectCheckItem(e) {
     const { item } = e.currentTarget.dataset
     const { parentIndex, index } = item
@@ -79,8 +75,8 @@ Page({
     })
   },
 
+  // 获取gpa
   getGpa() {
-    console.log('call')
     const grades = []                 // 请求结果汇总
     const { yearPicker } = this.data
     const childPool = []
@@ -89,32 +85,40 @@ Page({
     })
     const terms = flatten(childPool)
     childPool.length = 0
-
+    
     terms.forEach(term => {
       if(term.select) {
         childPool.push(
           { year: term.year, term: term.code }
-        ) 
-      }
-    })
+          ) 
+        }
+      })
     Promise.all(
       childPool.map(
         fetchData => getGrade(fetchData)
-        )
+      )
     )
-      .then((grades) => {
-        return grades.reduce((pre, aft) => {
-          return pre.concat(aft)
-        })
+    .then((grades) => grades.reduce(
+      (pre, aft) => {
+        return pre.concat(aft)
       })
-      .then(this.calcGPA)
-      .then(gpa => {
-        console.log(gpa)
+    )
+    .then(this.calcGPA)
+    .then(gpa => {
+      this.setData({
+        gpa
       })
-  },
-  toggleSelector: function(e) {
+    })
+},
+
+calcGPA(grade = []) {
+  const lessons = filteUseless(grade)
+  return GpaReducer(lessons)
+},
+          
+toggleSelector(e) {
     const KEY = 'selector'
     const selectorIndex = e.target.dataset[KEY]
     this.setData({ selectorIndex })
-  },
+  }
 })

@@ -148,17 +148,27 @@ const flatten = (arr, result = []) => {
   return result
 }
 // 节流
-const throttle = function (fn, delay = 600) {
+const throttle = function (fn, delay = 500) {
   const instance = this
   let timer = new Date().getTime()
 
   return function() {
     const now = new Date().getTime()
-    console.log(now, timer)
     if(now - timer > delay) {
       fn.call(instance)
-      timer = new Date().getTime()
     }
+    timer = new Date().getTime()
+  }
+}
+// 防抖
+const debounce = function(fn, delay = 500) {
+  const instance = this
+  let timer
+  return function() {
+    if(timer){ clearTimeout(timer) }
+    timer = setTimeout(() => {
+        fn.call(instance)
+    }, delay);
   }
 }
 
@@ -179,6 +189,7 @@ module.exports = {
   
   // 
   throttle: throttle,
+  debounce: debounce,
   
   parseParams: parseParams,
 }
