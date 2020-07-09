@@ -300,7 +300,3 @@
   padding: 10rpx;
   margin: 30rpx;
 }
-.set-icon {
-  border: 1px solid #38f;
-  border-radius: 10rpx;
-}

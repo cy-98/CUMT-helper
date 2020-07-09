@@ -120,15 +120,65 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const getOwnYearPicker = () => {
+  return getStore('userInfo')
+    .then((res) => {
+      let { year } = res.data
+      year = Number(year)
+      
+      let yearShcedule = 4
+      const yearPicker = []
+      while(yearShcedule) {
+        yearPicker.unshift(
+          year + --yearShcedule
+        )
+      }
+      return yearPicker
+    })
+}
 
+const flatten = (arr, result = []) => {
+  arr.forEach(a => {
+    if(Array.isArray(a)) {
+      flatten(a, result)
+    }else{
+      result.push(a)
+    }
+  })
+  return result
+}
+// 节流
+const throttle = function (fn, delay = 600) {
+  const instance = this
+  let timer = new Date().getTime()
+
+  return function() {
+    const now = new Date().getTime()
+    console.log(now, timer)
+    if(now - timer > delay) {
+      fn.call(instance)
+      timer = new Date().getTime()
+    }
+  }
+}
 
 module.exports = {
   encrypt: encypt,
   decrypt: decrypt,
+  
+  //
+  flatten: flatten,
   getStore: getStore,
   setStore: setStore,
-  getWxUser: getWxUser,
   formatTime: formatTime,
+  
+  //
+  getWxUser: getWxUser,
   hasToLogin: hasToLogin,
+  getOwnYearPicker: getOwnYearPicker,
+  
+  // 
+  throttle: throttle,
+  
   parseParams: parseParams,
 }

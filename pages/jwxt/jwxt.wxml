@@ -1,13 +1,16 @@
 <view class="page-wrapper">
   <navbar mode="menu"></navbar>
   <view class="selector">
-    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'selected':''}}">查询考试</view>
-    <view bindtap="toggleSelector" class="n-text select-btn {{selectorIsLeft?'':'selected'}} marg-left">查询成绩</view>
+    <view data-selector="0" bindtap="toggleSelector" class="n-text select-btn {{selectorIndex==0?'selected':''}}">查询考试</view>
+    <view data-selector="1" bindtap="toggleSelector" class="n-text select-btn {{selectorIndex==1?'selected':''}} marg-left">查询成绩</view>
+      <view data-selector="2" bindtap="toggleSelector" class="n-text select-btn {{selectorIndex==2?'selected':''}} marg-left">查询绩点</view>
   </view>
   <view class="container">
+
     <!-- 考试 -->
-    <view class="exam {{selectorIsLeft?'show':'unshow'}} transition">
-      <!-- wx:for -->
+    <view
+     wx:if="{{selectorIndex==0}}" class="exam transition">
+
       <view class="exam-item n-text" wx:for="{{exam}}" wx:key="{{index}}" wx:if="{{item.deadLine != -1}}">
         <view class="exam-time l-text">{{item.deadLine}}天</view>
         <view class="exam-info">
@@ -18,8 +21,9 @@
       </view>
       <view wx:if="{{exam.length === 0}}" class="none exam-item n-text">暂时没有考试 ~~</view>
     </view>
+
     <!-- 成绩 -->
-    <view class="grade {{selectorIsLeft?'unshow':'show'}} transition">
+    <view wx:if="{{selectorIndex==1}}" class="grade transition">
       <view class="grade-list">
         <view class="grade-item n-text" wx:for="{{grade}}" wx:key="index">
           <view class="l-text" style="color:{{item.grade > 60? '#0081ff':'#e54d42'}}">{{item.grade}}</view>
@@ -28,6 +32,24 @@
         </view>
         <view wx:if="{{grade.length === 0}}" class="none n-text grade-item">
           本学期还未考试哦 ~~
+        </view>
+        
+      </view>
+    </view>
+    
+    <!-- 绩点 -->
+    <view wx:if="{{selectorIndex==2}}" class="grade transition">
+      <view class="gpa-form">
+        <view class="check-box">
+          <view wx:for="{{yearPicker}}" class="item n-text {{item.select? 'checked':'uncheck'}}">
+              <view class="item-year">{{item.text}}</view>
+              <view class="item-term">
+                <view wx:for="{{item.children}}" class=" {{item.select ? 'checked-item' : 'uncheck-item'}}" bindtap="selectCheckItem" data-item="{{item}}">
+                  <view class="txt-center">{{item.text}}</view>
+                </view>
+              </view>
+          </view>
+          <view class="commit-btn l-text txt-center" bindtap="getGpa">查询绩点</view>
         </view>
       </view>
     </view>

@@ -10,16 +10,18 @@ import {
   decrypt,
   getStore,
   setStore,
+  getOwnYearPicker,
 } from '../../utils/util.js'
 import {
-  processFormatForLesson,
   getTerm,
   getCurrentWeek,
+  processFormatForLesson,
   processColorForLessons
 } from './helper.js'
 
 const App = getApp()
 const date = new Date()
+
 Page({
   data: {
     // --- 静态数据 ---
@@ -59,18 +61,28 @@ Page({
           timetable: res.data
         })
       })
+      .then(() => {
+        this.setOwnYearPicker()
+      })
       .catch((err) => { // storage wrong 存储情况出现错误, 重新请求
         wx.showLoading({
           title: '加载课表中'
         })
         const { currentYear, currentTerm } = this.data
-        this.fetchTable(currentYear, currentTerm).then(state => {
+        this.fetchTable(currentYear, currentTerm)
+        .then(state => {
           this.setData(state)
           setStore(state)
-          .then(this.transTablesOfHome) // 同步首页数据
+            .then(this.transTablesOfHome) // 同步首页数据
         })
       })
 
+  },
+  setOwnYearPicker() {
+      getOwnYearPicker()
+        .then(yearPicker => {
+          this.setData({ yearPicker })
+        })
   },
 
   fetchTable(year, term) {
@@ -81,10 +93,8 @@ Page({
       .then(res => {
         let state
         const text = res.data.data
-        const datas = JSON.parse(decrypt(text))
-        let {
-          timetable
-        } = datas
+        const data = JSON.parse(decrypt(text))
+        let { timetable } = data
 
         timetable = processColorForLessons(lessonColors, timetable)
         timetable = processFormatForLesson(timetable)
@@ -108,6 +118,7 @@ Page({
       homePage.getTimeTable()
     }
   },
+
   showModal(e) {
     const {
       lesson
@@ -164,7 +175,6 @@ Page({
     this.setData({
       showSetModal
     })
-    return false
   },
 
   changeYear(e) {

@@ -73,15 +73,78 @@
   align-items: center;
 }
 
+/* gpa */
+  /* toggle checkbox  style*/
+.checked {
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 8rpx 10rpx 14rpx rgba(51, 136, 255, 0.527);
+  background: linear-gradient(to bottom right, rgba(142, 175, 221, 0.623), rgb(126, 173, 240));
+  border: rgb(186, 212, 248) 1px solid;
+}
+
+.uncheck {
+  background-color: #fff;
+  color: #38f;
+  border-radius: 10rpx;
+  border: #38f 1px solid;
+}
+
+.checked-item {
+  color: #fff;
+  font-size: 24rpx;
+}
+.uncheck-item {
+  color: rgb(105, 160, 238);
+  font-size: 24rpx;
+}
+  /* checkbox */
+
+.gpa-form {
+  padding: 40rpx;
+}
+.check-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.check-box .item {
+  box-sizing: border-box;
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  width: 40%;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+.item-year {
+  padding: 10rpx;
+  text-align: center;
+}
+.item-term {
+  margin: 0 10rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+.commit-btn {
+  margin: 10rpx;
+  padding: 10rpx 0;
+
+  width: 80%;
+  border-radius: 10rpx;
+  color: #fff;
+  background: linear-gradient(to bottom right, rgba(91, 164, 233, 0.623), rgb(113, 230, 220));
+}
+
 /* 通用 */
 
 .s-text {
   font-size: 20rpx;
 }
 
-.show {
+/* .show {
   
-}
+} */
 .unshow {
   display: none;
 }

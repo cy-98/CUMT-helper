@@ -32,14 +32,14 @@
     <!-- 导航 -->
     <view class="nav" style="height:{{navHeight}}px;">
       <view class="title" style="top:{{navTop}}px; padding-left:50rpx;">
-        <!-- fenxi -->
+        <!-- graph -->
         <view class="stat context" bindtap="toCharts">
           <text class="iconfont icon-shujufenxi-"></text>
         </view>
-        <!-- fenxi -->
+        <!-- graph -->
         <view class="context" bindtap="togglePre">
           第
-          <text>{{currentWeek}}</text> 周
+          <text>{{ currentWeek }}</text> 周
         </view>
         <view class="context ll-text" bindtap="togglePre">
           {{ is_pre ? '🔼': '🔽' }}
@@ -98,10 +98,10 @@
   <view class="{{showSetModal? 'set-modal' : 'set-wrap'}}">
 
       <view wx:if="{{!showSetModal}}">
-        <image class="set-icon" bindtap="showSetModal" src="/icon/罗盘.png"></image>
+        <image class="set-icon" bindtap="showSetModal" src="/icon/luopan.png"></image>
       </view>
       <view wx:if="{{!showSetModal}}">
-        <image class="set-icon" src="/icon/设置.png"></image>
+        <image class="set-icon" src="/icon/set.png"></image>
       </view>
 
     <form wx:if="{{showSetModal}}" style="{{showSetModal ? 'opacity:1':'opacity:0'}}">

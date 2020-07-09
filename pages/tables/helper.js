@@ -75,6 +75,7 @@ const processColorForLessons = (colors, timetable)=>{
   return timetable
 }
 
+
 module.exports= {
   getTerm: getTerm,
   getCurrentWeek: getCurrentWeek,

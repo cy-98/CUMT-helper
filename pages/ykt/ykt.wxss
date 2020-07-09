@@ -25,7 +25,7 @@
 .number {
   font-size: 4rem;
   color: transparent;
-  background: linear-gradient(to bottom, rgba(51, 136, 255, 0.623), #38f);
+  background: linear-gradient(to bottom, rgba(64, 141, 248, 0.623), #38f);
   -webkit-background-clip: text;
   background-clip: text;
 }
