@@ -103,6 +103,10 @@
 .gpa-form {
   padding: 40rpx;
 }
+.gpa-num {
+  text-align: center;
+  color: #888;
+}
 .check-box {
   display: flex;
   flex-wrap: wrap;

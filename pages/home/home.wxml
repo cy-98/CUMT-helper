@@ -80,9 +80,6 @@
             <view class="s-text sub-util">{{item.name}}</view>
           </view>
           <!--  -->
-          <view class="util util-sort back-white">
-            <view class="s-text sub-util">电话号查询</view>
-          </view>
           <view class="util util-sort back-white" bindtap="toLesStat">
             <view class="s-text sub-util">课程直方图</view>
           </view>

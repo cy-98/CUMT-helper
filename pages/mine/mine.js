@@ -13,7 +13,6 @@ Page({
   },
   onShow() {
     console.log('mine page is showing')
-    hasToLogin()
     const { userInfo, nickName } = this.data
     if(!userInfo) {
       getUser()
@@ -32,6 +31,7 @@ Page({
     }
   },
   onLoad: function(options) {
+    hasToLogin()
     // 微信用户
     console.log('mine page is onloading')
     if (App.globalData.userInfo) {

@@ -1,6 +1,6 @@
 import { encrypt, setStore, getStore } from '../../utils/util'
 import { loginCUMT } from '../../utils/api'
-import { toMine, toIndex } from '../../utils/navigate.js'
+import { toMine } from '../../utils/navigate.js'
 
 var app = getApp();
 
@@ -45,7 +45,8 @@ Page({
         }else {
           wx.clearStorage() // 清楚之前的用户信息
           let token = res.data.data
-          setStore({ 'token': token })
+          // setStore({ 'token': token })
+          wx.setStorageSync('token', token)
 
           toMine() // 登陆成功
         }

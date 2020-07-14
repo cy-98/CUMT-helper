@@ -88,30 +88,15 @@ const lessonColors = [
 const utils = [{
   name: '我的校园卡',
   path: 'ykt',
-  children: [
-    '校园卡充值',
-    '查询余额',
-    '查询流水'
-  ]
 }, {
   name: '我的图书馆',
   path: 'lib',
-  children: [
-    '搜索图书',
-    '查询借阅历史',
-    '查询图书管用户信息',
-    '图书续借'
-  ]
-}, 
-// {
-//   name: '生活统计',
-//   path: 'ykt-charts/ykt-stat',
-//   children: [
-//     '成绩查询',
-//     '考试查询'
-//   ]
-// }
+}, {
+  name: '电话号查询',
+  path: 'phone',
+}
 ]
+
 let prices = [{
   value: 0,
   price: 10,

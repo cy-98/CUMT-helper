@@ -149,10 +149,9 @@ const flatten = (arr, result = []) => {
 }
 // 节流
 const throttle = function (fn, delay = 500) {
-  const instance = this
   let timer = new Date().getTime()
-
   return function() {
+    const instance = this
     const now = new Date().getTime()
     if(now - timer > delay) {
       fn.call(instance)
@@ -162,9 +161,9 @@ const throttle = function (fn, delay = 500) {
 }
 // 防抖
 const debounce = function(fn, delay = 500) {
-  const instance = this
   let timer
   return function() {
+    const instance = this
     if(timer){ clearTimeout(timer) }
     timer = setTimeout(() => {
         fn.call(instance)

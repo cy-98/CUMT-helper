@@ -6,7 +6,6 @@
       <view data-selector="2" bindtap="toggleSelector" class="n-text select-btn {{selectorIndex==2?'selected':''}} marg-left">查询绩点</view>
   </view>
   <view class="container">
-
     <!-- 考试 -->
     <view
      wx:if="{{selectorIndex==0}}" class="exam transition">
@@ -53,7 +52,10 @@
         </view>
       </view>
     </view>
+    <view class="gpa-num" wx:if="{{gpa != 0 && gpa != 'NaN'}}">学期平均绩点{{gpa}}</view>
+    <view class="gpa-num" wx:if="{{gpa == 'NaN'}}">学期暂未开始</view>
   </view>
+
   <!-- 选择当前学期 -->
   <view class=""></view>
 </view>

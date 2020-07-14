@@ -9,7 +9,8 @@
     "pages/lib/detail/detail",
     "pages/jwxt/jwxt",
     "pages/tables/tables",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/phone/phone"
   ],
 
   "tabBar": {

@@ -22,7 +22,9 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
@@ -72,13 +74,6 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/mine/mine",
-					"pathName": "pages/mine/mine",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "首页",
 					"pathName": "pages/home/home",
 					"query": "",
@@ -88,13 +83,6 @@
 					"id": -1,
 					"name": "pages/tables/tables",
 					"pathName": "pages/tables/tables",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "一卡通",
-					"pathName": "pages/ykt/ykt",
 					"query": "",
 					"scene": null
 				},
@@ -121,8 +109,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/lib/lib",
-					"pathName": "pages/lib/lib",
+					"name": "pages/phone/phone",
+					"pathName": "pages/phone/phone",
 					"query": "",
 					"scene": null
 				}

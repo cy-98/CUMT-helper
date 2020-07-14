@@ -9,7 +9,8 @@ Page({
     grade: [],
     selectorIndex: 0,
     currentTerm: getTerm(),
-    currentYear: new Date().getFullYear() - 1
+    currentYear: new Date().getFullYear() - 1,
+    gpa: 0
   },
 
   onLoad() {
@@ -105,6 +106,7 @@ Page({
     )
     .then(this.calcGPA)
     .then(gpa => {
+      gpa = Number(gpa).toFixed(2)
       this.setData({
         gpa
       })
